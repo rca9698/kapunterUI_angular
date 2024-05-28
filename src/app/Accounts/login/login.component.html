@@ -1,0 +1,33 @@
+<div class="modal-header text-center mb-4" [ngClass]="{ 'bg-success': isSuccess, 'bg-danger':!isSuccess }">
+    <h4 class="modal-title pull-left">{{ title }}</h4>
+    <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <main class="form-login">
+      <form (ngSubmit)="login()" [formGroup]="loginForm" autocomplete="off">
+          <div class="form-floating mb-3">
+              <input type="text" formControlName="username" placeholder="Email" class="form-control">
+              <label for="email">User Name</label>
+                <div class="text-danger" *ngIf="loginForm.get('username')?.invalid && (submitted || loginForm.get('username')?.touched || loginForm.get('username')?.dirty)">
+                <span *ngIf="loginForm.get('username')?.errors?.['required']"> Username is required </span> </div>
+          </div>
+  
+          <div class="form-floating mb-3">
+              <input type="password" formControlName="password" placeholder="password" class="form-control">
+              <label for="password">Password</label>
+                <div class="text-danger" *ngIf="loginForm.get('password')?.invalid && (submitted || loginForm.get('password')?.touched || loginForm.get('password')?.dirty)">
+                <span *ngIf="loginForm.get('password')?.errors?.['required']"> Password is required </span> </div>
+          </div>
+  
+          <div class="d-grid mt-4 px-1">
+              <button class="btn btn-lg btn-info" type="submit">Login</button>
+          </div>
+      </form>
+      <div class="mt-4 text-center">
+          <a class="btn btn-link"><h6>forgot username or password</h6></a>
+      </div>
+  </main>
+  </div> 
+  

@@ -1,0 +1,103 @@
+
+<div class="container">
+    <main role="main" class="pb-3">
+        <div class="main">
+            <div class='coinsValidation' data-coins="@coins">
+
+                <div class="dashboard-nav" style="margin-top: 5%;">
+
+                    <nav class="dashboard-nav-list" style="font-size: 10px;font-weight: 900;">
+                      <a href="#" class="dashboard-nav-item ">
+                        <i class="bi bi-house"></i> dashboard
+                    </a>
+                    
+                    <div class='dashboard-nav-dropdown'>
+                        <a href="#" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
+                            <i class="bi bi-image"></i> Dashboard Images
+                        </a>
+                        <div class='dashboard-nav-dropdown-menu'>
+                            <a href="/Home/Index?viewType=AdminImg" class="dashboard-nav-dropdown-item "> <i class="bi bi-people"></i> List Image </a>
+                            <a href="#" class="dashboard-nav-dropdown-item " data-toggle="modal" data-target="#AddImgModal" id="AddImgModalBtn"><i class="bi bi-cart-plus-fill"></i>Add Image</a>
+                        </div>
+                    </div>
+                    
+                    <div class='dashboard-nav-dropdown'>
+                        <a href="#" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
+                            <i class="bi bi-person"></i> Accounts
+                        </a>
+                        <div class='dashboard-nav-dropdown-menu'>
+                            <a href="/Account/Index?viewType=AcRequest" class="dashboard-nav-dropdown-item "> <i class="bi bi-people"></i> Account Requests </a>
+                            <a href="/Account/Index?viewType=CloseIdRequest" class="dashboard-nav-dropdown-item "> <i class="bi bi-people"></i> Close Account Requests </a>
+                            <a href="/Account/Index?viewType=ChangePassRequest" class="dashboard-nav-dropdown-item "> <i class="bi bi-people"></i> Change Password Requests </a>
+                            <a href="/Account/Index?viewType=Accounts" class="dashboard-nav-dropdown-item "> <i class="bi bi-person-fill-add"></i> Created Accounts</a>
+                            <a href="/Account/Index?viewType=RejectedAcRequests" class="dashboard-nav-dropdown-item "> <i class="bi bi-person-fill-dash"></i> Rejected Accounts</a>
+                        </div>
+                    </div>
+                    
+                    <div class='dashboard-nav-dropdown'>
+                        <a href="#" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
+                            <i class="bi bi-bank2"></i> Bank Details
+                        </a>
+                        <div class='dashboard-nav-dropdown-menu'>
+                            @*<a href="#" class="dashboard-nav-dropdown-item" data-toggle="modal" data-target="#AddAdminBankDetailModal" id="AddAdminBankDetailModalBtn"> <i class="bi bi-file-earmark-plus"></i> Add Bank Detail</a>*@
+                            <a href="/BankAccount/Index?viewType=adminBank" class="dashboard-nav-dropdown-item "> <i class="bi bi-bank"></i> List Vendor Banks</a>
+                    
+                            <a href="/BankAccount/Index?viewType=adminUpi" class="dashboard-nav-dropdown-item "> <i class="bi bi-bank"></i> List Vendor Upi</a>
+                    
+                            <a href="/BankAccount/Index?viewType=adminQR" class="dashboard-nav-dropdown-item "> <i class="bi bi-bank"></i> List Vendor QR</a>
+                        </div>
+                    </div>
+                    
+                    <div class='dashboard-nav-dropdown'>
+                        <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
+                            <i class="bi bi-cart"></i> Sites
+                        </a>
+                        <div class='dashboard-nav-dropdown-menu'>
+                            <a href="/Site/Index?viewType=Admin" class="dashboard-nav-dropdown-item "><i class="bi bi-cart4"></i>Sites</a>
+                            <a href="#" class="dashboard-nav-dropdown-item " data-toggle="modal" data-target="#AddSitesModal" id="AddSitesModalbtn"><i class="bi bi-cart-plus-fill"></i>Add Site</a>
+                        </div>
+                    </div>
+                    
+                    <div class='dashboard-nav-dropdown'>
+                        <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
+                            <i class="bi bi-cash-coin"></i> Coin Requests
+                        </a>
+                        <div class='dashboard-nav-dropdown-menu'>
+                            @*  <a href="#" class="dashboard-nav-dropdown-item" data-toggle="modal" data-target="#DepositCoinsRequestModal" id="DepositCoinsRequestModalBtn"><i class="bi bi-cash-coin"></i>Desposit Request</a>
+                    <a href="#" class="dashboard-nav-dropdown-item" data-toggle="modal" data-target="#WithdrawCoinsRequestModal"><i class="bi bi-cash-coin"></i>Withdraw Request</a>*@
+                            <a href="/Coin/Index?viewType=DepositeToSite" class="dashboard-nav-dropdown-item "><i class="bi bi-cash-coin"></i>Deposit to Site Requests</a>
+                            <a href="/Coin/Index?viewType=WithdrawFromSite" class="dashboard-nav-dropdown-item "><i class="bi bi-cash-coin"></i>Withdraw from Site Requests</a>
+                            <a href="/Coin/Index?viewType=Deposite" class="dashboard-nav-dropdown-item "><i class="bi bi-cash-coin"></i>Desposit To Wallet Requests</a>
+                            <a href="/Coin/Index?viewType=Withdraw" class="dashboard-nav-dropdown-item "><i class="bi bi-cash-coin"></i>Withdraw From Wallet Requests</a>
+                        </div>
+                    </div>
+                    
+                    <div class='dashboard-nav-dropdown'>
+                        <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
+                            <i class="bi bi-people"></i> Users
+                        </a>
+                        <div class='dashboard-nav-dropdown-menu'>
+                            <a href="/User/Index" class="dashboard-nav-dropdown-item "><i class="bi bi-people"> </i>List User</a>
+                            <a href="#" class="dashboard-nav-dropdown-item " data-toggle="modal" data-target="#AddUserModal" id="LayoutAddUserBtn"><i class="bi bi-person-add"></i>Add Users</a>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="dashboard-nav-item "><i class="bi bi-gear-fill"></i> Settings </a>
+                    </nav>
+                </div>
+                
+                <div class='dashboard-app'>
+                   
+                    <app-navbar> </app-navbar>
+                
+                    <router-outlet></router-outlet>
+                
+                </div>
+
+            </div>
+        </div>
+    </main>
+</div>
+<app-footer> </app-footer>
+
+
