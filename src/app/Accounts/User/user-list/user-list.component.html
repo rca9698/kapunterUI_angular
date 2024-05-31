@@ -1,45 +1,186 @@
-<table class="table table-hover mt-4 border border-dark">
-    <thead>
-      <tr>
-        <th scope="col">Type</th>
-        <th scope="col">Column heading</th>
-        <th scope="col">Column heading</th>
-        <th scope="col">Column heading</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr class="table-active" *ngFor="let user in users">
-        <th scope="row">user.UserNumber</th>
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
-      </tr>
-    </tbody>
-  </table>
 
-  <div class="pagination">
-    <ul class="pagination pagination-lg">
-      <li class="page-item disabled">
-        <a class="page-link">&laquo;</a>
-      </li>
-      <li class="page-item active">
-        <a class="page-link">1</a>
-      </li>
-      <li class="page-item">
-        <a class="page-link">2</a>
-      </li>
-      <li class="page-item">
-        <a class="page-link">3</a>
-      </li>
-      <li class="page-item">
-        <a class="page-link">4</a>
-      </li>
-      <li class="page-item">
-        <a class="page-link">5</a>
-      </li>
-      <li class="page-item">
-        <a class="page-link">&raquo;</a>
-      </li>
-    </ul>
+  <div class="col-12 text-center listtypeview">
+          <p class="text-uppercase">User Listing</p>
+      </div>
+
+<div class="mt-4">
+      <div class="customtable">
+          <!-- Table with hoverable rows -->
+          <table class="table table-hover scrollbar " id="userList">
+              <thead>
+              <tr class="tableHeaderClass">
+                  <th scope="col"><p class="">User Number</p></th>
+                  <th scope="col"><p class="">Created Date</p></th>
+                  <th scope="col"><p class="">Coins (<i class="bi bi-currency-rupee"></i>)</p></th>
+                  <th scope="col"><p class="">Action</p></th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <!-- @if (Model != null && Model.ReturnList != null)
+                  {
+                      @foreach (var user in Model.ReturnList)
+                      {-->
+                        
+                          <tr *ngFor="let user in usersList">
+                          <th scope="row"><p>@user.UserNumber</p></th>
+                          <td><p>@user.CreatedDate</p></td>
+                          <td><p>@user.Coins</p></td>
+                              <td>
+                                  <div class="btn-group">
+                                  <button type="button" data-toggle="modal" data-target="#DepositCoinsByUserIdModal" userId=@user.UserId UserNumber="@user.UserNumber" coins="@user.Coins" id="depositeCoinsByUserIdBtn"> <i class="bi bi-person-fill-up"></i></button>
+                                  <button type="button" data-toggle="modal" data-target="#WithdrawCoinsUserIdModal" userId=@user.UserId UserNumber="@user.UserNumber" coins="@user.Coins" id="withdrawCoinsByUserIdBtn"> <i class="bi bi-person-fill-down"></i> </button>
+                                  <button type="button" userId=@user.UserId UserNumber="@user.UserNumber" id="ListCoinsBtn"> <i class="bi bi-cash"></i> </button>
+                                  <button type="button" data-toggle="modal" data-target="#DeleteUserModal" userId=@user.UserId UserNumber="@user.UserNumber" id="deleteUserBtn"> <i class="bi bi-person-fill-slash"></i></button>
+                                  </div>
+                              </td>
+                          </tr>
+                          <tr>
+                            <th scope="row"><p>@user.UserNumber</p></th>
+                            <td><p>@user.CreatedDate</p></td>
+                            <td><p>@user.Coins</p></td>
+                                <td>
+                                    <div class="btn-group">
+                                    <button type="button" data-toggle="modal" data-target="#DepositCoinsByUserIdModal" userId=@user.UserId UserNumber="@user.UserNumber" coins="@user.Coins" id="depositeCoinsByUserIdBtn"> <i class="bi bi-person-fill-up"></i></button>
+                                    <button type="button" data-toggle="modal" data-target="#WithdrawCoinsUserIdModal" userId=@user.UserId UserNumber="@user.UserNumber" coins="@user.Coins" id="withdrawCoinsByUserIdBtn"> <i class="bi bi-person-fill-down"></i> </button>
+                                    <button type="button" userId=@user.UserId UserNumber="@user.UserNumber" id="ListCoinsBtn"> <i class="bi bi-cash"></i> </button>
+                                    <button type="button" data-toggle="modal" data-target="#DeleteUserModal" userId=@user.UserId UserNumber="@user.UserNumber" id="deleteUserBtn"> <i class="bi bi-person-fill-slash"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row"><p>@user.UserNumber</p></th>
+                                <td><p>@user.CreatedDate</p></td>
+                                <td><p>@user.Coins</p></td>
+                                    <td>
+                                        <div class="btn-group">
+                                        <button type="button" data-toggle="modal" data-target="#DepositCoinsByUserIdModal" userId=@user.UserId UserNumber="@user.UserNumber" coins="@user.Coins" id="depositeCoinsByUserIdBtn"> <i class="bi bi-person-fill-up"></i></button>
+                                        <button type="button" data-toggle="modal" data-target="#WithdrawCoinsUserIdModal" userId=@user.UserId UserNumber="@user.UserNumber" coins="@user.Coins" id="withdrawCoinsByUserIdBtn"> <i class="bi bi-person-fill-down"></i> </button>
+                                        <button type="button" userId=@user.UserId UserNumber="@user.UserNumber" id="ListCoinsBtn"> <i class="bi bi-cash"></i> </button>
+                                        <button type="button" data-toggle="modal" data-target="#DeleteUserModal" userId=@user.UserId UserNumber="@user.UserNumber" id="deleteUserBtn"> <i class="bi bi-person-fill-slash"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row"><p>@user.UserNumber</p></th>
+                                    <td><p>@user.CreatedDate</p></td>
+                                    <td><p>@user.Coins</p></td>
+                                        <td>
+                                            <div class="btn-group">
+                                            <button type="button" data-toggle="modal" data-target="#DepositCoinsByUserIdModal" userId=@user.UserId UserNumber="@user.UserNumber" coins="@user.Coins" id="depositeCoinsByUserIdBtn"> <i class="bi bi-person-fill-up"></i></button>
+                                            <button type="button" data-toggle="modal" data-target="#WithdrawCoinsUserIdModal" userId=@user.UserId UserNumber="@user.UserNumber" coins="@user.Coins" id="withdrawCoinsByUserIdBtn"> <i class="bi bi-person-fill-down"></i> </button>
+                                            <button type="button" userId=@user.UserId UserNumber="@user.UserNumber" id="ListCoinsBtn"> <i class="bi bi-cash"></i> </button>
+                                            <button type="button" data-toggle="modal" data-target="#DeleteUserModal" userId=@user.UserId UserNumber="@user.UserNumber" id="deleteUserBtn"> <i class="bi bi-person-fill-slash"></i></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"><p>@user.UserNumber</p></th>
+                                        <td><p>@user.CreatedDate</p></td>
+                                        <td><p>@user.Coins</p></td>
+                                            <td>
+                                                <div class="btn-group">
+                                                <button type="button" data-toggle="modal" data-target="#DepositCoinsByUserIdModal" userId=@user.UserId UserNumber="@user.UserNumber" coins="@user.Coins" id="depositeCoinsByUserIdBtn"> <i class="bi bi-person-fill-up"></i></button>
+                                                <button type="button" data-toggle="modal" data-target="#WithdrawCoinsUserIdModal" userId=@user.UserId UserNumber="@user.UserNumber" coins="@user.Coins" id="withdrawCoinsByUserIdBtn"> <i class="bi bi-person-fill-down"></i> </button>
+                                                <button type="button" userId=@user.UserId UserNumber="@user.UserNumber" id="ListCoinsBtn"> <i class="bi bi-cash"></i> </button>
+                                                <button type="button" data-toggle="modal" data-target="#DeleteUserModal" userId=@user.UserId UserNumber="@user.UserNumber" id="deleteUserBtn"> <i class="bi bi-person-fill-slash"></i></button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row"><p>@user.UserNumber</p></th>
+                                            <td><p>@user.CreatedDate</p></td>
+                                            <td><p>@user.Coins</p></td>
+                                                <td>
+                                                    <div class="btn-group">
+                                                    <button type="button" data-toggle="modal" data-target="#DepositCoinsByUserIdModal" userId=@user.UserId UserNumber="@user.UserNumber" coins="@user.Coins" id="depositeCoinsByUserIdBtn"> <i class="bi bi-person-fill-up"></i></button>
+                                                    <button type="button" data-toggle="modal" data-target="#WithdrawCoinsUserIdModal" userId=@user.UserId UserNumber="@user.UserNumber" coins="@user.Coins" id="withdrawCoinsByUserIdBtn"> <i class="bi bi-person-fill-down"></i> </button>
+                                                    <button type="button" userId=@user.UserId UserNumber="@user.UserNumber" id="ListCoinsBtn"> <i class="bi bi-cash"></i> </button>
+                                                    <button type="button" data-toggle="modal" data-target="#DeleteUserModal" userId=@user.UserId UserNumber="@user.UserNumber" id="deleteUserBtn"> <i class="bi bi-person-fill-slash"></i></button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row"><p>@user.UserNumber</p></th>
+                                                <td><p>@user.CreatedDate</p></td>
+                                                <td><p>@user.Coins</p></td>
+                                                    <td>
+                                                        <div class="btn-group">
+                                                        <button type="button" data-toggle="modal" data-target="#DepositCoinsByUserIdModal" userId=@user.UserId UserNumber="@user.UserNumber" coins="@user.Coins" id="depositeCoinsByUserIdBtn"> <i class="bi bi-person-fill-up"></i></button>
+                                                        <button type="button" data-toggle="modal" data-target="#WithdrawCoinsUserIdModal" userId=@user.UserId UserNumber="@user.UserNumber" coins="@user.Coins" id="withdrawCoinsByUserIdBtn"> <i class="bi bi-person-fill-down"></i> </button>
+                                                        <button type="button" userId=@user.UserId UserNumber="@user.UserNumber" id="ListCoinsBtn"> <i class="bi bi-cash"></i> </button>
+                                                        <button type="button" data-toggle="modal" data-target="#DeleteUserModal" userId=@user.UserId UserNumber="@user.UserNumber" id="deleteUserBtn"> <i class="bi bi-person-fill-slash"></i></button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row"><p>@user.UserNumber</p></th>
+                                                    <td><p>@user.CreatedDate</p></td>
+                                                    <td><p>@user.Coins</p></td>
+                                                        <td>
+                                                            <div class="btn-group">
+                                                            <button type="button" data-toggle="modal" data-target="#DepositCoinsByUserIdModal" userId=@user.UserId UserNumber="@user.UserNumber" coins="@user.Coins" id="depositeCoinsByUserIdBtn"> <i class="bi bi-person-fill-up"></i></button>
+                                                            <button type="button" data-toggle="modal" data-target="#WithdrawCoinsUserIdModal" userId=@user.UserId UserNumber="@user.UserNumber" coins="@user.Coins" id="withdrawCoinsByUserIdBtn"> <i class="bi bi-person-fill-down"></i> </button>
+                                                            <button type="button" userId=@user.UserId UserNumber="@user.UserNumber" id="ListCoinsBtn"> <i class="bi bi-cash"></i> </button>
+                                                            <button type="button" data-toggle="modal" data-target="#DeleteUserModal" userId=@user.UserId UserNumber="@user.UserNumber" id="deleteUserBtn"> <i class="bi bi-person-fill-slash"></i></button>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row"><p>@user.UserNumber</p></th>
+                                                        <td><p>@user.CreatedDate</p></td>
+                                                        <td><p>@user.Coins</p></td>
+                                                            <td>
+                                                                <div class="btn-group">
+                                                                <button type="button" data-toggle="modal" data-target="#DepositCoinsByUserIdModal" userId=@user.UserId UserNumber="@user.UserNumber" coins="@user.Coins" id="depositeCoinsByUserIdBtn"> <i class="bi bi-person-fill-up"></i></button>
+                                                                <button type="button" data-toggle="modal" data-target="#WithdrawCoinsUserIdModal" userId=@user.UserId UserNumber="@user.UserNumber" coins="@user.Coins" id="withdrawCoinsByUserIdBtn"> <i class="bi bi-person-fill-down"></i> </button>
+                                                                <button type="button" userId=@user.UserId UserNumber="@user.UserNumber" id="ListCoinsBtn"> <i class="bi bi-cash"></i> </button>
+                                                                <button type="button" data-toggle="modal" data-target="#DeleteUserModal" userId=@user.UserId UserNumber="@user.UserNumber" id="deleteUserBtn"> <i class="bi bi-person-fill-slash"></i></button>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row"><p>@user.UserNumber</p></th>
+                                                            <td><p>@user.CreatedDate</p></td>
+                                                            <td><p>@user.Coins</p></td>
+                                                                <td>
+                                                                    <div class="btn-group">
+                                                                    <button type="button" data-toggle="modal" data-target="#DepositCoinsByUserIdModal" userId=@user.UserId UserNumber="@user.UserNumber" coins="@user.Coins" id="depositeCoinsByUserIdBtn"> <i class="bi bi-person-fill-up"></i></button>
+                                                                    <button type="button" data-toggle="modal" data-target="#WithdrawCoinsUserIdModal" userId=@user.UserId UserNumber="@user.UserNumber" coins="@user.Coins" id="withdrawCoinsByUserIdBtn"> <i class="bi bi-person-fill-down"></i> </button>
+                                                                    <button type="button" userId=@user.UserId UserNumber="@user.UserNumber" id="ListCoinsBtn"> <i class="bi bi-cash"></i> </button>
+                                                                    <button type="button" data-toggle="modal" data-target="#DeleteUserModal" userId=@user.UserId UserNumber="@user.UserNumber" id="deleteUserBtn"> <i class="bi bi-person-fill-slash"></i></button>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row"><p>@user.UserNumber</p></th>
+                                                                <td><p>@user.CreatedDate</p></td>
+                                                                <td><p>@user.Coins</p></td>
+                                                                    <td>
+                                                                        <div class="btn-group">
+                                                                        <button type="button" data-toggle="modal" data-target="#DepositCoinsByUserIdModal" userId=@user.UserId UserNumber="@user.UserNumber" coins="@user.Coins" id="depositeCoinsByUserIdBtn"> <i class="bi bi-person-fill-up"></i></button>
+                                                                        <button type="button" data-toggle="modal" data-target="#WithdrawCoinsUserIdModal" userId=@user.UserId UserNumber="@user.UserNumber" coins="@user.Coins" id="withdrawCoinsByUserIdBtn"> <i class="bi bi-person-fill-down"></i> </button>
+                                                                        <button type="button" userId=@user.UserId UserNumber="@user.UserNumber" id="ListCoinsBtn"> <i class="bi bi-cash"></i> </button>
+                                                                        <button type="button" data-toggle="modal" data-target="#DeleteUserModal" userId=@user.UserId UserNumber="@user.UserNumber" id="deleteUserBtn"> <i class="bi bi-person-fill-slash"></i></button>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th scope="row"><p>@user.UserNumber</p></th>
+                                                                    <td><p>@user.CreatedDate</p></td>
+                                                                    <td><p>@user.Coins</p></td>
+                                                                        <td>
+                                                                            <div class="btn-group">
+                                                                            <button type="button" data-toggle="modal" data-target="#DepositCoinsByUserIdModal" userId=@user.UserId UserNumber="@user.UserNumber" coins="@user.Coins" id="depositeCoinsByUserIdBtn"> <i class="bi bi-person-fill-up"></i></button>
+                                                                            <button type="button" data-toggle="modal" data-target="#WithdrawCoinsUserIdModal" userId=@user.UserId UserNumber="@user.UserNumber" coins="@user.Coins" id="withdrawCoinsByUserIdBtn"> <i class="bi bi-person-fill-down"></i> </button>
+                                                                            <button type="button" userId=@user.UserId UserNumber="@user.UserNumber" id="ListCoinsBtn"> <i class="bi bi-cash"></i> </button>
+                                                                            <button type="button" data-toggle="modal" data-target="#DeleteUserModal" userId=@user.UserId UserNumber="@user.UserNumber" id="deleteUserBtn"> <i class="bi bi-person-fill-slash"></i></button>
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                     <!-- }
+                  } -->
+              </tbody>
+          </table>
+          <!-- End Table with hoverable rows -->
+      </div>
   </div>
-

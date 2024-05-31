@@ -4,6 +4,7 @@ import { LoginComponent } from './login/login.component';
 import { login } from '../Shared/Modals/login';
 import { environment } from 'src/environments/environment.development';
 import { HttpClient } from '@angular/common/http';
+import { users } from '../Shared/Modals/users';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +24,7 @@ OpenLoginPopup(issuccess: boolean, title: string){
 }
 
 login(model: login){
-  return this.http.post(`${environment.appUrl}/api/account/login`, model);
+  // return this.http.post(`${environment.appUrl}/api/account/login`, model);
 }
-
+ 
 }

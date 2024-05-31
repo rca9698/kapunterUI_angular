@@ -38,27 +38,17 @@ body {
     /*background: #000;*/
     /*background: #d334e3;*/
     /*background: #7752A2;*/
-    background: linear-gradient(to left, #65278b, #311147);
+    /* background: linear-gradient(to left, #65278b, #311147); */
     color: #FFF;
     font-weight: bolder;
     padding: 5px;
     cursor: pointer;
     text-transform: uppercase;
     font-size: 10px;
+    background-image: url("../src/assets/applicationBg.jpg");
 }
 
-    .siteBtnbackground:hover {
-        /*background: #000;*/
-        /*background: #d334e3;*/
-        background: #7752C1;
-        color: #FFF;
-        font-weight: bolder;
-        padding: 5px;
-        cursor: pointer;
-        text-transform: uppercase;
-        font-size: 10px;
-    }
-
+    
 #AddBankDetailModalBtn1, #AddAdminQRDetailModalBtn, #AddAdminUpiDetailModalBtn, #AddAdminBankDetailModalBtn, #CreateIDRequestModalBtn {
     float: right;
     background: transparent;
@@ -410,8 +400,7 @@ h1, .h1 {
     }
 
 .dashboard-toolbar {
-    min-height: 84px;
-    /*background-color: #dfdfdf;*/
+    height: 50px;
     background-color: transparent;
     display: -webkit-box;
     display: -webkit-flex;
@@ -568,7 +557,7 @@ h1, .h1 {
 /*Custome Css*/
 
 .cricket-navigation ul li {
-    padding-top: 6px;
+    padding-top: 15px;
     padding-right: 30px;
 }
 

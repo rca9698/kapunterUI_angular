@@ -1,20 +1,44 @@
 ﻿.sitebackground {
-    /*background: #222222 !important;*/
-    background: #070F1B !important;
+    background-color: #242223 !important;
 }
 
-.dashboard-nav {
-    background-color: #070F1B !important;
+.modal-dialog .modal-content, .modal-dialog .card,
+.form-control, .form-control:focus, .form-select {
+    background-color: #242223 !important;
+    color: #FFF !important;
 }
+
+::-webkit-input-placeholder{
+    color: #FFF !important;
+}
+
+table button{
+    background: transparent;
+    border: none;
+}
+
+/* .form-select, .form-control, .form-control:focus {
+    background: #000 !important;
+    color: #FFF !important;
+} */
+
+
+i{
+    color: #FFF;
+}
+
+/* .dashboard-nav {
+    background-color: #070F1B !important;
+} */
 
 .dashboard-content {
     /*background-color: #65a765 !important;*/
     padding: 0px
 }
 
-.dashboard-toolbar, .modal-dialog .modal-content, .modal-dialog .card {
+/* .dashboard-toolbar, .modal-dialog .modal-content, .modal-dialog .card {
     background-color: #070F1B !important;
-}
+} */
 
 
     .dashboard-toolbar .menu-toggle {
@@ -126,13 +150,9 @@
     text-align: center
 }
 
-.form-select, .form-control, .form-control:focus {
-    background: #000 !important;
-    color: #FFF !important;
-}
-
 .customtable {
     overflow: scroll;
+    height: 500px;
 }
 
     .customtable thead p {

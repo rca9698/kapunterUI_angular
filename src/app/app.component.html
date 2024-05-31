@@ -3,13 +3,11 @@
     <main role="main" class="pb-3">
         <div class="main">
             <div class='coinsValidation' data-coins="@coins">
-
-                <div class="dashboard-nav" style="margin-top: 5%;">
-
+                <div class="dashboard-nav sitebackground" style="margin-top: 3%;">
                     <nav class="dashboard-nav-list" style="font-size: 10px;font-weight: 900;">
-                      <a href="#" class="dashboard-nav-item ">
+                    <a href="#" class="dashboard-nav-item ">
                         <i class="bi bi-house"></i> dashboard
-                    </a>
+                     </a>
                     
                     <div class='dashboard-nav-dropdown'>
                         <a href="#" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
@@ -39,11 +37,8 @@
                             <i class="bi bi-bank2"></i> Bank Details
                         </a>
                         <div class='dashboard-nav-dropdown-menu'>
-                            @*<a href="#" class="dashboard-nav-dropdown-item" data-toggle="modal" data-target="#AddAdminBankDetailModal" id="AddAdminBankDetailModalBtn"> <i class="bi bi-file-earmark-plus"></i> Add Bank Detail</a>*@
                             <a href="/BankAccount/Index?viewType=adminBank" class="dashboard-nav-dropdown-item "> <i class="bi bi-bank"></i> List Vendor Banks</a>
-                    
                             <a href="/BankAccount/Index?viewType=adminUpi" class="dashboard-nav-dropdown-item "> <i class="bi bi-bank"></i> List Vendor Upi</a>
-                    
                             <a href="/BankAccount/Index?viewType=adminQR" class="dashboard-nav-dropdown-item "> <i class="bi bi-bank"></i> List Vendor QR</a>
                         </div>
                     </div>
@@ -63,8 +58,6 @@
                             <i class="bi bi-cash-coin"></i> Coin Requests
                         </a>
                         <div class='dashboard-nav-dropdown-menu'>
-                            @*  <a href="#" class="dashboard-nav-dropdown-item" data-toggle="modal" data-target="#DepositCoinsRequestModal" id="DepositCoinsRequestModalBtn"><i class="bi bi-cash-coin"></i>Desposit Request</a>
-                    <a href="#" class="dashboard-nav-dropdown-item" data-toggle="modal" data-target="#WithdrawCoinsRequestModal"><i class="bi bi-cash-coin"></i>Withdraw Request</a>*@
                             <a href="/Coin/Index?viewType=DepositeToSite" class="dashboard-nav-dropdown-item "><i class="bi bi-cash-coin"></i>Deposit to Site Requests</a>
                             <a href="/Coin/Index?viewType=WithdrawFromSite" class="dashboard-nav-dropdown-item "><i class="bi bi-cash-coin"></i>Withdraw from Site Requests</a>
                             <a href="/Coin/Index?viewType=Deposite" class="dashboard-nav-dropdown-item "><i class="bi bi-cash-coin"></i>Desposit To Wallet Requests</a>
@@ -93,11 +86,11 @@
                     <router-outlet></router-outlet>
                 
                 </div>
-
             </div>
         </div>
     </main>
 </div>
+
 <app-footer> </app-footer>
 
 

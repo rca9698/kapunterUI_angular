@@ -1,4 +1,4 @@
-<header class='dashboard-toolbar'>
+<header class='dashboard-toolbar sitebackground'>
 
   <div class="row col-12">
       <div class="col-3">
@@ -9,12 +9,12 @@
           <!-- @if (!User.Identity.IsAuthenticated)
           { -->
               <div class="cricket-navigation">
-                  <ul class="nav" style="margin-right:-70px;margin-top: -10px;">
+                  <ul class="nav" style="margin-right:-70px;">
                       <li>
                           <button class="btn siteBtnbackground mb-3" tabindex="0">Demo ID</button>
                       </li>
                       <li>
-                          <button class="btn siteBtnbackground mb-3" tabindex="0">Login | Signup</button>
+                          <button class="btn siteBtnbackground mb-3" tabindex="0" (click)="loginPopup()">Login | Signup</button>
                       </li>
                   </ul>
               </div>
