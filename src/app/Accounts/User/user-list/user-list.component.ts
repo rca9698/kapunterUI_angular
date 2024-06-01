@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../user.service';
 import { users } from 'src/app/Shared/Modals/users';
 import { ReturnType } from 'src/app/Shared/Modals/Common/ReturnType';
+import { CoinsService } from '../../coins/coins.service';
 
 @Component({
   selector: 'app-user-list',
@@ -11,7 +12,7 @@ import { ReturnType } from 'src/app/Shared/Modals/Common/ReturnType';
 })
 export class UserListComponent implements OnInit {
   
-  constructor(private userService: UserService){ }
+  constructor(private userService: UserService, private coinsService: CoinsService){ }
 
   ngOnInit() {
     this.userlist();
@@ -27,11 +28,28 @@ export class UserListComponent implements OnInit {
        this.returnType = response;
        console.log(this.returnType);
        this.usersList = this.returnType['returnList'];
+       console.log(this.usersList);
       },
       error:error => {
         console.log(error);
       }
     })
     
+  }
+
+  depositeCoinsByUserId(user: users){
+    this.coinsService.OpenDepositeCoinsByUserIdPopup(user.userNumber);
+  }
+
+  withdrawCoinsByUserId(user: users){
+    this.coinsService.OpenWithdrawCoinsUserIdPopup(user.userNumber);
+  }
+
+  ListCoins(user: users){
+
+  }
+
+  deleteUser(user: users){
+
   }
 }

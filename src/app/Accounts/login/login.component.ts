@@ -38,11 +38,6 @@ export class LoginComponent{
   
  }
 
-LoadValidation(field: any, message: any){
-  return `<div class="text-danger" *ngIf="SendOtpForm.get('${field}')?.invalid && (submitted || SendOtpForm.get('${field}')?.touched || SendOtpForm.get('${field}')?.dirty)">
-  <span *ngIf="SendOtpForm.get('${field}')?.errors?.['required']"> ${message} </span> </div>`
-}
-
  LoadPassword(){
 this.showPassword = true;
 this.showOtp = false;

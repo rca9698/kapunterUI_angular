@@ -12,7 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AccountsModule } from './Accounts/accounts.module';
 import { NotFoundComponent } from './Shared/component/error/not-found/not-found.component';
 import { ValidationMessageComponent } from './Shared/component/error/validation-message/validation-message.component';
-import { HttpClient } from '@angular/common/http';
+import { SitesModule } from './Sites/sites.module';
 
 @NgModule({
   declarations: [
@@ -29,7 +29,8 @@ import { HttpClient } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    AccountsModule
+    AccountsModule,
+    SitesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

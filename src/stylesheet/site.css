@@ -31,11 +31,11 @@ body {
 .customtable thead th {
   position: sticky; /* make the table heads sticky */
   top: 0px; /* table head will be placed from the top of the table and sticks to it */
-  z-index: 9999;
+  z-index: 1;
 }
 
 .table>:not(caption)>*>*{
-  background-color: black;
+  background-color: #242223 !important;
 }
 
 ::-webkit-scrollbar {

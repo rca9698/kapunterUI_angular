@@ -10,6 +10,7 @@ import { IdRequestListComponent } from './Ids/id-request-list/id-request-list.co
 import { DeletedIdRequestListComponent } from './Ids/deleted-id-request-list/deleted-id-request-list.component';
 import { DeletedIdsListComponent } from './Ids/deleted-ids-list/deleted-ids-list.component';
 import { IdsListComponent } from './Ids/ids-list/ids-list.component';
+import { CoinsModule } from './coins/coins.module';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { IdsListComponent } from './Ids/ids-list/ids-list.component';
     ReactiveFormsModule,
     AccountRoutingModule,
     HttpClientModule,
+    CoinsModule,
     ModalModule.forRoot()
   ],
   exports:[

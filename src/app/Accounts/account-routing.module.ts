@@ -7,7 +7,7 @@ import { IdRequestListComponent } from './Ids/id-request-list/id-request-list.co
 import { DeletedIdRequestListComponent } from './Ids/deleted-id-request-list/deleted-id-request-list.component';
 
 const routes : Routes = [
-  { path: 'if_request_list', component: IdRequestListComponent },
+  { path: 'id_request_list', component: IdRequestListComponent },
   { path: 'deleted_id_request_list', component: DeletedIdRequestListComponent },
   { path: 'user_list', component: UserListComponent },
   { path: 'deleted_user_list', component: DeletedUserListComponent },
