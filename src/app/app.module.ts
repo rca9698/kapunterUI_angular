@@ -13,6 +13,7 @@ import { AccountsModule } from './Accounts/accounts.module';
 import { NotFoundComponent } from './Shared/component/error/not-found/not-found.component';
 import { ValidationMessageComponent } from './Shared/component/error/validation-message/validation-message.component';
 import { SitesModule } from './Sites/sites.module';
+import { AppToasterComponent } from './toastr/toastrs/app-toaster.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { SitesModule } from './Sites/sites.module';
     NavbarComponent,
     HomeComponent,
     NotFoundComponent,
-    ValidationMessageComponent
+    ValidationMessageComponent,
+    AppToasterComponent
   ],
   imports: [
     BrowserModule,

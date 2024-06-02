@@ -6,11 +6,13 @@ import { ValidationMessageComponent } from './Shared/component/error/validation-
 
 const routes: Routes = [
   {path:"", component:HomeComponent},
-  //import lazy loading by following formatclear
   
+  //import lazy loading by following formatclear
   {path:"account", loadChildren: () => import('./Accounts/accounts.module').then(module => module.AccountsModule)},
   {path:"site", loadChildren: () => import('./Sites/sites.module').then(module => module.SitesModule) },
-  
+  {path:"passbook", loadChildren: () => import('./Passbook/passbook.module').then(module => module.PassbookModule) },
+  {path:"bankAccount", loadChildren: () => import('./BankAccount/bank-account.module').then(module => module.BankAccountModule) },
+
   {path:"not-found", component:NotFoundComponent},
   {path:"**",component:ValidationMessageComponent}
 ];

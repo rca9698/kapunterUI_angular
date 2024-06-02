@@ -3,8 +3,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { AccountsService } from '../accounts.service';
-
-
+import { otp_Login_Model } from 'src/app/Shared/Modals/otp_Login_Model';
+import { ToastrService } from '../../toastr/toastr.service';
+import { environment } from 'src/environments/environment.development';
+ 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -15,6 +17,11 @@ export class LoginComponent{
   LoginForm: FormGroup;
   submitted = false;
   passwordType = "password";
+  returnType: any;
+  otp_Login_Modal: otp_Login_Model | undefined;
+  returnTypeClient: ReturnType<any>;
+  mobileNumber: any;
+
   usersQuery: any = {
     SessionUser: BigInt
   };
@@ -26,29 +33,32 @@ export class LoginComponent{
   backButtonVisibility: boolean = false;
 
   constructor(public bsModalRef:BsModalRef, private formBuilder: FormBuilder,
-    private router:Router, private accountService: AccountsService){
+    private router:Router, private accountService: AccountsService, 
+    private toasterService: ToastrService){
       this.SendOtpForm = this.formBuilder.group({
         userNumber: ['', [Validators.required]]
        },
      )
      
      this.LoginForm = this.formBuilder.group({
+      userNumber: ['', [Validators.required]],
       otp: ['', [Validators.required]]
      },
    )
   
  }
 
- LoadPassword(){
+ LoadPassword() {
 this.showPassword = true;
 this.showOtp = false;
 this.submitted = false;
 this.LoginForm = this.formBuilder.group({
+  userNumber: ['', [Validators.required]],
   password: ['', [Validators.required]]
  });
  }
 
- ViewPassword(){
+ ViewPassword() {
   if(this.passwordType == "password"){
     this.passwordType = "text";
   }else{
@@ -56,32 +66,7 @@ this.LoginForm = this.formBuilder.group({
   }
  }
 
- LoadOTP(){
-  this.showOtp = true;
-  this.showPassword = false;
-  this.submitted = false;
-  this.LoginForm = this.formBuilder.group({
-    otp: ['', [Validators.required]]
-   });
- }
-
- LoginToApp(){
-  this.submitted = true;
-
-  this.accountService.login(this.LoginForm.value).subscribe({
-    next:(response) =>{
-      console.log(response);
-    },
-    error:error => {
-      console.log(error);
-    }
-  })
-
-  this.bsModalRef.hide();
-  this.router.navigate(['/account/user_list']);
- }
-
- SendOtp(){
+ SendOtp() {
   this.submitted = true;
 
   if(this.SendOtpForm?.invalid) {
@@ -94,16 +79,54 @@ this.LoginForm = this.formBuilder.group({
     this.showPassword = false;
     this.submitted = false;
     this.backButtonVisibility = true; 
+    this.mobileNumber = this.SendOtpForm.value["userNumber"];
 
-    this.accountService.sendOtp(this.SendOtpForm.value).subscribe({
+    this.accountService.sendOtp(this.mobileNumber).subscribe({
       next:(response) =>{
-        console.log(response);
+        this.returnType = response;
+        this.otp_Login_Modal = this.returnType['returnVal'];
+        this.returnTypeClient = Object.create(null);
+        if(environment.environment == 'dev') {
+        this.returnTypeClient.returnMessage = `OTP sent to your Mobile Number - ${this.otp_Login_Modal?.otp}!!"`;
+        }
+
+       this.toasterService.success(this.returnTypeClient.returnMessage);
       },
-      error:error => {
+      error:(error: any) => {
         console.log(error);
       }
     })
   }
+ }
+ 
+ LoadOTP(){
+  this.showOtp = true;
+  this.showPassword = false;
+  this.submitted = false;
+  this.LoginForm = this.formBuilder.group({
+    userNumber: ['', [Validators.required]],
+    otp: ['', [Validators.required]]
+   });
+ }
+
+ LoginToApp() {
+  this.submitted = true;
+  
+  if(this.LoginForm.invalid) {
+    return;
+  }
+
+  this.accountService.login(this.LoginForm.value).subscribe({
+    next:(response) =>{
+      console.log(response);
+    this.bsModalRef.hide();
+    this.router.navigate(['/account/user_list']);
+    },
+    error:error => {
+      console.log(error);
+    }
+  })
+
  }
 
  backToMobileNumber(){
