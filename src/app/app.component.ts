@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SitesService } from './Sites/sites.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,16 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'kapunter.client';
+
+  constructor(private siteService: SitesService){
+
+  }
+
+  AddSitesPopup(){
+    this.siteService.OpenLoginPopup(false,0);
+  }
+
+  UpdateSitePopup(siteId: number){
+    this.siteService.OpenLoginPopup(false,siteId);
+  }
 }

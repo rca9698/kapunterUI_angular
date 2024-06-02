@@ -758,7 +758,7 @@ body {
     border-radius: 0px 0px 10px 10px;
 }
 
-.dashboard-nav-list a {
+.dashboard-nav-list a, .dashboard-nav-list span {
     margin-left: -10px;
 }
 

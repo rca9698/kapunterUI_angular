@@ -9,6 +9,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { ListSitesComponent } from './listSites/list-sites.component';
 import { UserListSitesComponent } from './userListSites/user-list-sites.component';
 import { GetUserListSiteByIdComponent } from './getUserListSiteById/get-user-list-site-by-id.component';
+import { SitesRoutingModule } from './sites-routing.module';
 
 
 
@@ -23,7 +24,7 @@ import { GetUserListSiteByIdComponent } from './getUserListSiteById/get-user-lis
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    AccountRoutingModule,
+    SitesRoutingModule,
     HttpClientModule,
     ModalModule.forRoot()
   ],

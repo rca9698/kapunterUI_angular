@@ -1,1 +1,26 @@
-<p>list-sites works!</p>
+<div class="card rounded-3 siteColor" *ngFor="let site of sites">
+    <div class="card-body">
+        <div class="row Col-12">
+            <div class="col-9">
+                <div class="row col-12">
+                    <div class="col-3 text-center">
+                        <img class="siteImageSize rounded-circle siteIcon"  src="{{sitePath}}{{site.documentDetailId}}.{{site.fileExtenstion}}" />
+                    </div>
+                    <div class="col-9 align-self-center">
+                        <p class="text-uppercase siteName">{{ site.siteName }}</p>
+                        <p class="siteURL">{{ site.siteURL }}</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-3 d-grid gap-2 mx-auto" style="padding:0px">
+                <div class="col-12 row text-center">
+                    <button class="rounded-3 btn-primary text-nowrap btn-sm col-6" (click)="updateSite(site)" type="button">Update</button>
+                    <button class="btn btn-danger btn-sm col-6 ml-2" (click)="deleteSite(site)" type="button">Delete</button>
+                </div>
+            </div> 
+
+        </div>
+    </div>
+</div>

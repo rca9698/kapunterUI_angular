@@ -20,11 +20,18 @@ OpenLoginPopup(issuccess: boolean, title: string){
       title
     }
   }
+
   this.bsmodalRef = this.bsModalService.show(LoginComponent,initalstate);
 }
 
+sendOtp(mobileNumber: string){
+  console.log(mobileNumber);
+   return this.http.get(`${environment.apiUrl}/api/LoginSignup/Generate_Otp/${mobileNumber}`);
+}
+
 login(model: login){
-  // return this.http.post(`${environment.appUrl}/api/account/login`, model);
+  console.log(model);
+  return this.http.post(`${environment.apiUrl}/api/LoginSignup/Login`, model);
 }
  
 }

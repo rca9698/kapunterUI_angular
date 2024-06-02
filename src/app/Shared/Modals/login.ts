@@ -1,4 +1,5 @@
 export interface login{
-    userName: string,
-    password: string
+    UserNumber: string,
+    OTP: string,
+    Password: string
 }

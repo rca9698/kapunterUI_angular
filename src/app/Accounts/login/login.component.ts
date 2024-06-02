@@ -23,6 +23,7 @@ export class LoginComponent{
   showPassword: boolean = false;
   showMobileModalForm: boolean = true;
   showOtpPasswordModalForm: boolean = false;
+  backButtonVisibility: boolean = false;
 
   constructor(public bsModalRef:BsModalRef, private formBuilder: FormBuilder,
     private router:Router, private accountService: AccountsService){
@@ -66,9 +67,16 @@ this.LoginForm = this.formBuilder.group({
 
  LoginToApp(){
   this.submitted = true;
-  console.log('login');
 
-  console.log(JSON.stringify(this.SendOtpForm.value, null, 2));
+  this.accountService.login(this.LoginForm.value).subscribe({
+    next:(response) =>{
+      console.log(response);
+    },
+    error:error => {
+      console.log(error);
+    }
+  })
+
   this.bsModalRef.hide();
   this.router.navigate(['/account/user_list']);
  }
@@ -76,7 +84,7 @@ this.LoginForm = this.formBuilder.group({
  SendOtp(){
   this.submitted = true;
 
-  if (this.SendOtpForm?.invalid) {
+  if(this.SendOtpForm?.invalid) {
     return;
   }
 
@@ -85,20 +93,25 @@ this.LoginForm = this.formBuilder.group({
     this.showMobileModalForm = false;
     this.showPassword = false;
     this.submitted = false;
-    
+    this.backButtonVisibility = true; 
 
-    
-
-    // this.accountService.login(this.SendOtpForm.value).subscribe({
-    //   next:(response) =>{
-    //     console.log(response);
-    //   },
-    //   error:error => {
-    //     console.log(error);
-    //   }
-    // })
-
+    this.accountService.sendOtp(this.SendOtpForm.value).subscribe({
+      next:(response) =>{
+        console.log(response);
+      },
+      error:error => {
+        console.log(error);
+      }
+    })
   }
+ }
+
+ backToMobileNumber(){
+    this.showOtpPasswordModalForm = false;
+    this.showMobileModalForm = true;
+    this.showPassword = false;
+    this.submitted = false;
+    this.backButtonVisibility = false;
  }
 
 }

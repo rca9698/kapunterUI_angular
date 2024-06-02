@@ -9,6 +9,8 @@ const routes: Routes = [
   //import lazy loading by following formatclear
   
   {path:"account", loadChildren: () => import('./Accounts/accounts.module').then(module => module.AccountsModule)},
+  {path:"site", loadChildren: () => import('./Sites/sites.module').then(module => module.SitesModule) },
+  
   {path:"not-found", component:NotFoundComponent},
   {path:"**",component:ValidationMessageComponent}
 ];
