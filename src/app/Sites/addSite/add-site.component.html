@@ -25,9 +25,9 @@
                             <div class="form-group">
                                 <div class="col-md-10">
                                     <!-- <input type="file" name="files" class="files" /> -->
-                                    <input #imageInput type="file" formArrayName="files" accept="image/*" (change)="processFile(imageInput)">
-                                    <div class="text-danger" *ngIf="AddSiteFrom.get('files')?.invalid && (submitted || AddSiteFrom.get('files')?.touched || AddSiteFrom.get('files')?.dirty)">
-                                     <span *ngIf="AddSiteFrom.get('files')?.errors?.['required']"> File is required </span> 
+                                    <input #imageInput type="file" accept="image/*" (change)="processFile(imageInput)">
+                                    <div class="text-danger" *ngIf="!this.file && (submitted || AddSiteFrom.get('siteURL')?.touched)">
+                                     <span> File is required </span> 
                                     </div>                
                                 </div>
                             </div>

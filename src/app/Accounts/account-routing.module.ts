@@ -5,6 +5,7 @@ import { UserListComponent } from './User/user-list/user-list.component';
 import { DeletedUserListComponent } from './User/deleted-user-list/deleted-user-list.component';
 import { IdRequestListComponent } from './Ids/id-request-list/id-request-list.component';
 import { DeletedIdRequestListComponent } from './Ids/deleted-id-request-list/deleted-id-request-list.component';
+import { UserService } from './user.service';
 
 const routes : Routes = [
   { path: 'id_request_list', component: IdRequestListComponent },
@@ -23,4 +24,6 @@ const routes : Routes = [
     RouterModule
   ]
 })
-export class AccountRoutingModule { }
+export class AccountRoutingModule {
+
+}

@@ -4,5 +4,7 @@ export interface ReturnType<T> {
     ReturnVal: T,
     ReturnStatus: any,
     ReturnList: Observable<T>,
-    ReturnMessage: string
+    ReturnMessage: string,
+    PaginationCount: number,
+    TotalCount: number
 }

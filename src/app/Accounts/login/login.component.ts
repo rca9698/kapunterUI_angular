@@ -6,6 +6,7 @@ import { AccountsService } from '../accounts.service';
 import { otp_Login_Model } from 'src/app/Shared/Modals/otp_Login_Model';
 import { ToastrService } from '../../toastr/toastr.service';
 import { environment } from 'src/environments/environment.development';
+import { login } from 'src/app/Shared/Modals/login';
  
 @Component({
   selector: 'app-login',
@@ -20,7 +21,6 @@ export class LoginComponent{
   returnType: any;
   otp_Login_Modal: otp_Login_Model | undefined;
   returnTypeClient: ReturnType<any>;
-  mobileNumber: any;
 
   usersQuery: any = {
     SessionUser: BigInt
@@ -41,7 +41,6 @@ export class LoginComponent{
      )
      
      this.LoginForm = this.formBuilder.group({
-      userNumber: ['', [Validators.required]],
       otp: ['', [Validators.required]]
      },
    )
@@ -53,7 +52,6 @@ this.showPassword = true;
 this.showOtp = false;
 this.submitted = false;
 this.LoginForm = this.formBuilder.group({
-  userNumber: ['', [Validators.required]],
   password: ['', [Validators.required]]
  });
  }
@@ -79,9 +77,8 @@ this.LoginForm = this.formBuilder.group({
     this.showPassword = false;
     this.submitted = false;
     this.backButtonVisibility = true; 
-    this.mobileNumber = this.SendOtpForm.value["userNumber"];
 
-    this.accountService.sendOtp(this.mobileNumber).subscribe({
+    this.accountService.sendOtp(this.SendOtpForm.value["userNumber"]).subscribe({
       next:(response) =>{
         this.returnType = response;
         this.otp_Login_Modal = this.returnType['returnVal'];
@@ -104,7 +101,6 @@ this.LoginForm = this.formBuilder.group({
   this.showPassword = false;
   this.submitted = false;
   this.LoginForm = this.formBuilder.group({
-    userNumber: ['', [Validators.required]],
     otp: ['', [Validators.required]]
    });
  }
@@ -116,17 +112,27 @@ this.LoginForm = this.formBuilder.group({
     return;
   }
 
-  this.accountService.login(this.LoginForm.value).subscribe({
+  let login: login = Object.create(null);
+  login.UserNumber = this.SendOtpForm.value["userNumber"].toString();
+  login.OTP = this.LoginForm.value['otp'];
+  login.Password = this.LoginForm.value['password'];
+
+  this.accountService.login(login).subscribe({
     next:(response) =>{
       console.log(response);
-    this.bsModalRef.hide();
-    this.router.navigate(['/account/user_list']);
+      this.returnType = response;
+      if(this.returnType['returnStatus'] == 1){
+        this.toasterService.success(this.returnType.returnMessage);
+        this.bsModalRef.hide();
+        this.router.navigate(['/account/user_list']);
+      }else{
+        this.toasterService.warning(this.returnType.returnMessage);
+      }
     },
     error:error => {
       console.log(error);
     }
   })
-
  }
 
  backToMobileNumber(){

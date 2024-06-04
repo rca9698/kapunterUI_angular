@@ -12,11 +12,14 @@ export class UserService implements OnInit {
   
   ngOnInit(): void { }
   userList: users | undefined;
-   userlist(userQuery:any) { 
-    userQuery = {
-      SessionUser: 1
-    }
+   userlist(userQuery:any) {
     return this.http.post(`${environment.apiUrl}/api/User/GetUsers`, userQuery);
+  }
+
+  userlistDetailById() { 
+    
+    console.log(`${environment.apiUrl}/api/User/GetUsers`);
+    return this.http.get(`${environment.apiUrl}/api/User/GetUsers`);
   }
 
 }

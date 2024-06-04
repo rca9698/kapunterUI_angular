@@ -109,3 +109,16 @@ function ToasteRMessage(result, id) {
         $(':input[type="submit"]').prop('disabled', false);
     }
 }
+ 
+$(document).on('click','.pagination a', function(){
+    var id =parseInt($('.pagination .active').attr('p-id'));
+    $('.pagination a').removeClass('active');
+    if($(this).attr('p-id') == 'next') {
+        $(`.pagination [p-id=${id+1}]`).addClass('active');
+    }
+    else if($(this).attr('p-id') == 'previous') {
+        $(`.pagination [p-id=${id-1}]`).addClass('active');
+    }else{
+        $(this).addClass('active');
+    }
+});

@@ -38,6 +38,19 @@
             } -->
         </tbody>
     </table>
-    <!-- End Table with hoverable rows -->
 </div>
 </div>
+<div class="pagination">
+    <a (click)="PaginationNumber(6)" p-id="previous">&laquo;</a>
+    <span *ngFor="let pagination of getCountArray()"> 
+        <a (click)="PaginationNumber(pagination)">
+            {{pagination+1}}
+        </a>
+    </span>
+
+    <!-- <a p-id="3" (click)="PaginationNumber(3)">3</a>
+    <a p-id="4" (click)="PaginationNumber(4)">4</a>
+    <a p-id="5" (click)="PaginationNumber(5)">5</a>
+    <a p-id="6" (click)="PaginationNumber(6)">6</a> -->
+    <a (click)="PaginationNumber(paginationCount)" p-id="next">&raquo;</a>
+  </div>

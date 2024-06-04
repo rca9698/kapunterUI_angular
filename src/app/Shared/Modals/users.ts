@@ -12,5 +12,7 @@ export interface users{
     createdBy: string,
     createdDate: string,
     updatedBy: string,
-    updatedDate: string
+    updatedDate: string,
+    totalCount: number,
+    paginationCount: number
 }

@@ -31,9 +31,8 @@ sendOtp(mobileNumber: string){
   }
 
 login(model: login){
-  console.log(model);
-  let body = JSON.stringify(model);
-  return this.http.post(`${environment.apiUrl}/api/LoginSignup/Login`, body);
+  console.log(model); 
+  return this.http.post(`${environment.apiUrl}/api/LoginSignup/Login`, model);
 }
  
 }

@@ -13,9 +13,13 @@
   }
 
   .warning {
-    background-color: yellow;
+    background-color: coral;
   }
   
   .error {
     background-color: red;
+  }
+
+  .info {
+    background-color: cornflowerblue;
   }

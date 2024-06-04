@@ -29,10 +29,6 @@
       </form>
       <form (ngSubmit)="LoginToApp()" [formGroup]="LoginForm" autocomplete="off" *ngIf="showOtpPasswordModalForm">
           
-        <div class="mb-3 form-group" hidden>
-            <input class="form-control" type="number" formControlName="userNumber" [(ngModel)]="mobileNumber" placeholder="Mobile Number" autocomplete="off">
-        </div>
-
         <div class="mb-3 form-group otpFormGroup" *ngIf="showOtp">
               <label for="otp" class="form-label">OTP*</label>
               <div class="input-group input-group-merge">

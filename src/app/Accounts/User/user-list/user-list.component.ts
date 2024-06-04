@@ -18,23 +18,37 @@ export class UserListComponent implements OnInit {
     this.userlist();
   }
 
-  usersQuery: any;
+  usersQuery: any ;
   usersList: users[] | undefined; 
   returnType:any;
+  paginationCount: number = 1;
+  totalCount: number = 0;
 
-  userlist() {
-  this.userService.userlist(this.usersQuery).subscribe({
+  //function to return list of numbers from 0 to n-1 
+  getCountArray(): number[] {
+    return Array.from({ length: this.paginationCount }, (_, i) => i);
+  }
+
+  fetchUserList(paginationQuery: any){
+    this.userService.userlist(paginationQuery).subscribe({
       next:(response) =>{
        this.returnType = response;
-       console.log(this.returnType);
        this.usersList = this.returnType['returnList'];
-       console.log(this.usersList);
+       this.paginationCount = this.returnType['paginationCount'];
+       this.totalCount = this.returnType['totalCount'];
       },
       error:error => {
         console.log(error);
       }
-    })
-    
+    });
+  }
+
+  userlist() {
+    this.usersQuery = {
+      SessionUser: 1,
+      pageNumber: 0
+    };
+    this.fetchUserList(this.usersQuery);
   }
 
   depositeCoinsByUserId(user: users){
@@ -51,5 +65,10 @@ export class UserListComponent implements OnInit {
 
   deleteUser(user: users){
 
+  }
+
+  PaginationNumber(pageNumber:number) {
+    this.usersQuery.pageNumber = pageNumber;
+    this.fetchUserList(this.usersQuery);
   }
 }

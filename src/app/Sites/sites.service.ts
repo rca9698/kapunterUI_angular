@@ -21,13 +21,17 @@ OpenLoginPopup(isupdate: boolean, siteId: number){
   this.bsmodalRef = this.bsModalService.show(AddSiteComponent,initalstate);
 }
 
+public getSiteList(listSitesQuery: any){
+  return this.http.post(environment.apiUrl+'/api/Site/GetSites', listSitesQuery);
+}
+
 public uploadfile(file: File) {
   let formParams = new FormData();
   formParams.append('File', file);
   formParams.append('SiteName', 'SiteName');
   formParams.append('SiteURL', 'SiteURL');
   // const headers = new HttpHeaders().set('Content-Type', 'multipart/form-data');
-  return this.http.post(environment.apiUrl+'/api/Site/AddSite', formParams);
+  return this.http.post(environment.apiUrl+'/api/Site/AddSiteDetail', formParams);
 }
 
 }
