@@ -1,21 +1,36 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { SitesService } from '../sites.service';
 import { ToastrService } from 'src/app/toastr/toastr.service';
+import { SiteDetail } from 'src/app/Shared/Modals/SiteDetail';
 
 @Component({
   selector: 'app-add-site',
   templateUrl: './add-site.component.html',
   styleUrls: ['./add-site.component.css']
 })
-export class AddSiteComponent {
+export class AddSiteComponent implements OnInit {
   AddSiteFrom: FormGroup;
   submitted : boolean = false;
    file: any = null;
    isupdate: boolean = false;
-   siteId: number | undefined;
+   site: SiteDetail ={
+     siteId: 0,
+     siteName: '',
+     siteURL: '',
+     userId: 0n,
+     accountId: 0n,
+     userNumber: 0n,
+     userName: '',
+     documentDetailId: '',
+     fileExtenstion: '',
+     createdBy: '',
+     createdDate: '',
+     UpdatedBy: '',
+     UpdatedDate: ''
+   };
    returnType: any;
   
    @ViewChild('imageInput') fileInput: any
@@ -33,6 +48,9 @@ export class AddSiteComponent {
        },
      )
   }
+  ngOnInit(): void {
+    console.log(this.site);
+  }
 
   AddSite(){
     this.submitted = true;
@@ -42,7 +60,15 @@ export class AddSiteComponent {
     return;
   }
 
-    this.sitesService.uploadfile(this.file).subscribe(resp => {
+  console.log(this.site);
+
+  let formParams = new FormData();
+  formParams.append('File', this.file);
+  formParams.append('SiteId',  this.site.siteId?.toString());
+  formParams.append('SiteName', this.site.siteName);
+  formParams.append('SiteURL', this.site.siteURL);
+
+    this.sitesService.uploadfile(formParams).subscribe(resp => {
       console.log(resp);
       this.returnType = resp;
       if(this.returnType['returnStatus'] == 1){

@@ -17,7 +17,7 @@ export class ListSitesComponent implements OnInit {
   returnType: any; 
 
   constructor(private siteServiece:SitesService, 
-    private toasterService: ToastrService){
+    private toasterService: ToastrService, private siteService: SitesService){
     this.sitePath = environment.imagePath.sitePath
   }
 
@@ -41,7 +41,7 @@ export class ListSitesComponent implements OnInit {
   }
 
   updateSite(site: SiteDetail){
-
+    console.log(site);
+    this.siteService.OpenLoginPopup(true,site)
   }
-
 }

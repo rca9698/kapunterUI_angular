@@ -14,6 +14,7 @@ import { NotFoundComponent } from './Shared/component/error/not-found/not-found.
 import { ValidationMessageComponent } from './Shared/component/error/validation-message/validation-message.component';
 import { SitesModule } from './Sites/sites.module';
 import { AppToasterComponent } from './toastr/toastrs/app-toaster.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { AppToasterComponent } from './toastr/toastrs/app-toaster.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     AccountsModule,
-    SitesModule
+    SitesModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

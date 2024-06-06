@@ -10,13 +10,13 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Site Name</label>
-                        <input formControlName="siteName" type="text" class="form-control" placeholder="Site Name" autocomplete="off">
+                        <input formControlName="siteName" [(ngModel)]="site.siteName" type="text" class="form-control" placeholder="Site Name" autocomplete="off">
                         <div class="text-danger" *ngIf="AddSiteFrom.get('siteName')?.invalid && (submitted || AddSiteFrom.get('siteName')?.touched || AddSiteFrom.get('siteName')?.dirty)">
                          <span *ngIf="AddSiteFrom.get('siteName')?.errors?.['required']"> Site Name is required </span> </div>
                     </div>
                     <div class="form-group">
                         <label>Site URL</label>
-                        <input formControlName="siteURL" type="text" class="form-control siteURL" placeholder="Site URL" autocomplete="off">
+                        <input formControlName="siteURL" [(ngModel)]="site.siteURL" type="text" class="form-control siteURL" placeholder="Site URL" autocomplete="off">
                         <div class="text-danger" *ngIf="AddSiteFrom.get('siteURL')?.invalid && (submitted || AddSiteFrom.get('siteURL')?.touched || AddSiteFrom.get('siteURL')?.dirty)">
                         <span *ngIf="AddSiteFrom.get('siteURL')?.errors?.['required']"> Site URL is required </span> </div>
                     </div>

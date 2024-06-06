@@ -6,6 +6,6 @@ export const environment = {
     ueserKey: 'kapunterUser',
 
     imagePath:{
-        sitePath:'C:\\WorkSpace\\MultiplLoginApplication\\MultiLog.Application\\MultiLogApplication\\wwwroot\\images\\Site\\'
+        sitePath:'../../../assets/Sites/'
     }
 };
