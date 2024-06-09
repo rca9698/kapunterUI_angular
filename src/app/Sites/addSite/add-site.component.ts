@@ -4,7 +4,8 @@ import { Router } from '@angular/router';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { SitesService } from '../sites.service';
 import { ToastrService } from 'src/app/toastr/toastr.service';
-import { SiteDetail } from 'src/app/Shared/Modals/SiteDetail';
+import { ISiteDetail, SiteDetail } from 'src/app/Shared/Modals/SiteDetail';
+import { ListSitesComponent } from '../listSites/list-sites.component';
 
 @Component({
   selector: 'app-add-site',
@@ -16,21 +17,7 @@ export class AddSiteComponent implements OnInit {
   submitted : boolean = false;
    file: any = null;
    isupdate: boolean = false;
-   site: SiteDetail ={
-     siteId: 0,
-     siteName: '',
-     siteURL: '',
-     userId: 0n,
-     accountId: 0n,
-     userNumber: 0n,
-     userName: '',
-     documentDetailId: '',
-     fileExtenstion: '',
-     createdBy: '',
-     createdDate: '',
-     UpdatedBy: '',
-     UpdatedDate: ''
-   };
+   site: ISiteDetail = new SiteDetail();
    returnType: any;
   
    @ViewChild('imageInput') fileInput: any
@@ -44,7 +31,8 @@ export class AddSiteComponent implements OnInit {
     private toasterService: ToastrService){
       this.AddSiteFrom = this.formBuilder.group({
         siteName: ['', [Validators.required]],
-        siteURL: ['', [Validators.required]]
+        siteURL: ['', [Validators.required]],
+        
        },
      )
   }
@@ -74,7 +62,7 @@ export class AddSiteComponent implements OnInit {
       if(this.returnType['returnStatus'] == 1){
         this.toasterService.success(this.returnType.returnMessage);
         this.bsModalRef.hide();
-        this.router.navigate(['/site/app-list-sites']);
+        this.router.navigateByUrl('/site/app-list-sites')
       }else{
         this.toasterService.warning(this.returnType.returnMessage);
       }

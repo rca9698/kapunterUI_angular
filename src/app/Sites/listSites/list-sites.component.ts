@@ -16,16 +16,21 @@ export class ListSitesComponent implements OnInit {
   listSitesQuery: any;
   returnType: any; 
 
-  constructor(private siteServiece:SitesService, 
-    private toasterService: ToastrService, private siteService: SitesService){
-    this.sitePath = environment.imagePath.sitePath
+  constructor(private siteService:SitesService, 
+    private toasterService: ToastrService){
+    this.sitePath = environment.imagePath.sitePath;
+    this.loadSites();
   }
 
   ngOnInit(): void {
+  
+  }
+
+  loadSites(){
     this.listSitesQuery = {
       SessionUser: 1
     };
-     this.siteServiece.getSiteList(this.listSitesQuery).subscribe(resp => {
+     this.siteService.getSiteList(this.listSitesQuery).subscribe(resp => {
       console.log(resp);
       this.returnType = resp;
       if(this.returnType['returnStatus'] == 1){
@@ -42,6 +47,6 @@ export class ListSitesComponent implements OnInit {
 
   updateSite(site: SiteDetail){
     console.log(site);
-    this.siteService.OpenLoginPopup(true,site)
+    this.siteService.OpenAddSitePopup(true,site)
   }
 }

@@ -44,9 +44,12 @@
 
         <div id="DashboardImageSlides" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
-                <div class="carousel-item active" data-bs-interval="10000">
-                    <img src="../../assets/kapunter.ico" class="d-block w-100" alt="">
+                <div class="carousel-item active" data-bs-interval="10000" *ngFor="let image of images">
+                    <img src="{{imgPath}}{{image.documentDetailId}}.{{image.fileExtenstion}}" class="d-block w-100" alt="">
                 </div>
+                <!-- <div class="carousel-item" data-bs-interval="10000">
+                  <img src="../../assets/DashboardImages/0f5c6b92-1ac9-42fe-9fc2-d50f230a13e9.jpg" class="d-block w-100" alt="">
+              </div> -->
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#DashboardImageSlides" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>

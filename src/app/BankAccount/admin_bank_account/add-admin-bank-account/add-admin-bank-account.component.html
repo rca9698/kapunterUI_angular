@@ -1,0 +1,49 @@
+<div class="modal-header" style="justify-content: right;" >
+    <p class="modal-title"></p>
+    <div type="button" class="close" (click)="bsModalRef.hide()">
+      <i class="bi bi-x-circle-fill"></i>
+    </div>
+</div>
+<div class="card-header py-4 text-center">
+    <img src="../../../assets/kapunter.ico" alt="logo" style="height: 100%;width: 50%">
+</div>
+
+<div class="card-body p-4">
+
+    <div class="text-center w-75 m-auto">
+        <p class="text-center pb-0 fw-bold text-uppercase">Admin Bank Account Detail!</p>
+    </div>
+    <form (ngSubmit)="AddAdminBankAccount()" [formGroup]="addAdminBankAccountForm" autocomplete="off">
+        <div class="mb-3 form-group">
+            <label for="BName" class="form-label">Bank Name*</label>
+            <input class="form-control" type="number" formControlName="BName" placeholder="Bank Name" autocomplete="off">
+            <div class="text-danger" *ngIf="addAdminBankAccountForm.get('BName')?.invalid && (submitted || addAdminBankAccountForm.get('BName')?.touched || addAdminBankAccountForm.get('BName')?.dirty)">
+            <span *ngIf="addAdminBankAccountForm.get('BName')?.errors?.['required']"> Mobile Number is required </span> </div>
+        </div>
+
+        <div class="mb-3 form-group">
+            <label for="AHName" class="form-label">Account Holder Name*</label>
+            <input class="form-control" type="number" formControlName="AHName" placeholder="Account Holder Name" autocomplete="off">
+            <div class="text-danger" *ngIf="addAdminBankAccountForm.get('AHName')?.invalid && (submitted || addAdminBankAccountForm.get('AHName')?.touched || addAdminBankAccountForm.get('AHName')?.dirty)">
+            <span *ngIf="addAdminBankAccountForm.get('AHName')?.errors?.['required']"> Mobile Number is required </span> </div>
+        </div>
+
+        <div class="mb-3 form-group">
+            <label for="ANumber" class="form-label">Account Number*</label>
+            <input class="form-control" type="number" formControlName="ANumber" placeholder="Account Holder Number" autocomplete="off">
+            <div class="text-danger" *ngIf="addAdminBankAccountForm.get('ANumber')?.invalid && (submitted || addAdminBankAccountForm.get('ANumber')?.touched || addAdminBankAccountForm.get('ANumber')?.dirty)">
+            <span *ngIf="addAdminBankAccountForm.get('ANumber')?.errors?.['required']"> Mobile Number is required </span> </div>
+        </div>
+
+        <div class="mb-3 form-group">
+            <label for="IFSCCode" class="form-label">IFSC Code*</label>
+            <input class="form-control" type="number" formControlName="IFSCCode" placeholder="IFSC Code" autocomplete="off">
+            <div class="text-danger" *ngIf="addAdminBankAccountForm.get('IFSCCode')?.invalid && (submitted || addAdminBankAccountForm.get('IFSCCode')?.touched || addAdminBankAccountForm.get('IFSCCode')?.dirty)">
+            <span *ngIf="addAdminBankAccountForm.get('IFSCCode')?.errors?.['required']"> Mobile Number is required </span> </div>
+        </div>
+
+        <div class="col-12 mb-0 text-center">
+            <button class="col-12 btn siteBtnbackground" type="submit"> Add Bank Account </button>
+        </div>
+    </form>
+</div>

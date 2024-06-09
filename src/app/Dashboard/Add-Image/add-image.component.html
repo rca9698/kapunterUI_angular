@@ -1,0 +1,37 @@
+
+<div class="modal-content siteColor">
+    <form (ngSubmit)="AddDashboardImage()" [formGroup]="AddImageForm">
+        <div class="modal-header" style="justify-content: right;" (click)="bsModalRef.hide()">
+            <p class="modal-title">Site</p>
+            <div type="button" class="close" >
+                <i class="bi bi-x-circle-fill"></i>
+            </div>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label>Display Date</label>
+                <input formControlName="date" type="date" class="form-control" placeholder="Date" autocomplete="off">
+                <div class="text-danger" *ngIf="AddImageForm.get('date')?.invalid && (submitted || AddImageForm.get('date')?.touched || AddImageForm.get('date')?.dirty)">
+                 <span *ngIf="AddImageForm.get('date')?.errors?.['required']"> Date is required </span> </div>
+            </div>
+            <div class="form-group">
+                <div method="post" enctype="multipart/form-data" style="margin-top: 10px">
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <!-- <input type="file" name="files" class="files" /> -->
+                            <input #imageInput type="file" formControlName="files" accept="image/*" (change)="processFile(imageInput)">
+                            <div class="text-danger" *ngIf="AddImageForm.get('files')?.invalid && (submitted || AddImageForm.get('files')?.touched || AddImageForm.get('files')?.dirty)">
+                                <span *ngIf="AddImageForm.get('files')?.errors?.['required']"> Image is required </span> </div>
+                            <!-- <div class="text-danger" *ngIf="!this.file && (submitted || AddImageForm.get('date')?.touched)">
+                             <span> File is required </span> 
+                            </div>                 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn siteBtnbackground col-12">Add Image</button>
+        </div>
+    </form>
+</div>

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { SitesService } from './Sites/sites.service';
-import { SiteDetail } from './././Shared/Modals/SiteDetail'
+import { ISiteDetail, SiteDetail } from './././Shared/Modals/SiteDetail'
+import { DashboardService } from './Dashboard/dashboard.service';
 
 @Component({
   selector: 'app-root',
@@ -9,28 +10,18 @@ import { SiteDetail } from './././Shared/Modals/SiteDetail'
 })
 export class AppComponent {
   title = 'kapunter.client';
-  site: SiteDetail = {
-    siteId: 0,
-    siteName: '',
-    siteURL: '',
-    userId: 0n,
-    accountId: 0n,
-    userNumber: 0n,
-    userName: '',
-    documentDetailId: '',
-    fileExtenstion: '',
-    createdBy: '',
-    createdDate: '',
-    UpdatedBy: '',
-    UpdatedDate: ''
-  };
+  site: ISiteDetail = new SiteDetail();
   
-  constructor(private siteService: SitesService){
+  constructor(private siteService: SitesService, private dashboardService:DashboardService){
 
   }
 
   AddSitesPopup(){
-    const emptyObject = { }
-    this.siteService.OpenLoginPopup(false,this.site);
-  } 
+    this.siteService.OpenAddSitePopup(false,this.site);
+  }
+  
+  OpenAddImagePopup(){
+    this.dashboardService.OpenAddImagePopup('Add Image');
+  }
+  
 }

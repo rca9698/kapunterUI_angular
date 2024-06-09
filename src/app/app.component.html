@@ -11,19 +11,19 @@
                      </a>
                     
                     <div class='dashboard-nav-dropdown'>
-                        <a href="#" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
+                        <span class="dashboard-nav-item dashboard-nav-dropdown-toggle">
                             <i class="bi bi-image"></i> Dashboard Images
-                        </a>
+                        </span>
                         <div class='dashboard-nav-dropdown-menu'>
-                            <a href="/Home/Index?viewType=AdminImg" class="dashboard-nav-dropdown-item "> <i class="bi bi-people"></i> List Image </a>
-                            <a href="#" class="dashboard-nav-dropdown-item " data-toggle="modal" data-target="#AddImgModal" id="AddImgModalBtn"><i class="bi bi-cart-plus-fill"></i>Add Image</a>
+                            <a routerLink="/dashboard/list-images" class="dashboard-nav-dropdown-item "> <i class="bi bi-people"></i> List Image </a>
+                            <span class="dashboard-nav-dropdown-item" (click)="OpenAddImagePopup()"><i class="bi bi-cart-plus-fill"></i>Add Image</span>
                         </div>
                     </div>
                     
                     <div class='dashboard-nav-dropdown'>
-                        <a href="#" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
+                        <span class="dashboard-nav-item dashboard-nav-dropdown-toggle">
                             <i class="bi bi-person"></i> Accounts
-                        </a>
+                        </span>
                         <div class='dashboard-nav-dropdown-menu'>
                             <a href="/Account/Index?viewType=AcRequest" class="dashboard-nav-dropdown-item "> <i class="bi bi-people"></i> Account Requests </a>
                             <a href="/Account/Index?viewType=CloseIdRequest" class="dashboard-nav-dropdown-item "> <i class="bi bi-people"></i> Close Account Requests </a>
@@ -34,9 +34,9 @@
                     </div>
                     
                     <div class='dashboard-nav-dropdown'>
-                        <a href="#" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
+                        <span class="dashboard-nav-item dashboard-nav-dropdown-toggle">
                             <i class="bi bi-bank2"></i> Bank Details
-                        </a>
+                        </span>
                         <div class='dashboard-nav-dropdown-menu'>
                             <a href="/BankAccount/Index?viewType=adminBank" class="dashboard-nav-dropdown-item "> <i class="bi bi-bank"></i> List Vendor Banks</a>
                             <a href="/BankAccount/Index?viewType=adminUpi" class="dashboard-nav-dropdown-item "> <i class="bi bi-bank"></i> List Vendor Upi</a>
@@ -45,9 +45,9 @@
                     </div>
                     
                     <div class='dashboard-nav-dropdown'>
-                        <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
+                        <span class="dashboard-nav-item dashboard-nav-dropdown-toggle">
                             <i class="bi bi-cart"></i> Sites
-                        </a>
+                        </span>
                         <div class='dashboard-nav-dropdown-menu'>
                             <a routerLink="/site/app-list-sites" class="dashboard-nav-dropdown-item" ><i class="bi bi-cart4"></i>Sites</a>
                             <span class="dashboard-nav-dropdown-item" (click)="AddSitesPopup()"><i class="bi bi-cart-plus-fill"></i>Add Site</span>
@@ -55,28 +55,28 @@
                     </div>
                     
                     <div class='dashboard-nav-dropdown'>
-                        <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
+                        <span class="dashboard-nav-item dashboard-nav-dropdown-toggle">
                             <i class="bi bi-cash-coin"></i> Coin Requests
-                        </a>
+                        </span>
                         <div class='dashboard-nav-dropdown-menu'>
-                            <a href="/Coin/Index?viewType=DepositeToSite" class="dashboard-nav-dropdown-item "><i class="bi bi-cash-coin"></i>Deposit to Site Requests</a>
-                            <a href="/Coin/Index?viewType=WithdrawFromSite" class="dashboard-nav-dropdown-item "><i class="bi bi-cash-coin"></i>Withdraw from Site Requests</a>
-                            <a href="/Coin/Index?viewType=Deposite" class="dashboard-nav-dropdown-item "><i class="bi bi-cash-coin"></i>Desposit To Wallet Requests</a>
-                            <a href="/Coin/Index?viewType=Withdraw" class="dashboard-nav-dropdown-item "><i class="bi bi-cash-coin"></i>Withdraw From Wallet Requests</a>
+                            <a routerLink="/account/coins/deposite-to-site-list" class="dashboard-nav-dropdown-item "><i class="bi bi-cash-coin"></i>Deposit to Site Requests</a>
+                            <a routerLink="/account/coins/withdraw-from-site-list" class="dashboard-nav-dropdown-item "><i class="bi bi-cash-coin"></i>Withdraw from Site Requests</a>
+                            <a routerLink="/account/coins/deposite-list" class="dashboard-nav-dropdown-item "><i class="bi bi-cash-coin"></i>Desposit To Wallet Requests</a>
+                            <a routerLink="/account/coins/withdraw-list" class="dashboard-nav-dropdown-item "><i class="bi bi-cash-coin"></i>Withdraw From Wallet Requests</a>
                         </div>
                     </div>
                     
                     <div class='dashboard-nav-dropdown'>
-                        <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
+                        <span class="dashboard-nav-item dashboard-nav-dropdown-toggle">
                             <i class="bi bi-people"></i> Users
-                        </a>
+                        </span>
                         <div class='dashboard-nav-dropdown-menu'>
-                            <a href="/User/Index" class="dashboard-nav-dropdown-item "><i class="bi bi-people"> </i>List User</a>
-                            <a href="#" class="dashboard-nav-dropdown-item " data-toggle="modal" data-target="#AddUserModal" id="LayoutAddUserBtn"><i class="bi bi-person-add"></i>Add Users</a>
+                            <a  routerLink="/account/user_list" class="dashboard-nav-dropdown-item "><i class="bi bi-people"> </i>List User</a>
+                            <span class="dashboard-nav-dropdown-item"> <i class="bi bi-person-add"> </i>Add Users</span>
                         </div>
                     </div>
                     
-                    <a href="#" class="dashboard-nav-item "><i class="bi bi-gear-fill"></i> Settings </a>
+                    <a routerLink="#" class="dashboard-nav-item "><i class="bi bi-gear-fill"></i> Settings </a>
                     </nav>
                 </div>
                 

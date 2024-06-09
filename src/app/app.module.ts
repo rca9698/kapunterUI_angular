@@ -15,6 +15,8 @@ import { ValidationMessageComponent } from './Shared/component/error/validation-
 import { SitesModule } from './Sites/sites.module';
 import { AppToasterComponent } from './toastr/toastrs/app-toaster.component';
 import { FormsModule } from '@angular/forms';
+import { AddImageComponent } from './Dashboard/Add-Image/add-image.component';
+import { SettingListsComponent } from './settings/setting-lists/setting-lists.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import { FormsModule } from '@angular/forms';
     HomeComponent,
     NotFoundComponent,
     ValidationMessageComponent,
-    AppToasterComponent
+    AppToasterComponent,
+    AddImageComponent
   ],
   imports: [
     BrowserModule,
