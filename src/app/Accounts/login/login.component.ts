@@ -7,6 +7,8 @@ import { otp_Login_Model } from 'src/app/Shared/Modals/otp_Login_Model';
 import { ToastrService } from '../../toastr/toastr.service';
 import { environment } from 'src/environments/environment.development';
 import { login } from 'src/app/Shared/Modals/login';
+import { AuthService } from 'src/app/auth.service';
+import { BehaviorSubject } from 'rxjs';
  
 @Component({
   selector: 'app-login',
@@ -34,7 +36,7 @@ export class LoginComponent{
 
   constructor(public bsModalRef:BsModalRef, private formBuilder: FormBuilder,
     private router:Router, private accountService: AccountsService, 
-    private toasterService: ToastrService){
+    private toasterService: ToastrService, private authservice: AuthService){
       this.SendOtpForm = this.formBuilder.group({
         userNumber: ['', [Validators.required]]
        },
@@ -117,22 +119,29 @@ this.LoginForm = this.formBuilder.group({
   login.OTP = this.LoginForm.value['otp'];
   login.Password = this.LoginForm.value['password'];
 
-  this.accountService.login(login).subscribe({
-    next:(response) =>{
-      console.log(response);
-      this.returnType = response;
-      if(this.returnType['returnStatus'] == 1){
-        this.toasterService.success(this.returnType.returnMessage);
-        this.bsModalRef.hide();
-        this.router.navigate(['/account/user_list']);
-      }else{
-        this.toasterService.warning(this.returnType.returnMessage);
-      }
-    },
-    error:error => {
-      console.log(error);
-    }
-  })
+  this.authservice.login(login)?.subscribe({
+    next:(response)=>{
+      this.bsModalRef.hide();
+      this.router.navigate(['/account/user_list'])
+    }}
+  );
+
+  // this.accountService.login(login).subscribe({
+  //   next:(response) =>{
+  //     console.log(response);
+  //     this.returnType = response;
+  //     if(this.returnType['returnStatus'] == 1){
+  //       this.toasterService.success(this.returnType.returnMessage);
+  //       this.bsModalRef.hide();
+  //       this.router.navigate(['/account/user_list']);
+  //     }else{
+  //       this.toasterService.warning(this.returnType.returnMessage);
+  //     }
+  //   },
+  //   error:error => {
+  //     console.log(error);
+  //   }
+  // })
  }
 
  backToMobileNumber(){

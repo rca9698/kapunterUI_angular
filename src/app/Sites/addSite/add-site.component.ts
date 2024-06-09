@@ -62,7 +62,7 @@ export class AddSiteComponent implements OnInit {
       if(this.returnType['returnStatus'] == 1){
         this.toasterService.success(this.returnType.returnMessage);
         this.bsModalRef.hide();
-        this.router.navigateByUrl('/site/app-list-sites')
+        this.router.navigate(['/site/app-list-sites']);
       }else{
         this.toasterService.warning(this.returnType.returnMessage);
       }

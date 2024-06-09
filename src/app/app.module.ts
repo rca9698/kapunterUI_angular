@@ -17,6 +17,7 @@ import { AppToasterComponent } from './toastr/toastrs/app-toaster.component';
 import { FormsModule } from '@angular/forms';
 import { AddImageComponent } from './Dashboard/Add-Image/add-image.component';
 import { SettingListsComponent } from './settings/setting-lists/setting-lists.component';
+import { AuthInterceptorProvider } from './auth-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,7 @@ import { SettingListsComponent } from './settings/setting-lists/setting-lists.co
     SitesModule,
     FormsModule
   ],
-  providers: [],
+  providers: [AuthInterceptorProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
