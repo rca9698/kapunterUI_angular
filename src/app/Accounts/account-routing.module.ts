@@ -12,6 +12,9 @@ const routes : Routes = [
   { path: 'deleted_id_request_list', component: DeletedIdRequestListComponent },
   { path: 'user_list', component: UserListComponent },
   { path: 'deleted_user_list', component: DeletedUserListComponent },
+
+  {path:"coins", loadChildren: () => import('./coins/coins.module').then(module => module.CoinsModule) },
+
 ]
 
 @NgModule({
