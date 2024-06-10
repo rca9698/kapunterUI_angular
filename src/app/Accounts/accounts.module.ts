@@ -11,6 +11,7 @@ import { DeletedIdRequestListComponent } from './Ids/deleted-id-request-list/del
 import { DeletedIdsListComponent } from './Ids/deleted-ids-list/deleted-ids-list.component';
 import { IdsListComponent } from './Ids/ids-list/ids-list.component';
 import { CoinsModule } from './coins/coins.module';
+import { ProfileDetailsComponent } from './Profile/profile-details/profile-details.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { CoinsModule } from './coins/coins.module';
     IdRequestListComponent,
     DeletedIdRequestListComponent,
     DeletedIdsListComponent,
-    IdsListComponent
+    IdsListComponent,
+    ProfileDetailsComponent
   ],
   imports: [
     CommonModule,

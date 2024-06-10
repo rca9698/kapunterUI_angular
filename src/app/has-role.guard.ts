@@ -13,7 +13,7 @@ export class HasRoleGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return this.authservice.user?.roles.includes(route.data['role']) as boolean;
+    return this.authservice.user?.role.includes(route.data['role']) as boolean;
   }
   
 }

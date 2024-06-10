@@ -9,14 +9,13 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { ListUserBankAccountComponent } from './user_bank_account/list_user_bank_account/list-user-bank-account.component';
 import { AddUserBankAccountComponent } from './user_bank_account/add_user_bank_account/add-user-bank-account.component';
 import { BankAccountRoutingModule } from './bank-account-routing.module';
+import { ListAdminUPIComponent } from './admin_bank_account/list-admin-UPI/list-admin-upi.component';
 
 
 
 @NgModule({
   declarations: [
-    ListAdminBankAccountComponent,
     AddAdminBankAccountComponent,
-    ListUserBankAccountComponent,
     AddUserBankAccountComponent
   ],
   imports: [

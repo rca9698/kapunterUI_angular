@@ -5,7 +5,8 @@
         <div class="main">
             <div class='coinsValidation' data-coins="@coins">
                 <div class="dashboard-nav sitebackground" style="margin-top: 3%;">
-                    <nav class="dashboard-nav-list" style="font-size: 10px;font-weight: 900;">
+                    <nav class="dashboard-nav-list" style="font-size: 10px;font-weight: 900;" 
+                    *ngIf="hasRole('Admin')">
                     <a href="#" class="dashboard-nav-item ">
                         <i class="bi bi-house"></i> dashboard
                      </a>
@@ -25,11 +26,11 @@
                             <i class="bi bi-person"></i> Accounts
                         </span>
                         <div class='dashboard-nav-dropdown-menu'>
-                            <a href="/Account/Index?viewType=AcRequest" class="dashboard-nav-dropdown-item "> <i class="bi bi-people"></i> Account Requests </a>
-                            <a href="/Account/Index?viewType=CloseIdRequest" class="dashboard-nav-dropdown-item "> <i class="bi bi-people"></i> Close Account Requests </a>
-                            <a href="/Account/Index?viewType=ChangePassRequest" class="dashboard-nav-dropdown-item "> <i class="bi bi-people"></i> Change Password Requests </a>
-                            <a href="/Account/Index?viewType=Accounts" class="dashboard-nav-dropdown-item "> <i class="bi bi-person-fill-add"></i> Created Accounts</a>
-                            <a href="/Account/Index?viewType=RejectedAcRequests" class="dashboard-nav-dropdown-item "> <i class="bi bi-person-fill-dash"></i> Rejected Accounts</a>
+                            <a routerLink="/ids/change-password-requests" class="dashboard-nav-dropdown-item "> <i class="bi bi-people"></i> Account Requests </a>
+                            <a routerLink="/ids/close-id-requests" class="dashboard-nav-dropdown-item "> <i class="bi bi-people"></i> Close Account Requests </a>
+                            <a routerLink="/ids/list-id-requests" routerLinkActive="router-link-active"  class="dashboard-nav-dropdown-item "> <i class="bi bi-people"></i> Change Password Requests </a>
+                            <a routerLink="/ids/list-ids" class="dashboard-nav-dropdown-item "> <i class="bi bi-person-fill-add"></i> Created Accounts</a>
+                            <a routerLink="/ids/rejected-id-requests" class="dashboard-nav-dropdown-item "> <i class="bi bi-person-fill-dash"></i> Rejected Accounts</a>
                         </div>
                     </div>
                     
@@ -38,9 +39,9 @@
                             <i class="bi bi-bank2"></i> Bank Details
                         </span>
                         <div class='dashboard-nav-dropdown-menu'>
-                            <a href="/BankAccount/Index?viewType=adminBank" class="dashboard-nav-dropdown-item "> <i class="bi bi-bank"></i> List Vendor Banks</a>
-                            <a href="/BankAccount/Index?viewType=adminUpi" class="dashboard-nav-dropdown-item "> <i class="bi bi-bank"></i> List Vendor Upi</a>
-                            <a href="/BankAccount/Index?viewType=adminQR" class="dashboard-nav-dropdown-item "> <i class="bi bi-bank"></i> List Vendor QR</a>
+                            <a routerLink="/bankAccount/list-admin-bank-account" class="dashboard-nav-dropdown-item "> <i class="bi bi-bank"></i> List Vendor Banks</a>
+                            <a routerLink="/bankAccount/list-admin-upi" class="dashboard-nav-dropdown-item "> <i class="bi bi-bank"></i> List Vendor Upi</a>
+                            <a routerLink="/bankAccount/list-admin-qr" class="dashboard-nav-dropdown-item "> <i class="bi bi-bank"></i> List Vendor QR</a>
                         </div>
                     </div>
                     
@@ -75,9 +76,49 @@
                             <span class="dashboard-nav-dropdown-item"> <i class="bi bi-person-add"> </i>Add Users</span>
                         </div>
                     </div>
-                    
-                    <a routerLink="#" class="dashboard-nav-item "><i class="bi bi-gear-fill"></i> Settings </a>
+
+                    <div class="nav-item-divider"></div>
+                        <div class="social-icons-btn ms-5">
+                            <span class="icons instagram" href="#" style="font-size: 1.5em;">
+                                <i class="bi bi-instagram"></i>
+                            </span>
+                            &nbsp;
+                            &nbsp;
+                            <span class="icons telegram" href="#" style="font-size: 1.5em;">
+                                <i class="bi bi-telegram"></i>
+                            </span>
+                        </div>
+                        <span class="dashboard-nav-item "><i class="bi bi-file-earmark-text-fill"></i> Terms </span>
+                        <span class="dashboard-nav-item "><i class="bi bi-tag-fill"></i> Offers </span>
+                        <span routerLink="/notification/list-notification" class="dashboard-nav-item "><i class="bi bi-bell-fill"></i> Notifications </span>
                     </nav>
+
+                    <nav class="dashboard-nav-list" style="font-size: 10px;font-weight: 900;" *ngIf="hasRole('User')">
+                        <span routerLink="/account/profile-details" class="dashboard-nav-item "><i class="bi bi-person"></i> Profile </span>
+                        <span routerLink="/bankAccount/list-admin-bank-account" class="dashboard-nav-item "><i class="bi bi-bank2"></i> Withdraw Details </span>
+                        <span class="dashboard-nav-item  IDsList"><i class="bi bi-plus-circle-fill"></i> Create Id </span>
+                        <span class="dashboard-nav-item "><i class="bi bi-star-fill"></i> Bonus </span>
+                        <span class="dashboard-nav-item "><i class="bi bi-fast-forward-fill"></i> Loss Back </span>
+                        <span class="dashboard-nav-item "><i class="bi bi-file-pdf-fill"></i> Rules </span>
+
+                        <div class="nav-item-divider"></div>
+
+                        <div class="social-icons-btn ms-5">
+                            <span class="icons instagram" href="#" style="font-size: 1.5em;">
+                                <i class="bi bi-instagram"></i>
+                            </span>
+                            &nbsp;
+                            &nbsp;
+                            <span class="icons telegram" href="#" style="font-size: 1.5em;">
+                                <i class="bi bi-telegram"></i>
+                            </span>
+                        </div>
+
+                        <span class="dashboard-nav-item "><i class="bi bi-file-earmark-text-fill"></i> Terms </span>
+                        <span class="dashboard-nav-item "><i class="bi bi-tag-fill"></i> Offers </span>
+                        <span routerLink="notification/list-notification" class="dashboard-nav-item "><i class="bi bi-bell-fill"></i> Notifications </span>
+                    </nav>
+
                 </div>
                 
                 <div class='dashboard-app'>

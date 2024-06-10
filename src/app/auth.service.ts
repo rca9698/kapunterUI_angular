@@ -25,8 +25,8 @@ export class AuthService {
 
   login(obj: login){
     return this.apiservice.login(obj).pipe(tap((response: any)=>{
-      const token = this.returnType.token;
       this.returnType = response;
+      const token = this.returnType.token;
       this._isLoggedIn.next(true);
       localStorage.setItem(this.TOKEN_NAME, token);
       this.user = this.getUser(token);
@@ -38,7 +38,8 @@ export class AuthService {
       return new usermodal()
     }
     else{
-      return  JSON.parse(atob(this.token?.split('.')[1] as string)) as usermodal
+      const userDetailobj: Iusermodal = JSON.parse(atob(token?.split('.')[1]));
+      return new usermodal(userDetailobj['userId'], userDetailobj['otp'], userDetailobj['role']) ;
     }
   }
 

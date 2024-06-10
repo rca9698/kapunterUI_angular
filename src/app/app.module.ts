@@ -18,6 +18,12 @@ import { FormsModule } from '@angular/forms';
 import { AddImageComponent } from './Dashboard/Add-Image/add-image.component';
 import { SettingListsComponent } from './settings/setting-lists/setting-lists.component';
 import { AuthInterceptorProvider } from './auth-interceptor.service';
+import { ListNotificationComponent } from './notification/list-notification/list-notification.component';
+import { ChangePasswordRequestsComponent } from './ids/change-password-requests/change-password-requests.component';
+import { CloseIdRequestsComponent } from './ids/close-id-requests/close-id-requests.component';
+import { ListIdRequestsComponent } from './ids/list-id-requests/list-id-requests.component';
+import { ListIdsComponent } from './ids/list-ids/list-ids.component';
+import { RejectedIdRequestsComponent } from './ids/rejected-id-requests/rejected-id-requests.component';
 
 @NgModule({
   declarations: [

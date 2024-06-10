@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { SitesService } from './Sites/sites.service';
 import { ISiteDetail, SiteDetail } from './././Shared/Modals/SiteDetail'
 import { DashboardService } from './Dashboard/dashboard.service';
+import { AuthService } from './auth.service';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,8 @@ export class AppComponent {
   title = 'kapunter.client';
   site: ISiteDetail = new SiteDetail();
   
-  constructor(private siteService: SitesService, private dashboardService:DashboardService){
+  constructor(private siteService: SitesService, private dashboardService:DashboardService
+    , private authService: AuthService) {
 
   }
 
@@ -22,6 +24,9 @@ export class AppComponent {
   
   OpenAddImagePopup(){
     this.dashboardService.OpenAddImagePopup('Add Image');
+  }
+  hasRole(role: string) : boolean {
+    return this.authService.user?.role.includes(role);
   }
   
 }

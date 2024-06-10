@@ -21,6 +21,8 @@ const routes: Routes = [
   {path:"bankAccount", loadChildren: () => import('./BankAccount/bank-account.module').then(module => module.BankAccountModule), canActivate: [IsAuthenticatedGuard] },
   {path:"dashboard", loadChildren: () => import('./Dashboard/dashboard-routing.module').then(module => module.DashboardRoutingModule), canActivate: [IsAuthenticatedGuard] },
   {path:"setting", loadChildren: () => import('./settings/settings.module').then(module => module.SettingsModule), canActivate: [IsAuthenticatedGuard] },
+  {path:"notification", loadChildren: () => import('./notification/notification.module').then(module=>module.NotificationModule), canActivate: [IsAuthenticatedGuard] },
+  {path:"ids", loadChildren: () => import('./ids/ids.module').then(module=>module.IdsModule), canActivate: [IsAuthenticatedGuard] },
 
   {path:"not-found", component:NotFoundComponent},
   {path:"**",component:ValidationMessageComponent}
