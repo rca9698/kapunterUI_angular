@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { SitesService } from '../Sites/sites.service';
-import { ISiteDetail, SiteDetail } from '../Shared/Modals/SiteDetail';
+import { ISiteDetailModal, SiteDetailModal } from '../Shared/Modals/site-detail-modal';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment.development';
 
@@ -10,7 +10,7 @@ import { environment } from 'src/environments/environment.development';
   styleUrls: ['./footer.component.css']
 })
 export class FooterComponent {
-  site:ISiteDetail = new SiteDetail();
+  site:ISiteDetailModal = new SiteDetailModal();
   constructor(private siteService: SitesService, private router: Router){
   }
 

@@ -1,10 +1,10 @@
-export interface ISiteDetail{
-    siteId: number,
+export interface IIDRequestModal{
+    accountRequestId: bigint,
+    userId: bigint,
+    userNumber: bigint,
     siteName: string,
     siteURL: string,
-    userId: bigint,
-    accountId: bigint,
-    userNumber: bigint,
+    siteId: number,
     userName: string,
     documentDetailId: string,
     fileExtenstion: string,
@@ -14,16 +14,14 @@ export interface ISiteDetail{
     UpdatedDate: string
 }
  
-
-export class SiteDetail implements ISiteDetail {
-
+export class IDRequestModal implements IIDRequestModal {
+    accountRequestId: bigint;
+    userId: bigint;
+    userNumber: bigint;
+    userName: string;
     siteId: number;
     siteName: string;
     siteURL: string;
-    userId: bigint;
-    accountId: bigint;
-    userNumber: bigint;
-    userName: string;
     documentDetailId: string;
     fileExtenstion: string;
     createdBy: string;
@@ -32,24 +30,22 @@ export class SiteDetail implements ISiteDetail {
     UpdatedDate: string;
 
     constructor(siteId: number = 0, siteName: string = '', siteURL: string = '', userId: bigint= 0 as unknown as bigint
-    ,accountId: bigint = 0 as unknown as bigint, userNumber: bigint = 0 as unknown as bigint, userName: string = ''
+    ,accountRequestId: bigint = 0 as unknown as bigint, userNumber: bigint = 0 as unknown as bigint, userName: string = ''
     ,documentDetailId: string = '', fileExtenstion: string = '', createdBy: string = '', createdDate: string = ''
     ,UpdatedBy: string = '', UpdatedDate: string = ''
     ) {
         this.siteId = siteId;
         this.siteName = siteName;
-        this.siteURL = siteURL; 
+        this.siteURL = siteURL;
         this.userId = userId;
-        this.accountId = accountId
-        this.userNumber = userNumber,
-        this.userName = userName,
-        this.documentDetailId = documentDetailId,
-        this.fileExtenstion = fileExtenstion,
-        this.createdBy = createdBy,
-        this.createdDate = createdDate,
-        this.UpdatedBy = UpdatedBy,
-        this.UpdatedDate = UpdatedDate
+        this.accountRequestId = accountRequestId;
+        this.userNumber = userNumber;
+        this.userName = userName;
+        this.documentDetailId = documentDetailId;
+        this.fileExtenstion = fileExtenstion;
+        this.createdBy = createdBy;
+        this.createdDate = createdDate;
+        this.UpdatedBy = UpdatedBy;
+        this.UpdatedDate = UpdatedDate;
       }
-    
-
 }

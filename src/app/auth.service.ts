@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { login } from './Shared/Modals/login';
 import { apiService } from './api.service';
 import { BehaviorSubject, tap } from 'rxjs';
-import { Iusermodal, usermodal } from './Shared/Modals/usermodal';
+import { Iusermodal, usermodal } from './Shared/Modals/user-modal';
 
 @Injectable({
   providedIn: 'root'

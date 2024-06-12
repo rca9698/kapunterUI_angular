@@ -1,4 +1,3 @@
-import { DashboardImages } from "src/app/Shared/Modals/DashboardImages";
 
 export const environment = {
     production: true,

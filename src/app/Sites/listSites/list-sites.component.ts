@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { SiteDetail } from 'src/app/Shared/Modals/SiteDetail';
 import { environment } from 'src/environments/environment.development';
 import { SitesService } from '../sites.service';
 import { ToastrService } from 'src/app/toastr/toastr.service';
+import { ISiteDetailModal } from 'src/app/Shared/Modals/site-detail-modal';
 
 @Component({
   selector: 'app-list-sites',
@@ -11,7 +11,7 @@ import { ToastrService } from 'src/app/toastr/toastr.service';
 })
 export class ListSitesComponent implements OnInit {
 
-  sites: SiteDetail[] | undefined;
+  sites: ISiteDetailModal[] | undefined;
   sitePath: string | undefined;
   listSitesQuery: any;
   returnType: any; 
@@ -41,11 +41,11 @@ export class ListSitesComponent implements OnInit {
     })
   }
 
-  deleteSite(site: SiteDetail){
+  deleteSite(site: ISiteDetailModal){
 
   }
 
-  updateSite(site: SiteDetail){
+  updateSite(site: ISiteDetailModal){
     console.log(site);
     this.siteService.OpenAddSitePopup(true,site)
   }

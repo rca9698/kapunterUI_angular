@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { SitesService } from './Sites/sites.service';
-import { ISiteDetail, SiteDetail } from './././Shared/Modals/SiteDetail'
+import { ISiteDetailModal, SiteDetailModal } from './Shared/Modals/site-detail-modal'
 import { DashboardService } from './Dashboard/dashboard.service';
 import { AuthService } from './auth.service';
 
@@ -11,7 +11,7 @@ import { AuthService } from './auth.service';
 })
 export class AppComponent {
   title = 'kapunter.client';
-  site: ISiteDetail = new SiteDetail();
+  site: ISiteDetailModal = new SiteDetailModal();
   
   constructor(private siteService: SitesService, private dashboardService:DashboardService
     , private authService: AuthService) {

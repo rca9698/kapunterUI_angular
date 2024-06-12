@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { SitesService } from '../sites.service';
 import { ToastrService } from 'src/app/toastr/toastr.service';
-import { ISiteDetail, SiteDetail } from 'src/app/Shared/Modals/SiteDetail';
+import { ISiteDetailModal, SiteDetailModal } from 'src/app/Shared/Modals/site-detail-modal';
 import { ListSitesComponent } from '../listSites/list-sites.component';
 
 @Component({
@@ -17,7 +17,7 @@ export class AddSiteComponent implements OnInit {
   submitted : boolean = false;
    file: any = null;
    isupdate: boolean = false;
-   site: ISiteDetail = new SiteDetail();
+   site: ISiteDetailModal = new SiteDetailModal();
    returnType: any;
   
    @ViewChild('imageInput') fileInput: any

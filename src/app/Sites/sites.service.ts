@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { BsModalRef, BsModalService, ModalOptions } from 'ngx-bootstrap/modal';
 import { AddSiteComponent } from './addSite/add-site.component';
 import { environment } from 'src/environments/environment.development';
-import { ISiteDetail, SiteDetail } from '../Shared/Modals/SiteDetail';
+import { ISiteDetailModal, SiteDetailModal  } from '../Shared/Modals/site-detail-modal';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ export class SitesService {
   bsmodalRef?: BsModalRef;
   constructor(private bsModalService:BsModalService,private http: HttpClient) { }
 
-OpenAddSitePopup(isupdate: boolean, site: ISiteDetail){
+OpenAddSitePopup(isupdate: boolean, site: ISiteDetailModal){
   const initalstate: ModalOptions = {
     initialState:{
       isupdate,

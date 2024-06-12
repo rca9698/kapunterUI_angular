@@ -15,8 +15,15 @@ export class apiService {
     }
   
   login(obj: login){
-    console.log('login success');
      return this.http.post(`${environment.apiUrl}/api/LoginSignup/Login_GetToken`, obj);
   }
+
+  listIdRequests(obj: any){
+    return this.http.post(`${environment.apiUrl}/api/Account/IDRequestList`, obj);
+ }
    
+  GetIDs(obj: any){
+    return this.http.post(`${environment.apiUrl}/api/Account/GetIDs`, obj);
+  }
+
 }

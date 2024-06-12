@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HomeService } from './home.service';
 import { environment } from 'src/environments/environment.development';
-import { DashboardImages, IDashboardImages } from '../Shared/Modals/DashboardImages';
+import { DashboardImages, IDashboardImages } from '../Shared/Modals/dashboard-images-modal';
 
 @Component({
   selector: 'app-home',
