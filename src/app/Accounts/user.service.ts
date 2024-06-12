@@ -16,9 +16,7 @@ export class UserService implements OnInit {
     return this.http.post(`${environment.apiUrl}/api/User/GetUsers`, userQuery);
   }
 
-  userlistDetailById() { 
-    
-    console.log(`${environment.apiUrl}/api/User/GetUsers`);
+  userlistDetailById() {
     return this.http.get(`${environment.apiUrl}/api/User/GetUsers`);
   }
 
