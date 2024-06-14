@@ -4,40 +4,23 @@
 
         <div class="Wallet-Component-Main-Container">
             <div class="Wallet-Dep-Wal-With-Container">
-              <div class="Wallet-Dep-Comp">
+              <div class="Wallet-Dep-Comp" (click)="DepositeToWallet()">
                 <span>DEPOSIT</span>
-                <img
-                  style="width: 30px; height: 41.89px"
-                  src="../../assets/arrow-up.svg"
-                  alt="Up Arrow"
-                />
-
+                <img style="width: 30px; height: 41.89px" src="../../assets/arrow-up.svg" alt="Up Arrow"/>
               </div>
               <div class="Wallet-Bal-Comp">
-                <img
-                  style="height: 67.74px;border-radius: 15px 15px 0px 0px;margin-top: -5px;"
-                  src="../../assets/kapunter.ico"
-                  alt="Logo"
-                />
+                <img style="height: 67.74px;border-radius: 15px 15px 0px 0px;margin-top: -5px;" src="../../assets/kapunter.ico" alt="Logo"/>
                 <div style="display:flex; flex-direction:column; align-items:center">
                   <p style="margin:0px; font-Size:10.5px; font-Weight:300">WALLET BALANCE</p>
                   <div style="display:flex; align-Items:flex-end; justify-Content:center">
-                  <img
-                    style="width: 18px; height: 18.8px; margin: 6px 5px 0 0;"
-                    src="../../assets/coins-icon.png"
-                    alt="Coins Icon"
-                  />
+                  <img style="width: 18px; height: 18.8px; margin: 6px 5px 0 0;" src="../../assets/coins-icon.png" alt="Coins Icon"/>
                   <p style="font-Size:15px; margin:0">0</p>
                   </div>
                 </div>
               </div>
-              <div class="Wallet-With-Comp">
+              <div class="Wallet-With-Comp" (click)="WithdrawFromWallet()">
                 <span>WITHDRAW</span>
-                <img
-                  style="width: 30px; height: 41.89px"
-                  src="../../assets/arrow-down.svg"
-                  alt="Down Arrow"
-                />
+                <img style="width: 30px; height: 41.89px" src="../../assets/arrow-down.svg" alt="Down Arrow"/>
               </div>
             </div>
           </div>

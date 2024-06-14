@@ -5,21 +5,43 @@ import { DepositeCoinsByUserIdComponent } from './deposite_coins_by_user_id/depo
 import { WithdrawCoinsUserIdComponent } from './withdraw_coins_user_id/withdraw-coins-user-id.component';
 import { environment } from 'src/environments/environment.development';
 import { Ideposit_withdraw_coins_request } from 'src/app/Shared/Modals/Coins/deposit_withdraw_coins_request';
+import { WithdrawCoinsRequestComponent } from './withdraw-coins-request/withdraw-coins-request.component';
+import { apiService } from 'src/app/api.service';
+import { DepositeCoinsRequestComponent } from './deposite-coins-request/deposite-coins-request.component';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CoinsService {
   bsmodalRef?: BsModalRef;
-  constructor(private bsModalService:BsModalService,private http: HttpClient) { }
+  constructor(private bsModalService:BsModalService, private http: HttpClient
+    , private apiservice: apiService) { }
   
+  OpenDepositeCoinsRequestPopup(title: string){
+    const initalstate: ModalOptions = {
+      initialState:{
+        title
+      }
+    }
+    this.bsmodalRef = this.bsModalService.show(DepositeCoinsRequestComponent, initalstate);
+  }
+
+  OpenWithdrawCoinsRequestPopup(title: string){
+    const initalstate: ModalOptions = {
+      initialState:{
+        title
+      }
+    }
+    this.bsmodalRef = this.bsModalService.show(WithdrawCoinsRequestComponent, initalstate);
+  }
+
   OpenDepositeCoinsByUserIdPopup(userNumber: string){
     const initalstate: ModalOptions = {
       initialState:{
         userNumber,
       }
     }
-    this.bsmodalRef = this.bsModalService.show(DepositeCoinsByUserIdComponent,initalstate);
+    this.bsmodalRef = this.bsModalService.show(DepositeCoinsByUserIdComponent, initalstate);
   }
 
   OpenWithdrawCoinsUserIdPopup(userNumber: string){
@@ -32,20 +54,31 @@ export class CoinsService {
   }
 
   deposit_list(obj: Ideposit_withdraw_coins_request){
-    return this.http.post(`${environment.apiUrl}/api/Coin/GetCoinsRequest`, obj);
+    obj.coinType = 1;
+    return this.apiservice.GetDepositeCoinsRequestList(obj);
   }
 
   withdraw_list(obj: Ideposit_withdraw_coins_request){
      obj.coinType = 0;
-    return this.http.post(`${environment.apiUrl}/api/Coin/GetCoinsRequest`, obj);
+    return this.apiservice.GetWithdrawCoinsRequestList(obj);
   }
 
   deposit_to_site_list(coinType: number, sessionUser: bigint){
-    return this.http.get(`api/Coin/GetCoinsToAccountRequest/${coinType}/${sessionUser}`);
+    coinType = 0;
+    return this.apiservice.GetDepositeCoinstoSiteRequestList(coinType, sessionUser);
   }
 
   withdraw_from_site_list(coinType: number, sessionUser: bigint){
-    return this.http.get(`api/Coin/GetCoinsToAccountRequest/${coinType}/${sessionUser}`);
+    coinType = 1;
+    return this.apiservice.GetWithdrawCoinstoSiteRequestList(coinType, sessionUser);
+  }
+
+  deposite_coin_request_insert(obj: any){
+    return this.apiservice.DepositeCoinRequestInsert(obj);
   }
   
+  withdraw_coin_request_insert(obj: any){
+    return this.apiservice.WithdrawCoinRequestInsert(obj);
+  }
+
 }

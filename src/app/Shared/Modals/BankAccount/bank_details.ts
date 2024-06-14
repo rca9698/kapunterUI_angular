@@ -39,7 +39,7 @@ export class bank_details implements Ibank_details{
         , bankName: string = '', accountHolderName: string = '', accountNumber: string = ''
         , ifscCode: string = '', upiId: string = '', qrPath: string = '', isDefault: string = ''
         , accountDisplayName: string = '', createdBy: string ='', createdDate: string = ''
-        , updatedBy: string = '', updatedDate: string = '', totalCount: number = 0, paginationCount: number
+        , updatedBy: string = '', updatedDate: string = '', totalCount: number = 0, paginationCount: number=0
     ) {
         this.bankAccountDetailID = bankAccountDetailID,
         this.userId = userId,

@@ -26,4 +26,28 @@ export class apiService {
     return this.http.post(`${environment.apiUrl}/api/Account/GetIDs`, obj);
   }
 
+  GetDepositeCoinsRequestList(obj: any){
+    return this.http.post(`${environment.apiUrl}/api/Coin/GetCoinsRequest`, obj);
+  }
+
+  GetWithdrawCoinsRequestList(obj: any){
+    return this.http.post(`${environment.apiUrl}/api/Coin/GetCoinsRequest`, obj);
+  }
+
+  GetDepositeCoinstoSiteRequestList(coinType: number, sessionUser: bigint){
+    return this.http.get(`${environment.apiUrl}/api/Coin/GetCoinsToAccountRequest/${coinType}/${sessionUser}`);
+  }
+  
+  GetWithdrawCoinstoSiteRequestList(coinType: number, sessionUser: bigint){
+    return this.http.get(`${environment.apiUrl}/api/Coin/GetCoinsToAccountRequest/${coinType}/${sessionUser}`);
+  }
+
+  DepositeCoinRequestInsert(obj: any){
+    return this.http.post(`${environment.apiUrl}/api/Coin/AddCoinsRequestDetail`, obj);
+  }
+
+  WithdrawCoinRequestInsert(obj: any){
+    return this.http.post(`${environment.apiUrl}/api/Coin/WithDrawCoinsRequest`, obj);
+  }
+
 }

@@ -13,8 +13,8 @@ import { ListSitesComponent } from '../listSites/list-sites.component';
   styleUrls: ['./add-site.component.css']
 })
 export class AddSiteComponent implements OnInit {
-  AddSiteFrom: FormGroup;
-  submitted : boolean = false;
+   AddSiteFrom: FormGroup;
+   submitted : boolean = false;
    file: any = null;
    isupdate: boolean = false;
    site: ISiteDetailModal = new SiteDetailModal();

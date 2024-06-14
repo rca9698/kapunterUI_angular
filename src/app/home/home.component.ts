@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HomeService } from './home.service';
 import { environment } from 'src/environments/environment.development';
 import { DashboardImages, IDashboardImages } from '../Shared/Modals/dashboard-images-modal';
+import { CoinsService } from '../Accounts/coins/coins.service';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +15,7 @@ export class HomeComponent implements OnInit {
   images:IDashboardImages[] = [new DashboardImages()];
   showslider:boolean | undefined;
 
-  constructor(private homeService:HomeService){
+  constructor(private homeService:HomeService, private coinsservice: CoinsService){
     this.imgPath = environment.imagePath.dashboardImages;
   }
   ngOnInit(): void {
@@ -26,6 +27,14 @@ export class HomeComponent implements OnInit {
         this.showslider = true;
       }
      });
+  }
+
+  DepositeToWallet(){
+    this.coinsservice.OpenDepositeCoinsRequestPopup('Deposite');
+  }
+
+  WithdrawFromWallet(){
+    this.coinsservice.OpenWithdrawCoinsRequestPopup('Withdraw');
   }
 
 }

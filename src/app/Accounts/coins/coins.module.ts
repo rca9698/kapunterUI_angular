@@ -11,6 +11,8 @@ import { WithdrawListComponent } from './withdraw_list/withdraw-list.component';
 import { DepositeToSiteListComponent } from './deposite_to_site_list/deposite-to-site-list.component';
 import { WithdrawFromSiteListComponent } from './withdraw_from_site_list/withdraw-from-site-list.component';
 import { CoinsRoutingModule } from './coins-routing.module';
+import { DepositeCoinsRequestComponent } from './deposite-coins-request/deposite-coins-request.component';
+import { WithdrawCoinsRequestComponent } from './withdraw-coins-request/withdraw-coins-request.component';
 
 
 
@@ -21,7 +23,9 @@ import { CoinsRoutingModule } from './coins-routing.module';
     DepositeListComponent,
     WithdrawListComponent,
     DepositeToSiteListComponent,
-    WithdrawFromSiteListComponent
+    WithdrawFromSiteListComponent,
+    DepositeCoinsRequestComponent,
+    WithdrawCoinsRequestComponent
   ],
   imports: [
     CommonModule,
