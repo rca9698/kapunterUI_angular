@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { BsModalRef, BsModalService, ModalOptions } from 'ngx-bootstrap/modal';
 import { AddImageComponent } from './Add-Image/add-image.component';
 import { environment } from 'src/environments/environment.development';
+import { apiService } from '../api.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ import { environment } from 'src/environments/environment.development';
 export class DashboardService {
   bsmodalRef?: BsModalRef;
 
-  constructor(private bsModalService:BsModalService,private http: HttpClient) { }
+  constructor(private bsModalService:BsModalService,private http: HttpClient, private apiservice: apiService) { }
 
   OpenAddImagePopup(title: string){
     const initalstate: ModalOptions = {
@@ -18,13 +19,11 @@ export class DashboardService {
         title
       }
     }
-
     this.bsmodalRef = this.bsModalService.show(AddImageComponent,initalstate);
   }
 
-  AddDashboardImage(formParams: any){
-    console.log(formParams);
-    return this.http.post(environment.apiUrl+'/api/Home/AddDashboardImages',formParams);
+  add_dashbord_image(formParams: any){
+    return this.apiservice.AddDashboardImage(formParams);
   }
 
 }

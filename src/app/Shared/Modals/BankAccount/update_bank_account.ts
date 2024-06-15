@@ -1,6 +1,5 @@
-export interface Iadd_bank_account{
+export interface IUpdateBankAccount{
     userId: bigint,
-    bankId: bigint,
     bankName: string,
     accountHolderName: string,
     accountNumber: string,
@@ -8,21 +7,18 @@ export interface Iadd_bank_account{
     sessionUser: bigint
 }
 
-export class add_bank_account implements Iadd_bank_account{
+export class UpdateBankAccount implements IUpdateBankAccount{
     userId: bigint;
     bankName: string;
     accountHolderName: string;
     accountNumber: string;
     ifscCode: string;
     sessionUser: bigint;
-    bankId: bigint;
 
     constructor(userId: bigint = 0 as unknown as bigint, bankName: string = '', accountHolderName: string = ''
         , accountNumber: string = '', ifscCode: string = '', sessionUser: bigint = 0 as unknown as bigint
-        , bankId: bigint = 0 as unknown as bigint
     ){
         this.userId = userId,
-        this.bankId = bankId
         this.bankName = bankName,
         this.accountHolderName = accountHolderName,
         this.accountNumber = accountNumber,

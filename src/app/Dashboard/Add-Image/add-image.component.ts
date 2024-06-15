@@ -43,7 +43,7 @@ export class AddImageComponent {
       formParams.append('File', this.file);
       formParams.append('date', this.AddImageForm.value["date"]);
       
-      this.dashboardService.AddDashboardImage(formParams).subscribe(resp => {
+      this.dashboardService.add_dashbord_image(formParams).subscribe(resp => {
         console.log(resp);
         this.returnType = resp;
         if(this.returnType['returnStatus'] == 1){

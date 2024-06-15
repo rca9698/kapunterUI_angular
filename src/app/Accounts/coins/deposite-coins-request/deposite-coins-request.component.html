@@ -1,7 +1,7 @@
 
 
 <form (ngSubmit)="DepositCoinsRequestAmount()" [formGroup]="depositeCoinRequestFrom" *ngIf="depositecoinsdetails">
-    <div class="modal-header" style="justify-content: right;">
+    <div class="modal-header">
         <p class="modal-title" id="exampleModalLabel">Deposit</p>
         <div type="button" class="close" (click)="bsModalRef.hide()" aria-label="Close">
             <i class="bi bi-x-circle-fill"></i>
@@ -30,7 +30,7 @@
 </form>          
         
   <div *ngIf="depositecoinsproofupload">
-    <div class="modal-header text-center col-12" style="justify-content: right;">
+    <div class="modal-header" >
         <div type="button" class="close" *ngIf="backButtonVisibility" (click)="backToAddCoins()">
             <i class="bi bi-arrow-left-circle-fill"></i>
           </div>

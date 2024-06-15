@@ -27,6 +27,12 @@ i{
     color: #FFF;
 }
 
+.modal-header{
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+}
+
 /* .dashboard-nav {
     background-color: #070F1B !important;
 } */

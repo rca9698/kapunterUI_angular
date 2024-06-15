@@ -81,4 +81,7 @@ export class CoinsService {
     return this.apiservice.WithdrawCoinRequestInsert(obj);
   }
 
+  set_default_bank_account(sessionUser: bigint, bankDetailID: bigint){
+    return this.apiservice.SetDefaultBankAccount(sessionUser, bankDetailID);
+  }
 }

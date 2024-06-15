@@ -14,6 +14,8 @@ import { Iwithdrawcoinrequestmodal, withdrawcoinrequestmodal } from 'src/app/Sha
 })
 export class WithdrawCoinsRequestComponent {
 
+  banks: Ibank_details[] = [];
+  _sessionUser: bigint;
    withdrawCoinRequestFrom: FormGroup;
    submitted : boolean = false;
    file: any = null;
@@ -25,6 +27,11 @@ export class WithdrawCoinsRequestComponent {
   constructor(public bsModalRef:BsModalRef, private formBuilder:FormBuilder, 
     private router:Router, private coinsservice: CoinsService, 
     private toasterService: ToastrService) {
+      this._sessionUser = 1 as unknown as bigint;
+      this.banks= [
+        new bank_details(1 as unknown as bigint, 1 as unknown as bigint, 'Bank 1'),
+        new bank_details(2 as unknown as bigint, 1 as unknown as bigint, 'Bank 2')
+      ];
       this.withdrawCoinRequestFrom = this.formBuilder.group({
         coins: ['', [Validators.required]],
         bankDropdown: ['', [Validators.required]]
@@ -45,8 +52,8 @@ export class WithdrawCoinsRequestComponent {
       this.coinsservice.withdraw_coin_request_insert(this.withdrawcoinrequestmodalobj);
   }
 
-  ChangeWithDrawBank(){
-    
+  ChangeWithDrawBank(event: any){
+    this.coinsservice.set_default_bank_account(1 as unknown as bigint, event.target.value as unknown as bigint);
   }
 
 }

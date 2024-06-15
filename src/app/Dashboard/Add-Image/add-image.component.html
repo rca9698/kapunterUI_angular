@@ -1,9 +1,9 @@
 
 <div class="modal-content siteColor">
     <form (ngSubmit)="AddDashboardImage()" [formGroup]="AddImageForm">
-        <div class="modal-header" style="justify-content: right;" (click)="bsModalRef.hide()">
+        <div class="modal-header">
             <p class="modal-title">Site</p>
-            <div type="button" class="close" >
+            <div type="button" class="close" (click)="bsModalRef.hide()">
                 <i class="bi bi-x-circle-fill"></i>
             </div>
         </div>

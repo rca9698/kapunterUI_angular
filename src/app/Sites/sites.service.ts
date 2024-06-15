@@ -4,13 +4,15 @@ import { BsModalRef, BsModalService, ModalOptions } from 'ngx-bootstrap/modal';
 import { AddSiteComponent } from './addSite/add-site.component';
 import { environment } from 'src/environments/environment.development';
 import { ISiteDetailModal, SiteDetailModal  } from '../Shared/Modals/site-detail-modal';
+import { apiService } from '../api.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SitesService {
   bsmodalRef?: BsModalRef;
-  constructor(private bsModalService:BsModalService,private http: HttpClient) { }
+  constructor(private bsModalService:BsModalService,private http: HttpClient
+    , private apiservice: apiService) { }
 
 OpenAddSitePopup(isupdate: boolean, site: ISiteDetailModal){
   const initalstate: ModalOptions = {
@@ -29,9 +31,7 @@ public getSiteList(listSitesQuery: any){
 }
 
 public uploadfile(formParams: any) {
-  
-  // const headers = new HttpHeaders().set('Content-Type', 'multipart/form-data');
-  return this.http.post(environment.apiUrl+'/api/Site/AddSiteDetail', formParams);
+   return this.apiservice.AddSite(formParams);
 }
 
 }

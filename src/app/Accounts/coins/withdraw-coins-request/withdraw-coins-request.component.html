@@ -6,7 +6,7 @@
         </style>
         <div class="modal-content siteColor">
             <form (ngSubmit)="withdrawCoinRequest()" [formGroup]="withdrawCoinRequestFrom">
-                <div class="modal-header" style="justify-content: right;">
+                <div class="modal-header">
                     <p class="modal-title" id="exampleModalLabel">Withdraw</p>
                     <div type="button" class="close"  (click)="bsModalRef.hide()" aria-label="Close">
                         <i class="bi bi-x-circle-fill"></i>
@@ -36,9 +36,8 @@
                                 <p class="text-uppercase">Preffered Bank</p>
                             </div>
                             <p class="col col-6">
-                                <select class="form-select form-select-md mb-3" formControlName="bankDropdown" (change)="ChangeWithDrawBank()" aria-label="">
-                                    <option> Name 1 </option>
-                                    <option> Name 2 </option>
+                                <select class="form-select form-select-md mb-3" formControlName="bankDropdown" (change)="ChangeWithDrawBank($event)" aria-label="">
+                                    <option *ngFor="let bank of banks" [value]="bank.bankAccountDetailID"> {{ bank.bankName }} </option>
                                 </select>
                                 <span class="text-danger" *ngIf="withdrawCoinRequestFrom.get('bankDropdown')?.invalid && (submitted || withdrawCoinRequestFrom.get('bankDropdown')?.touched || withdrawCoinRequestFrom.get('bankDropdown')?.dirty)">
                                     <span *ngIf="withdrawCoinRequestFrom.get('bankDropdown')?.errors?.['required']"> Coins are required </span> 
