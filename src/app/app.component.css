@@ -1,0 +1,145 @@
+
+
+.Icon-Hamburger{
+    background-color: white;
+    height: 1.9rem;
+    width: 1.9rem;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    align-items: center;
+    justify-content: center;
+    /* position: fixed; */
+    position: fixed;
+}
+
+
+.Icon-Hamburger :hover {
+    cursor: pointer;
+}
+.Icon-Hamburger-div{
+    background: #6f02b4;
+    border-radius: 20px;
+    height: 2px;
+    width: 0.95rem;
+}
+
+/* ------------------------------------------------------------------ */
+
+/* Colors :- Black  #0E0C0C  ,  #242223 , #2a2a2a , #222 ,
+     Ion #7e1fac ,  #e49627  ,  #fff  ,  rgba(113,28,155,0.55)  ;
+ */
+
+
+.Burger-Menu{
+    z-index: 1;
+    height: 100%;
+    /* height: 97vh; */
+    width: 35.5%;
+    position: absolute;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #222;
+    font-size: 0.8rem;
+    margin-left: -0.7rem;
+}
+
+.disAppearHamburgerIcon {
+    display: none !important;
+}
+
+.Burger-Menu-header-container{
+    /* border: 1px solid rgba(28, 18, 18, 0.618); */
+    margin: 10px;
+    height: 13rem;
+    border-radius: 0.5rem;
+    color: white;
+    background-color: #2a2a2a;
+    /* padding: 0.8rem 0.6rem; */
+    position: relative;
+}
+.Burger-Menu-header-container img {
+    height: 6rem;
+    width: 100%;
+    border-radius: 15px 15px 0px 0px;
+}
+.Burger-Menu-header-container .small-br {
+    background-color: #ffffffe4;
+    height: 1.5px;
+    width: 0.3rem;
+    border-radius: 0.5rem;
+    margin: 2.1rem 0 1.5rem 0;
+}
+.Burger-Menu-header-container .big-br {
+    background:  linear-gradient(to right, #ffffffe4, #ffffff22);
+    height: 1px;
+    width: 100%;
+    border-radius: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.Burger-Menu-Close-btn{
+    background-color: #7e1fac;
+    color: white;
+    border-radius: 0.5rem 0 0 0.5rem;
+    border: none;
+    height: 3.1rem;
+    width: 1.2rem;
+    position: absolute;
+    right: -10px;
+    bottom: -1.5rem;
+}
+
+.Burger-Menu ul li {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    font-size: 0.8rem;
+}
+
+.Burger-Menu ul li a {
+    text-decoration: none;
+    color: white;
+    border-radius: 0.5rem;
+    height: 2.6rem;
+    width: 15.6rem;
+    padding: 0.5rem 0.6rem;
+    margin-left: -1.4rem;
+}
+
+.Burger-Menu ul li a:hover{
+    background-color: #2a2a2a ;
+}
+.Burger-Menu .Burger-ul-li-NavLink{
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.Burger-Menu-footer-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 0.3rem;
+}
+.Burger-Menu-footer-container button{
+    border-radius: 0.5rem;
+    background-color: #222;
+    height: 2.3rem;
+    width: 13rem;
+    color: white;
+    font-size: 0.75rem;
+}
+.Burger-Menu-footer-container button:hover{
+    background-color: #2a2a2a ;
+}
+.Burger-Menu-footer-container-LogSignin-btn:hover{
+    background-color:  #7002b4da !important;
+}
+
+
