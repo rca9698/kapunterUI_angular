@@ -13,12 +13,12 @@ export class ListAdminBankAccountComponent {
   paginationCount: number = 1;
   totalCount: number = 0;
 
-  constructor(private bankaccount:BankAccountService) {
+  constructor(private bankaccountservice:BankAccountService) {
 
   }
 
   AddAdminBankDetailPopup() {
-
+    this.bankaccountservice.OpenAddAdminBankAccountPopup(false);
   }
 
   MakeAdminBankDefault() {
@@ -30,7 +30,7 @@ export class ListAdminBankAccountComponent {
   }
 
   list_Admin_Bank_Accounts(){
-    this.bankaccount.list_Admin_Bank_Accounts().subscribe({
+    this.bankaccountservice.list_Admin_Bank_Accounts().subscribe({
       next:(response) =>{
        this.returnType = response;
        this.Ibank_details = this.returnType['returnList'];

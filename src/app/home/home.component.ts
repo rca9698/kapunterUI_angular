@@ -3,6 +3,8 @@ import { HomeService } from './home.service';
 import { environment } from 'src/environments/environment.development';
 import { DashboardImages, IDashboardImages } from '../Shared/Modals/dashboard-images-modal';
 import { CoinsService } from '../Accounts/coins/coins.service';
+import { AuthService } from '../auth.service';
+import { ToastrService } from '../toastr/toastr.service';
 
 @Component({
   selector: 'app-home',
@@ -15,7 +17,8 @@ export class HomeComponent implements OnInit {
   images:IDashboardImages[] = [new DashboardImages()];
   showslider:boolean | undefined;
 
-  constructor(private homeService:HomeService, private coinsservice: CoinsService){
+  constructor(private homeService:HomeService, private coinsservice: CoinsService
+    , public authservice: AuthService, private toasterService: ToastrService){
     this.imgPath = environment.imagePath.dashboardImages;
   }
   ngOnInit(): void {
@@ -35,6 +38,10 @@ export class HomeComponent implements OnInit {
 
   WithdrawFromWallet(){
     this.coinsservice.OpenWithdrawCoinsRequestPopup('Withdraw');
+  }
+
+  LoginToastr(){
+    this.toasterService.warning('Login to perform action!!');
   }
 
 }

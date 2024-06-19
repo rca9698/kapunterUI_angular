@@ -302,20 +302,20 @@ export class apiService {
     this.http.post(`${environment.apiUrl}/api/BankAccount/AddUpdateAdminUpiAccount`,obj)
   }
 
-  DeleteAdminUpiAccount(sessionUser: bigint, upiId: bigint){
-    this.http.get(`${environment.apiUrl}/api/BankAccount/DeleteAdminUpiAccount/${sessionUser}/${upiId}`)
+  DeleteAdminUpiAccount(sessionUser: bigint, upiId: string){
+    return this.http.get(`${environment.apiUrl}/api/BankAccount/DeleteAdminUpiAccount/${sessionUser}/${upiId}`)
   }
 
-  SetDefaultAdminUpiAccount(sessionUser: bigint, upiId: bigint){
-    this.http.get(`${environment.apiUrl}/api/BankAccount/SetDefaultAdminUpiAccount/${sessionUser}/${upiId}`)
+  SetDefaultAdminUpiAccount(sessionUser: bigint, upiId: string){
+    return this.http.get(`${environment.apiUrl}/api/BankAccount/SetDefaultAdminUpiAccount/${sessionUser}/${upiId}`)
   }
 
   GetAdminQRCode(){
-    this.http.get(`${environment.apiUrl}/api/BankAccount/GetAdminQRCode`)
+    return this.http.get(`${environment.apiUrl}/api/BankAccount/GetAdminQRCode`)
   }
 
   AddAdminQRCode(sessionUser: bigint, userName: bigint){
-    this.http.get(`${environment.apiUrl}/api/BankAccount/AddUpdateAdminQRCode/${sessionUser}/${userName}`)
+    return this.http.get(`${environment.apiUrl}/api/BankAccount/AddUpdateAdminQRCode/${sessionUser}/${userName}`)
   }
 
 

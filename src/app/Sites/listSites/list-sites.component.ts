@@ -3,6 +3,7 @@ import { environment } from 'src/environments/environment.development';
 import { SitesService } from '../sites.service';
 import { ToastrService } from 'src/app/toastr/toastr.service';
 import { ISiteDetailModal } from 'src/app/Shared/Modals/site-detail-modal';
+import { DeleteService } from 'src/app/Shared/Modules/delete-module/delete.service';
 
 @Component({
   selector: 'app-list-sites',
@@ -17,7 +18,7 @@ export class ListSitesComponent implements OnInit {
   returnType: any; 
 
   constructor(private siteService:SitesService, 
-    private toasterService: ToastrService){
+    private toasterService: ToastrService, private deleteService:DeleteService){
     this.sitePath = environment.imagePath.sitePath;
     this.loadSites();
   }
@@ -41,12 +42,11 @@ export class ListSitesComponent implements OnInit {
     })
   }
 
-  deleteSite(site: ISiteDetailModal){
-
+  deleteSitePopup(site: ISiteDetailModal){
+    this.deleteService.OpenDeletePopup('site','Site',site);
   }
 
   updateSite(site: ISiteDetailModal){
-    console.log(site);
     this.siteService.OpenAddSitePopup(true,site)
   }
 }

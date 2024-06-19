@@ -37,12 +37,11 @@ export class AddSiteComponent implements OnInit {
      )
   }
   ngOnInit(): void {
-    console.log(this.site);
+    
   }
 
   AddSite(){
     this.submitted = true;
-    console.log(this.file);
     
   if(this.AddSiteFrom.invalid || !this.file) {
     return;

@@ -3,6 +3,7 @@ import { SitesService } from './Sites/sites.service';
 import { ISiteDetailModal, SiteDetailModal } from './Shared/Modals/site-detail-modal'
 import { DashboardService } from './Dashboard/dashboard.service';
 import { AuthService } from './auth.service';
+import { AccountsService } from './Accounts/accounts.service';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +15,7 @@ export class AppComponent {
   site: ISiteDetailModal = new SiteDetailModal();
   
   constructor(private siteService: SitesService, private dashboardService:DashboardService
-    , private authService: AuthService) {
+    , public authService: AuthService, public accountService: AccountsService) {
 
   }
 
@@ -25,8 +26,16 @@ export class AppComponent {
   OpenAddImagePopup(){
     this.dashboardService.OpenAddImagePopup('Add Image');
   }
+
   hasRole(role: string) : boolean {
     return this.authService.user?.role.includes(role);
   }
+
+  loginPopup() {
+    this.accountService.OpenLoginPopup(true, 'Login');
+  }
   
+  logoutSeesion() {
+    this.authService.logout(); 
+  }
 }

@@ -27,11 +27,15 @@ OpenAddSitePopup(isupdate: boolean, site: ISiteDetailModal){
 }
 
 public getSiteList(listSitesQuery: any){
-  return this.http.post(environment.apiUrl+'/api/Site/GetSites', listSitesQuery);
+  return this.apiservice.GetSites(listSitesQuery)
 }
 
 public uploadfile(formParams: any) {
    return this.apiservice.AddSite(formParams);
+}
+
+public deleteSite(site: any){
+  return this.apiservice.DeleteSite(site)
 }
 
 }

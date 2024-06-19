@@ -4,6 +4,7 @@ import { UserService } from '../../user.service';
 import { users } from 'src/app/Shared/Modals/users';
 import { ReturnType } from 'src/app/Shared/Modals/Common/ReturnType';
 import { CoinsService } from '../../coins/coins.service';
+import { DeleteService } from 'src/app/Shared/Modules/delete-module/delete.service';
 
 @Component({
   selector: 'app-user-list',
@@ -12,7 +13,8 @@ import { CoinsService } from '../../coins/coins.service';
 })
 export class UserListComponent implements OnInit {
   
-  constructor(private userService: UserService, private coinsService: CoinsService){ }
+  constructor(private userService: UserService, private coinsService: CoinsService
+    , private deletemodule: DeleteService){ }
 
   ngOnInit() {
     this.userlist();
@@ -64,7 +66,7 @@ export class UserListComponent implements OnInit {
   }
 
   deleteUser(user: users){
-
+    this.deletemodule.OpenDeletePopup('user', 'User', user);
   }
 
   PaginationNumber(pageNumber:number) {

@@ -15,7 +15,8 @@ export class AuthService {
   user: Iusermodal = new usermodal();
 
   get token() {
-    return localStorage.getItem(this.TOKEN_NAME);
+    let token = localStorage.getItem(this.TOKEN_NAME);
+    return token == 'undefined' ? null : token;
   }
 
   constructor(private apiservice: apiService) { 
@@ -33,7 +34,12 @@ export class AuthService {
     }));
   }
 
-  private getUser(token: string): Iusermodal{
+  logout(){
+    localStorage.setItem(this.TOKEN_NAME, '');
+    location.reload();
+  }
+
+  private getUser(token: string = ''): Iusermodal{
     if(!token){
       return new usermodal()
     }
