@@ -243,7 +243,8 @@ export class apiService {
   //Bank Related APIs Start
 
   AddBankAccount(obj: any){
-    return this.http.get(`${environment.apiUrl}/api/BankAccount/AddBankAccount`, obj);
+    console.log(obj);
+    return this.http.post(`${environment.apiUrl}/api/BankAccount/AddBankAccount`, obj);
   }
 
   SetDefaultBankAccount(sessionUser: bigint, bankDetailID: bigint){
@@ -283,6 +284,7 @@ export class apiService {
   }
 
   AddUpdateAdminBankAccount(obj: any){
+    console.log(obj);
     return this.http.post(`${environment.apiUrl}/api/BankAccount/AddUpdateAdminBankAccount`, obj);
   }
 

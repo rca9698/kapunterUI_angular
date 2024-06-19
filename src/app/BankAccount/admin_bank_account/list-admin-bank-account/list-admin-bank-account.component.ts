@@ -10,8 +10,6 @@ import { BankAccountService } from '../../bank-account.service';
 export class ListAdminBankAccountComponent {
   Ibank_details: Ibank_details[] | undefined; 
   returnType:any;
-  paginationCount: number = 1;
-  totalCount: number = 0;
 
   constructor(private bankaccountservice:BankAccountService) {
 
@@ -34,8 +32,6 @@ export class ListAdminBankAccountComponent {
       next:(response) =>{
        this.returnType = response;
        this.Ibank_details = this.returnType['returnList'];
-       this.paginationCount = this.returnType['paginationCount'];
-       this.totalCount = this.returnType['totalCount'];
       },
       error:error => {
         console.log(error);

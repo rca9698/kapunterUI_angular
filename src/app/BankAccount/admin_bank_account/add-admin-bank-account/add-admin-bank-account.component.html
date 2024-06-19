@@ -16,14 +16,14 @@
     <form (ngSubmit)="AddAdminBankAccount()" [formGroup]="addAdminBankAccountForm" autocomplete="off">
         <div class="mb-3 form-group">
             <label for="BName" class="form-label">Bank Name*</label>
-            <input class="form-control" type="number" formControlName="BName" placeholder="Bank Name" autocomplete="off" [(ngModel)]="add_admin_bank_account.bankName">
+            <input class="form-control" type="text" formControlName="BName" placeholder="Bank Name" autocomplete="off" [(ngModel)]="add_admin_bank_account.bankName">
             <div class="text-danger" *ngIf="addAdminBankAccountForm.get('BName')?.invalid && (submitted || addAdminBankAccountForm.get('BName')?.touched || addAdminBankAccountForm.get('BName')?.dirty)">
             <span *ngIf="addAdminBankAccountForm.get('BName')?.errors?.['required']"> Bank Name is required </span> </div>
         </div>
 
         <div class="mb-3 form-group">
             <label for="AHName" class="form-label">Account Holder Name*</label>
-            <input class="form-control" type="number" formControlName="AHName" placeholder="Account Holder Name" autocomplete="off" [(ngModel)]="add_admin_bank_account.accountHolderName">
+            <input class="form-control" type="text" formControlName="AHName" placeholder="Account Holder Name" autocomplete="off" [(ngModel)]="add_admin_bank_account.accountHolderName">
             <div class="text-danger" *ngIf="addAdminBankAccountForm.get('AHName')?.invalid && (submitted || addAdminBankAccountForm.get('AHName')?.touched || addAdminBankAccountForm.get('AHName')?.dirty)">
             <span *ngIf="addAdminBankAccountForm.get('AHName')?.errors?.['required']"> Account Holder Name is required </span> </div>
         </div>
@@ -37,7 +37,7 @@
 
         <div class="mb-3 form-group">
             <label for="IFSCCode" class="form-label">IFSC Code*</label>
-            <input class="form-control" type="number" formControlName="IFSCCode" placeholder="IFSC Code" autocomplete="off" [(ngModel)]="add_admin_bank_account.ifscCode">
+            <input class="form-control" type="text" formControlName="IFSCCode" placeholder="IFSC Code" autocomplete="off" [(ngModel)]="add_admin_bank_account.ifscCode">
             <div class="text-danger" *ngIf="addAdminBankAccountForm.get('IFSCCode')?.invalid && (submitted || addAdminBankAccountForm.get('IFSCCode')?.touched || addAdminBankAccountForm.get('IFSCCode')?.dirty)">
             <span *ngIf="addAdminBankAccountForm.get('IFSCCode')?.errors?.['required']"> IFSC Code is required </span> </div>
         </div>

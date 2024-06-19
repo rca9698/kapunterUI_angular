@@ -5,7 +5,6 @@ import { BsModalRef } from 'ngx-bootstrap/modal';
 import { SitesService } from '../sites.service';
 import { ToastrService } from 'src/app/toastr/toastr.service';
 import { ISiteDetailModal, SiteDetailModal } from 'src/app/Shared/Modals/site-detail-modal';
-import { ListSitesComponent } from '../listSites/list-sites.component';
 
 @Component({
   selector: 'app-add-site',

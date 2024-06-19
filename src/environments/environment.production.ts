@@ -2,12 +2,12 @@
 export const environment = {
     production: true,
     environment: 'production',
-    appUrl: 'http://localhost/KAPUNTERUI_ANGULAR',
+    appUrl: 'http://beta.kapunter.com/',
     apiUrl: 'https://localhost:7236',
     ueserKey: 'kapunterUser',
 
     imagePath:{
-        sitePath:'../../../assets/Sites/',
-        dashboardImages:'../../../assets/DashboardImages/'
+        sitePath:'http://beta.kapunter.com/assets/Sites/',
+        dashboardImages:'http://beta.kapunter.com/assets/DashboardImages/'
     }
 };
