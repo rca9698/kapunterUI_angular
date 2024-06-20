@@ -23,6 +23,6 @@ export class FooterComponent {
   }
 
   getSiteList(){
-    this.router.navigate(['/site/app-list-sites']);
+    this.router.navigate(['/site/list-sites']);
   }
 }

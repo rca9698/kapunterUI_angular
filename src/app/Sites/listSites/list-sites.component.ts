@@ -4,6 +4,7 @@ import { SitesService } from '../sites.service';
 import { ToastrService } from 'src/app/toastr/toastr.service';
 import { ISiteDetailModal } from 'src/app/Shared/Modals/site-detail-modal';
 import { DeleteService } from 'src/app/Shared/Modules/delete-module/delete.service';
+import { AuthService } from 'src/app/auth.service';
 
 @Component({
   selector: 'app-list-sites',
@@ -15,12 +16,14 @@ export class ListSitesComponent implements OnInit {
   sites: ISiteDetailModal[] | undefined;
   sitePath: string | undefined;
   listSitesQuery: any;
-  returnType: any; 
+  returnType: any;
+  private readonly _sessionUser: any; 
 
   constructor(private siteService:SitesService, 
-    private toasterService: ToastrService, private deleteService:DeleteService){
+    private toasterService: ToastrService, private deleteService:DeleteService
+    , private authservice: AuthService){
     this.sitePath = environment.imagePath.sitePath;
-    this.loadSites();
+    this._sessionUser = this.authservice.user.userId;
   }
 
   ngOnInit(): void {
@@ -29,10 +32,9 @@ export class ListSitesComponent implements OnInit {
 
   loadSites(){
     this.listSitesQuery = {
-      SessionUser: 1
+      SessionUser: this._sessionUser
     };
      this.siteService.getSiteList(this.listSitesQuery).subscribe(resp => {
-      console.log(resp);
       this.returnType = resp;
       if(this.returnType['returnStatus'] == 1){
         this.sites = this.returnType['returnList'];

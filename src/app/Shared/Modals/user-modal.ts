@@ -1,3 +1,9 @@
+export interface ITokenusermodal{
+    UserId: string,
+    otp: string,
+    role: string
+}
+
 export interface Iusermodal{
     userId: string,
     otp: string,

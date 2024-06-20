@@ -4,9 +4,6 @@ import { LoginComponent } from './login/login.component';
 import { login } from '../Shared/Modals/login';
 import { environment } from 'src/environments/environment.development';
 import { HttpClient } from '@angular/common/http';
-import { users } from '../Shared/Modals/users';
-import { otp_Login_Model } from '../Shared/Modals/otp_Login_Model';
-
 @Injectable({
   providedIn: 'root'
 })

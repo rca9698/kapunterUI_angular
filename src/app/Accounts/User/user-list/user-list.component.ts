@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../user.service';
-import { users } from 'src/app/Shared/Modals/users';
+import { Iusers } from 'src/app/Shared/Modals/users';
 import { ReturnType } from 'src/app/Shared/Modals/Common/ReturnType';
 import { CoinsService } from '../../coins/coins.service';
 import { DeleteService } from 'src/app/Shared/Modules/delete-module/delete.service';
@@ -21,7 +21,7 @@ export class UserListComponent implements OnInit {
   }
 
   usersQuery: any ;
-  usersList: users[] | undefined; 
+  usersList: Iusers[] | undefined; 
   returnType:any;
   paginationCount: number = 1;
   totalCount: number = 0;
@@ -53,19 +53,19 @@ export class UserListComponent implements OnInit {
     this.fetchUserList(this.usersQuery);
   }
 
-  depositeCoinsByUserId(user: users){
+  depositeCoinsByUserId(user: Iusers){
     this.coinsService.OpenDepositeCoinsByUserIdPopup(user.userNumber);
   }
 
-  withdrawCoinsByUserId(user: users){
+  withdrawCoinsByUserId(user: Iusers){
     this.coinsService.OpenWithdrawCoinsUserIdPopup(user.userNumber);
   }
 
-  ListCoins(user: users){
+  ListCoins(user: Iusers){
 
   }
 
-  deleteUser(user: users){
+  deleteUser(user: Iusers){
     this.deletemodule.OpenDeletePopup('user', 'User', user);
   }
 

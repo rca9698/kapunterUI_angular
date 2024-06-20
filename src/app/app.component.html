@@ -3,11 +3,13 @@
 <div class="container">
     <main role="main" class="pb-3">
         <div class="main">
-            <div class='coinsValidation' data-coins="@coins">
+            <div>
                 <div class="dashboard-nav sitebackground" style="margin-top: 3%;">
 
                     <div class="Burger-Menu-header-container">
-                        <img src="../assets/kapunter.ico" alt="Logo Punter"/>
+                        <a href="#">
+                            <img src="../assets/kapunter.ico" alt="Logo Punter"/>
+                        </a>
                         <div class="small-br"></div>
                         <div class="big-br"></div>
                         <div>Wallet Balance</div>
@@ -74,7 +76,7 @@
                             <i class="bi bi-cart"></i> Sites
                         </span>
                         <div class='dashboard-nav-dropdown-menu'>
-                            <a routerLink="/site/app-list-sites" class="dashboard-nav-dropdown-item" ><i class="bi bi-cart4"></i>Sites</a>
+                            <a routerLink="/site/list-sites" class="dashboard-nav-dropdown-item" ><i class="bi bi-cart4"></i>Sites</a>
                             <span class="dashboard-nav-dropdown-item" (click)="AddSitesPopup()"><i class="bi bi-cart-plus-fill"></i>Add Site</span>
                         </div>
                     </div>

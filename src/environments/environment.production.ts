@@ -3,7 +3,7 @@ export const environment = {
     production: true,
     environment: 'production',
     appUrl: 'http://beta.kapunter.com/',
-    apiUrl: 'https://localhost:7236',
+    apiUrl: 'http://apibeta.kapunter.com',
     ueserKey: 'kapunterUser',
 
     imagePath:{

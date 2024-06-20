@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { login } from './Shared/Modals/login';
 import { apiService } from './api.service';
 import { BehaviorSubject, tap } from 'rxjs';
-import { Iusermodal, usermodal } from './Shared/Modals/user-modal';
+import { ITokenusermodal, Iusermodal, usermodal } from './Shared/Modals/user-modal';
 
 @Injectable({
   providedIn: 'root'
@@ -44,9 +44,9 @@ export class AuthService {
       return new usermodal()
     }
     else{
-      const userDetailobj: Iusermodal = JSON.parse(atob(token?.split('.')[1]));
-      return new usermodal(userDetailobj['userId'], userDetailobj['otp'], userDetailobj['role']) ;
+      const userDetailobj: ITokenusermodal = JSON.parse(atob(token?.split('.')[1]));
+      console.log(userDetailobj);
+      return new usermodal(userDetailobj['UserId'], userDetailobj['otp'], userDetailobj['role']) ;
     }
   }
-
 }

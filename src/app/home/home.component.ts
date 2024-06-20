@@ -5,6 +5,7 @@ import { DashboardImages, IDashboardImages } from '../Shared/Modals/dashboard-im
 import { CoinsService } from '../Accounts/coins/coins.service';
 import { AuthService } from '../auth.service';
 import { ToastrService } from '../toastr/toastr.service';
+import { UserService } from '../Accounts/user.service';
 
 @Component({
   selector: 'app-home',
@@ -18,7 +19,8 @@ export class HomeComponent implements OnInit {
   showslider:boolean | undefined;
 
   constructor(private homeService:HomeService, private coinsservice: CoinsService
-    , public authservice: AuthService, private toasterService: ToastrService){
+    , public authservice: AuthService, private toasterService: ToastrService
+    , public userservice: UserService){
     this.imgPath = environment.imagePath.dashboardImages;
   }
   ngOnInit(): void {

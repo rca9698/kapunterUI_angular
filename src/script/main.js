@@ -24,9 +24,6 @@ var accountCoins = 0;
 
 const mobileScreen = window.matchMedia("(max-width: 990px )");
 $(document).ready(function () {
-
-    LoadSessionData();
-
     accountCoins = parseInt($('.coinsValidation').attr('data-coins'));
     $(document).on('click',".dashboard-nav-dropdown-toggle",function () {
         $(this).closest(".dashboard-nav-dropdown")
@@ -82,20 +79,20 @@ $(document).click(function (e) {
 });
 
 
-function LoadSessionData() {
-    $.ajax({
-        url: '/User/GetUserById',
-        type: 'POST',
-        data: '',
-        success: function (result) {
-            if (result.returnStatus == 1) {
-                $('.coinsValidation').attr('data-coins', result.returnVal.coins);
-                accountCoins = parseInt($('.coinsValidation').attr('data-coins'));
-                $('.mainWalletBalance').html(accountCoins);
-            }
-        }
-    });
-}
+// function LoadSessionData() {
+//     $.ajax({
+//         url: '/Account/get-user-by-id',
+//         type: 'POST',
+//         data: '',
+//         success: function (result) {
+//             if (result.returnStatus == 1) {
+//                 $('.coinsValidation').attr('data-coins', result.returnVal.coins);
+//                 accountCoins = parseInt($('.coinsValidation').attr('data-coins'));
+//                 $('.mainWalletBalance').html(accountCoins);
+//             }
+//         }
+//     });
+// }
 
 function ToasteRMessage(result, id) {
     if (result.returnStatus == 1) {
