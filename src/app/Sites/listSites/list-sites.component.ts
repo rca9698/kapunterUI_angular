@@ -24,7 +24,7 @@ export class ListSitesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-  
+    this.loadSites();
   }
 
   loadSites(){
