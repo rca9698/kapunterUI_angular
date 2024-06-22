@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { Iadd_admin_bank_account, add_admin_bank_account } from 'src/app/Shared/Modals/BankAccount/add_admin_bank_account';
@@ -15,30 +15,40 @@ import { Router } from '@angular/router';
 export class AddAdminQRComponent {
   submitted : boolean = false;
   addAdminQrForm: FormGroup;
-  add_admin_upi: Iadd_admin_bank_account = new add_admin_bank_account();
+  add_admin_qr: Iadd_admin_bank_account = new add_admin_bank_account();
   returnType: any;
+  file: any = null;
+  isupdate: boolean = false;
 
   constructor(public bsModalRef:BsModalRef, private formBuilder:FormBuilder, 
     private router:Router, private bankAccountService: BankAccountService, 
     private toasterService: ToastrService, private authservice: AuthService){ 
       this.addAdminQrForm = this.formBuilder.group({
-        UpiName: ['', [Validators.required]],
-        UpiId: ['', [Validators.required]], 
+        QRName: ['', [Validators.required]],
        },
      )
     }
 
+    @ViewChild('imageInput') fileInput: any
+
+  processFile(imageInput: any) {
+    this.file = imageInput.files[0];
+  }
+  
     AddAdminQR() {
       this.submitted = true;
 
       if(this.addAdminQrForm.invalid) {
         return;
-      }
+      } 
 
-      this.add_admin_upi.userId = this.authservice.user.userId;
-      this.add_admin_upi.sessionUser = this.authservice.user.userId;
+      let formParams = new FormData();
+      formParams.append('File', this.file);
+      formParams.append('qrName',  this.add_admin_qr.qrName);
+      formParams.append('userId',  this.authservice.user.userId.toString());
+      formParams.append('sessionUser', this.authservice.user.userId.toString());
  
-      this.bankAccountService.add_update_admin_upi(this.add_admin_upi).subscribe(resp => {
+      this.bankAccountService.add_admin_qr(formParams).subscribe(resp => {
         this.returnType = resp;
         if(this.returnType['returnStatus'] == 1){
           this.toasterService.success(this.returnType.returnMessage);

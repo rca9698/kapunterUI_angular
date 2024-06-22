@@ -51,11 +51,11 @@
                                                 <span type="button" aria-expanded="true" [attr.aria-controls]='"collapse_"+bank_detail.bankAccountDetailID' class="btn btn-link font-weight-bold text-uppercase crick-accordion-sub col-6">
                                                     <p>{{ bank_detail.bankName }} <i class="bi bi-arrow-down-up"> </i></p>
                                               </span>
-                                                <p class="col-2" (click)="MakeBankDetailDefault()" *ngIf='bank_detail.isDefault'>
+                                                <p class="col-2" (click)="MakeBankDetailDefault(bank_detail)" *ngIf='bank_detail.isDefault'>
                                                         <i class="bi bi-patch-plus-fill" title="Make Default"></i>
                                                 </p>
 
-                                                <p class="col-2" (click)="DeleteBankAccountPopup()">
+                                                <p class="col-2" (click)="DeleteBankAccountPopup(bank_detail)">
                                                     <i class="bi bi-trash3-fill" title="Delete Account"> </i>
                                                 </p>
 

@@ -1,1 +1,35 @@
-<p>add-admin-qr works!</p>
+
+<div class="modal-content siteColor">
+    <form (ngSubmit)="AddAdminQR()" [formGroup]="addAdminQrForm">
+        <div class="modal-header">
+            <p class="modal-title">Site</p>
+            <div type="button" class="close" (click)="bsModalRef.hide()">
+                <i class="bi bi-x-circle-fill"></i>
+            </div>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label>Site Name</label>
+                <input formControlName="siteName" [(ngModel)]="add_admin_qr.qrName" type="text" class="form-control" placeholder="QR Name" autocomplete="off">
+                <div class="text-danger" *ngIf="addAdminQrForm.get('QRName')?.invalid && (submitted || addAdminQrForm.get('QRName')?.touched || addAdminQrForm.get('QRName')?.dirty)">
+                 <span *ngIf="addAdminQrForm.get('QRName')?.errors?.['required']"> QR Name is required </span> </div>
+            </div>
+            <div class="form-group">
+                <div method="post" enctype="multipart/form-data" style="margin-top: 10px">
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <!-- <input type="file" name="files" class="files" /> -->
+                            <input #imageInput type="file" accept="image/*" (change)="processFile(imageInput)">
+                            <div class="text-danger" *ngIf="!this.file && (submitted || addAdminQrForm.get('QRName')?.touched)">
+                             <span> File is required </span> 
+                            </div>                
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn siteBtnbackground col-12">Add Site</button>
+        </div>
+    </form>
+</div>

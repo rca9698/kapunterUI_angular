@@ -18,14 +18,14 @@
             <label for="UpiName" class="form-label">UPI Name*</label>
             <input class="form-control" type="text" formControlName="UpiName" placeholder="Upi Name" autocomplete="off" [(ngModel)]="add_admin_upi.upiName">
             <div class="text-danger" *ngIf="addAdminUpiForm.get('UpiName')?.invalid && (submitted || addAdminUpiForm.get('UpiName')?.touched || addAdminUpiForm.get('UpiName')?.dirty)">
-            <span *ngIf="addAdminUpiForm.get('UpiName')?.errors?.['required']"> Bank Name is required </span> </div>
+            <span *ngIf="addAdminUpiForm.get('UpiName')?.errors?.['required']">UPI Name is required </span> </div>
         </div>
 
         <div class="mb-3 form-group">
             <label for="UpiId" class="form-label">UPI ID*</label>
             <input class="form-control" type="text" formControlName="UpiId" placeholder="Upi Id" autocomplete="off" [(ngModel)]="add_admin_upi.upiId">
             <div class="text-danger" *ngIf="addAdminUpiForm.get('UpiId')?.invalid && (submitted || addAdminUpiForm.get('UpiId')?.touched || addAdminUpiForm.get('UpiId')?.dirty)">
-            <span *ngIf="addAdminUpiForm.get('UpiId')?.errors?.['required']"> Account Holder Name is required </span> </div>
+            <span *ngIf="addAdminUpiForm.get('UpiId')?.errors?.['required']"> Upi Id is required </span> </div>
         </div>
  
         <div class="col-12 mb-0 text-center">
