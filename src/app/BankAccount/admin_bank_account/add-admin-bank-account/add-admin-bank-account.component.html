@@ -30,7 +30,7 @@
 
         <div class="mb-3 form-group">
             <label for="ANumber" class="form-label">Account Number*</label>
-            <input class="form-control" type="number" formControlName="ANumber" placeholder="Account Holder Number" autocomplete="off" [(ngModel)]="add_admin_bank_account.accountNumber">
+            <input class="form-control" type="text" formControlName="ANumber" placeholder="Account Holder Number" autocomplete="off" [(ngModel)]="add_admin_bank_account.accountNumber">
             <div class="text-danger" *ngIf="addAdminBankAccountForm.get('ANumber')?.invalid && (submitted || addAdminBankAccountForm.get('ANumber')?.touched || addAdminBankAccountForm.get('ANumber')?.dirty)">
             <span *ngIf="addAdminBankAccountForm.get('ANumber')?.errors?.['required']"> Account Holder Number is required </span> </div>
         </div>

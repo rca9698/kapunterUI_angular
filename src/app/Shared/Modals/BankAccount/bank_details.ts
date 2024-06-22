@@ -6,7 +6,11 @@ export interface Ibank_details{
     accountNumber: string,
     ifscCode: string,
     upiId: string,
+    upiName: string,
+    qrId: bigint,
     qrPath: string,
+    documentDetailId: string,
+    fileExtenstion: string,
     isDefault: string,
     accountDisplayName: string,
     createdBy: string,
@@ -25,7 +29,11 @@ export class bank_details implements Ibank_details{
     accountNumber: string;
     ifscCode: string;
     upiId: string;
+    upiName: string;
+    qrId: bigint;
     qrPath: string;
+    documentDetailId: string;
+    fileExtenstion: string;
     isDefault: string;
     accountDisplayName: string;
     createdBy: string;
@@ -37,26 +45,32 @@ export class bank_details implements Ibank_details{
 
     constructor(bankAccountDetailID: bigint = 0 as unknown as bigint, userId: BigInt = 0 as unknown as bigint
         , bankName: string = '', accountHolderName: string = '', accountNumber: string = ''
-        , ifscCode: string = '', upiId: string = '', qrPath: string = '', isDefault: string = ''
+        , ifscCode: string = '', upiId: string = '', upiName: string=''
+        , qrId: bigint = 0 as unknown as bigint, qrPath: string = ''
+        , documentDetailId: string ='', fileExtenstion: string = '', isDefault: string = ''
         , accountDisplayName: string = '', createdBy: string ='', createdDate: string = ''
-        , updatedBy: string = '', updatedDate: string = '', totalCount: number = 0, paginationCount: number=0
+        , updatedBy: string = '', updatedDate: string = '', totalCount: number = 0, paginationCount: number = 0
     ) {
-        this.bankAccountDetailID = bankAccountDetailID,
-        this.userId = userId,
-        this.bankName = bankName,
-        this.accountHolderName = accountHolderName,
-        this.accountNumber = accountNumber,
-        this.ifscCode = ifscCode,
-        this.upiId = upiId,
-        this.qrPath = qrPath,
-        this.isDefault = isDefault,
-        this.accountDisplayName =accountDisplayName,
-        this.createdBy = createdBy,
-        this.createdDate = createdDate,
-        this.updatedBy = updatedBy,
-        this.updatedDate = updatedDate,
-        this.totalCount = totalCount,
-        this.paginationCount = paginationCount
+        this.bankAccountDetailID = bankAccountDetailID;
+        this.userId = userId;
+        this.bankName = bankName;
+        this.accountHolderName = accountHolderName;
+        this.accountNumber = accountNumber;
+        this.ifscCode = ifscCode;
+        this.upiId = upiId;
+        this.upiName = upiName;
+        this.qrId = qrId;
+        this.qrPath = qrPath;
+        this.documentDetailId = documentDetailId;
+        this.fileExtenstion = fileExtenstion;
+        this.isDefault = isDefault;
+        this.accountDisplayName =accountDisplayName;
+        this.createdBy = createdBy;
+        this.createdDate = createdDate;
+        this.updatedBy = updatedBy;
+        this.updatedDate = updatedDate;
+        this.totalCount = totalCount;
+        this.paginationCount = paginationCount;
     }
 }
 

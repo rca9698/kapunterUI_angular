@@ -1,21 +1,21 @@
 export interface ITokenusermodal{
-    UserId: string,
+    userid: bigint,
     otp: string,
     role: string
 }
 
 export interface Iusermodal{
-    userId: string,
+    userId: bigint,
     otp: string,
     role: string
 }
 
 export class usermodal{
-    userId: string;
+    userId: bigint;
     otp: string;
     role: string;
 
-    constructor(userId: string ='', otp: string = '', role: string = ''){
+    constructor(userId: bigint = 0 as unknown as bigint, otp: string = '', role: string = ''){
         this.userId = userId,
         this.otp = otp,
         this.role = role

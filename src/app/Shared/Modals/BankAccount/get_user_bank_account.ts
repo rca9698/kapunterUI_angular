@@ -1,10 +1,10 @@
-export interface IGetBankAccount{
+export interface IGetUserBankAccount{
     userId: bigint,
     sessionUser: bigint,
     isActive: number
 }
 
-export class GetBankAccount implements IGetBankAccount{
+export class GetUserBankAccount implements IGetUserBankAccount{
     userId: bigint;
     sessionUser: bigint;
     isActive: number;

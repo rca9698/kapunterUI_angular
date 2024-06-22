@@ -4,13 +4,15 @@ import { LoginComponent } from './login/login.component';
 import { login } from '../Shared/Modals/login';
 import { environment } from 'src/environments/environment.development';
 import { HttpClient } from '@angular/common/http';
+import { apiService } from '../api.service';
 @Injectable({
   providedIn: 'root'
 })
 export class AccountsService {
   bsmodalRef?: BsModalRef;
   
-  constructor(private bsModalService:BsModalService,private http: HttpClient) { }
+  constructor(private bsModalService:BsModalService,private http: HttpClient
+    , private apiservice:apiService) { }
 
 OpenLoginPopup(issuccess: boolean, title: string){
   const initalstate: ModalOptions = {
@@ -24,12 +26,11 @@ OpenLoginPopup(issuccess: boolean, title: string){
 }
 
 sendOtp(mobileNumber: string){
-   return this.http.get(`${environment.apiUrl}/api/LoginSignup/Generate_Otp/${mobileNumber}`);
+  return this.apiservice.sendOtp(mobileNumber);
   }
 
-login(model: login){
-  console.log(model); 
-  return this.http.post(`${environment.apiUrl}/api/LoginSignup/Login`, model);
+login(model: login){ 
+  return this.apiservice.login(model);
 }
  
 }

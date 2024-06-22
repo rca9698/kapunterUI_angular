@@ -4,7 +4,7 @@ export interface IDeleteBankAccount{
     bankId: bigint
 }
 
-export class DeleteBankAccount{
+export class DeleteBankAccount implements IDeleteBankAccount{
     userId: bigint;
     sessionUser: bigint;
     bankId: bigint;

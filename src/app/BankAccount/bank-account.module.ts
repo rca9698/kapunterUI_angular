@@ -10,13 +10,21 @@ import { ListUserBankAccountComponent } from './user_bank_account/list_user_bank
 import { AddUserBankAccountComponent } from './user_bank_account/add_user_bank_account/add-user-bank-account.component';
 import { BankAccountRoutingModule } from './bank-account-routing.module';
 import { ListAdminUPIComponent } from './admin_bank_account/list-admin-UPI/list-admin-upi.component';
+import { AddAdminQRComponent } from './admin_bank_account/add-admin-QR/add-admin-qr.component';
+import { AddAdminUPIComponent } from './admin_bank_account/add-Admin-UPI/add-admin-upi.component';
+import { ListAdminQRComponent } from './admin_bank_account/list-admin-QR/list-admin-qr.component';
 
 
 
 @NgModule({
   declarations: [
     AddAdminBankAccountComponent,
-    AddUserBankAccountComponent
+    AddUserBankAccountComponent,
+    AddAdminQRComponent,
+    AddAdminUPIComponent,
+    ListAdminBankAccountComponent,
+    ListAdminQRComponent,
+    ListAdminUPIComponent
   ],
   imports: [
     CommonModule,
@@ -29,4 +37,6 @@ import { ListAdminUPIComponent } from './admin_bank_account/list-admin-UPI/list-
     ReactiveFormsModule
   ]
 })
-export class BankAccountModule { }
+export class BankAccountModule { 
+  
+}

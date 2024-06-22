@@ -46,7 +46,7 @@ export class AuthService {
     else{
       const userDetailobj: ITokenusermodal = JSON.parse(atob(token?.split('.')[1]));
       console.log(userDetailobj);
-      return new usermodal(userDetailobj['UserId'], userDetailobj['otp'], userDetailobj['role']) ;
+      return new usermodal(userDetailobj['userid'], userDetailobj['otp'], userDetailobj['role']) ;
     }
   }
 }

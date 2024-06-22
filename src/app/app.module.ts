@@ -25,6 +25,7 @@ import { ListIdRequestsComponent } from './ids/list-id-requests/list-id-requests
 import { ListIdsComponent } from './ids/list-ids/list-ids.component';
 import { RejectedIdRequestsComponent } from './ids/rejected-id-requests/rejected-id-requests.component';
 import { DeleteModuleComponent } from './Shared/Modules/delete-module/delete-module.component';
+import { MakeDefaultModuleComponent } from './Shared/Modules/make-default-module/make-default-module.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { DeleteModuleComponent } from './Shared/Modules/delete-module/delete-mod
     AppToasterComponent,
     AddImageComponent,
     DeleteModuleComponent,
+    MakeDefaultModuleComponent,
   ],
   imports: [
     BrowserModule,

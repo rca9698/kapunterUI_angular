@@ -5,6 +5,7 @@ import { ToastrService } from 'src/app/toastr/toastr.service';
 import { ISiteDetailModal } from 'src/app/Shared/Modals/site-detail-modal';
 import { DeleteService } from 'src/app/Shared/Modules/delete-module/delete.service';
 import { AuthService } from 'src/app/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-sites',
@@ -21,7 +22,7 @@ export class ListSitesComponent implements OnInit {
 
   constructor(private siteService:SitesService, 
     private toasterService: ToastrService, private deleteService:DeleteService
-    , private authservice: AuthService){
+    , private authservice: AuthService, private router:Router){
     this.sitePath = environment.imagePath.sitePath;
     this._sessionUser = this.authservice.user.userId;
   }
@@ -31,6 +32,9 @@ export class ListSitesComponent implements OnInit {
   }
 
   loadSites(){
+
+    console.log('list sites');
+
     this.listSitesQuery = {
       SessionUser: this._sessionUser
     };

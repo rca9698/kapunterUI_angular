@@ -38,15 +38,15 @@ export class SiteDetailModal implements ISiteDetailModal {
         this.siteName = siteName;
         this.siteURL = siteURL; 
         this.userId = userId;
-        this.accountId = accountId
-        this.userNumber = userNumber,
-        this.userName = userName,
-        this.documentDetailId = documentDetailId,
-        this.fileExtenstion = fileExtenstion,
-        this.createdBy = createdBy,
-        this.createdDate = createdDate,
-        this.UpdatedBy = UpdatedBy,
-        this.UpdatedDate = UpdatedDate
+        this.accountId = accountId;
+        this.userNumber = userNumber;
+        this.userName = userName;
+        this.documentDetailId = documentDetailId;
+        this.fileExtenstion = fileExtenstion;
+        this.createdBy = createdBy;
+        this.createdDate = createdDate;
+        this.UpdatedBy = UpdatedBy;
+        this.UpdatedDate = UpdatedDate;
       }
     
 

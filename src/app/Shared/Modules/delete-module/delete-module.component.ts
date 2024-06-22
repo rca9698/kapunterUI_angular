@@ -34,6 +34,15 @@ export class DeleteModuleComponent {
       case 'user':
         this.UserDelete();
         break;
+      case 'adminbank':
+        this.AdminBankAccountDelete();
+        break;
+      case 'adminupi':
+        this.AdminUpiDelete();
+        break;
+      case 'adminqr':
+        this.AdminQRDelete();
+        break;
     }
   }
 
@@ -86,7 +95,14 @@ export class DeleteModuleComponent {
     });
   }
 
-  AdminUpiAccountDelete(){
+  AdminUpiDelete(){
+    this.apiservices.DeleteAdminUpiAccount(0 as unknown as bigint,'').subscribe(resp=>{
+      this.returnType = resp;
+      this.toastrMessages();
+    });
+  }
+
+  AdminQRDelete(){
     this.apiservices.DeleteAdminUpiAccount(0 as unknown as bigint,'').subscribe(resp=>{
       this.returnType = resp;
       this.toastrMessages();

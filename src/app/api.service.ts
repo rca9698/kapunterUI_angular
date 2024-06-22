@@ -11,6 +11,7 @@ export class apiService {
   constructor(private http: HttpClient) { }
 
   sendOtp(obj: string){
+    console.log(`${environment.apiUrl}/api/LoginSignup/Generate_Otp/${obj}`);
      return this.http.get(`${environment.apiUrl}/api/LoginSignup/Generate_Otp/${obj}`);
     }
   
@@ -56,6 +57,7 @@ export class apiService {
   }
 
   GetSites(obj: any){
+    console.log(obj);
     return this.http.post(`${environment.apiUrl}/api/Site/GetSites`, obj);
   }
 
@@ -292,35 +294,37 @@ export class apiService {
     return this.http.post(`${environment.apiUrl}/api/BankAccount/DeleteAdminBankAccount`, obj);
   }
 
-  SetDefaultAdminBankAccount(sessionUser: bigint, bankDetailID: bigint){
-    return this.http.get(`${environment.apiUrl}/api/BankAccount/SetDefaultAdminBankAccount/${sessionUser}/${bankDetailID}`);
+  SetDefaultAdminBankAccount(obj: any){
+    return this.http.get(`${environment.apiUrl}/api/BankAccount/SetDefaultAdminBankAccount/${obj.sessionUser}/${obj.bankDetailID}`);
   }
 
-  AdminUpiAccounts(){
+  GetAdminUpiAccounts(){
     return this.http.get(`${environment.apiUrl}/api/BankAccount/GetAdminUpiAccount`);
   }
 
   AddUpdateAdminUpiAccount(obj: any){
-    this.http.post(`${environment.apiUrl}/api/BankAccount/AddUpdateAdminUpiAccount`,obj)
+    return this.http.post(`${environment.apiUrl}/api/BankAccount/AddUpdateAdminUpiAccount`,obj)
   }
 
   DeleteAdminUpiAccount(sessionUser: bigint, upiId: string){
     return this.http.get(`${environment.apiUrl}/api/BankAccount/DeleteAdminUpiAccount/${sessionUser}/${upiId}`)
   }
 
-  SetDefaultAdminUpiAccount(sessionUser: bigint, upiId: string){
-    return this.http.get(`${environment.apiUrl}/api/BankAccount/SetDefaultAdminUpiAccount/${sessionUser}/${upiId}`)
+  SetDefaultAdminUpiAccount(obj: any){
+    return this.http.get(`${environment.apiUrl}/api/BankAccount/SetDefaultAdminUpiAccount/${obj.sessionUser}/${obj.upiId}`)
   }
 
   GetAdminQRCode(){
     return this.http.get(`${environment.apiUrl}/api/BankAccount/GetAdminQRCode`)
   }
 
-  AddAdminQRCode(sessionUser: bigint, userName: bigint){
-    return this.http.get(`${environment.apiUrl}/api/BankAccount/AddUpdateAdminQRCode/${sessionUser}/${userName}`)
+  AddAdminQRCode(obj: any){
+    return this.http.post(`${environment.apiUrl}/api/BankAccount/AddUpdateAdminQRCode`,obj)
   }
 
-
+  SetDefaultAdminQr(obj: any){
+    return this.http.get(`${environment.apiUrl}/api/BankAccount/SetDefaultAdminQr/${obj.sessionUser}/${obj.qrId}`)
+  }
 
   //Bank Related APIs End
 
