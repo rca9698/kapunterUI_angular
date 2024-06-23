@@ -6,7 +6,6 @@ export interface Ibank_details{
     accountNumber: string,
     ifscCode: string,
     upiId: string,
-    upiName: string,
     qrId: bigint,
     qrPath: string,
     documentDetailId: string,
@@ -29,7 +28,6 @@ export class bank_details implements Ibank_details{
     accountNumber: string;
     ifscCode: string;
     upiId: string;
-    upiName: string;
     qrId: bigint;
     qrPath: string;
     documentDetailId: string;
@@ -45,7 +43,7 @@ export class bank_details implements Ibank_details{
 
     constructor(bankAccountDetailID: bigint = 0 as unknown as bigint, userId: BigInt = 0 as unknown as bigint
         , bankName: string = '', accountHolderName: string = '', accountNumber: string = ''
-        , ifscCode: string = '', upiId: string = '', upiName: string=''
+        , ifscCode: string = '', upiId: string = ''
         , qrId: bigint = 0 as unknown as bigint, qrPath: string = ''
         , documentDetailId: string ='', fileExtenstion: string = '', isDefault: string = ''
         , accountDisplayName: string = '', createdBy: string ='', createdDate: string = ''
@@ -58,7 +56,6 @@ export class bank_details implements Ibank_details{
         this.accountNumber = accountNumber;
         this.ifscCode = ifscCode;
         this.upiId = upiId;
-        this.upiName = upiName;
         this.qrId = qrId;
         this.qrPath = qrPath;
         this.documentDetailId = documentDetailId;

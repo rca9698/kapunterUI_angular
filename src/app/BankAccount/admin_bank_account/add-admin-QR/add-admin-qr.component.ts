@@ -44,7 +44,7 @@ export class AddAdminQRComponent {
 
       let formParams = new FormData();
       formParams.append('File', this.file);
-      formParams.append('qrName',  this.add_admin_qr.qrName);
+      formParams.append('userName',  this.add_admin_qr.userName);
       formParams.append('userId',  this.authservice.user.userId.toString());
       formParams.append('sessionUser', this.authservice.user.userId.toString());
  

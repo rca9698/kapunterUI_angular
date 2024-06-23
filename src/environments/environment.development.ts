@@ -8,6 +8,7 @@ export const environment = {
 
     imagePath:{
         sitePath:'http://beta.kapunter.com/assets/Sites/',
-        dashboardImages:'http://beta.kapunter.com/assets/DashboardImages/'
+        dashboardImages:'http://beta.kapunter.com/assets/DashboardImages/',
+        QR:'/assets/QR/'
     }
 };

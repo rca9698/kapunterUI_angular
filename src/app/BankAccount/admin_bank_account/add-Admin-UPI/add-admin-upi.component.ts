@@ -37,8 +37,7 @@ export class AddAdminUPIComponent {
 
       this.add_admin_upi.userId = this.authservice.user.userId;
       this.add_admin_upi.sessionUser = this.authservice.user.userId;
- 
-      this.bankAccountService.Add_Admin_Bank_Account(this.add_admin_upi).subscribe(resp => {
+      this.bankAccountService.add_update_admin_upi(this.add_admin_upi).subscribe(resp => {
         this.returnType = resp;
         if(this.returnType['returnStatus'] == 1){
           this.toasterService.success(this.returnType.returnMessage);

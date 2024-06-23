@@ -24,7 +24,7 @@ export class MakeDefaultModuleComponent {
       
   }
 
-  deleteData(){
+  makedefault(){
     switch(this.makeDefaultType){
       case 'adminbank':
         this.make_admin_bank_account_default();
@@ -58,8 +58,6 @@ export class MakeDefaultModuleComponent {
       this.toastrMessages();
     });
   }
-
-
 
   toastrMessages(){
     this.returnStatus = this.returnType['returnStatus']; 

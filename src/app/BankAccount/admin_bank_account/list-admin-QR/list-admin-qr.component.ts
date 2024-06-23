@@ -4,6 +4,7 @@ import { BankAccountService } from '../../bank-account.service';
 import { AuthService } from 'src/app/auth.service';
 import { DeleteService } from 'src/app/Shared/Modules/delete-module/delete.service';
 import { MakeDefaultService } from 'src/app/Shared/Modules/make-default-module/make-default.service';
+import { environment } from 'src/environments/environment.development';
 
 @Component({
   selector: 'app-list-admin-qr',
@@ -17,7 +18,7 @@ export class ListAdminQRComponent {
 
   constructor(private bankaccountservice:BankAccountService, private authService:AuthService
     , private deleteService: DeleteService, private makedefaultservice: MakeDefaultService) {
-
+      this.qrPath = environment.imagePath.QR;
   }
   
   ngOnInit(): void {

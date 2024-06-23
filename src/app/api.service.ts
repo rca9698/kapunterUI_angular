@@ -286,7 +286,6 @@ export class apiService {
   }
 
   AddUpdateAdminBankAccount(obj: any){
-    console.log(obj);
     return this.http.post(`${environment.apiUrl}/api/BankAccount/AddUpdateAdminBankAccount`, obj);
   }
 
@@ -303,6 +302,7 @@ export class apiService {
   }
 
   AddUpdateAdminUpiAccount(obj: any){
+    console.log(obj);
     return this.http.post(`${environment.apiUrl}/api/BankAccount/AddUpdateAdminUpiAccount`,obj)
   }
 
@@ -319,7 +319,7 @@ export class apiService {
   }
 
   AddAdminQRCode(obj: any){
-    return this.http.post(`${environment.apiUrl}/api/BankAccount/AddUpdateAdminQRCode`,obj)
+    return this.http.post(`${environment.apiUrl}/api/BankAccount/AddUpdateAdminQRDetail`,obj)
   }
 
   SetDefaultAdminQr(obj: any){

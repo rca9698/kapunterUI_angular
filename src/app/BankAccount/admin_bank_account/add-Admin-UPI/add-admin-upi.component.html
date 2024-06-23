@@ -16,7 +16,7 @@
     <form (ngSubmit)="AddAdminUpi()" [formGroup]="addAdminUpiForm" autocomplete="off">
         <div class="mb-3 form-group">
             <label for="UpiName" class="form-label">UPI Name*</label>
-            <input class="form-control" type="text" formControlName="UpiName" placeholder="Upi Name" autocomplete="off" [(ngModel)]="add_admin_upi.upiName">
+            <input class="form-control" type="text" formControlName="UpiName" placeholder="Upi Name" autocomplete="off" [(ngModel)]="add_admin_upi.userName">
             <div class="text-danger" *ngIf="addAdminUpiForm.get('UpiName')?.invalid && (submitted || addAdminUpiForm.get('UpiName')?.touched || addAdminUpiForm.get('UpiName')?.dirty)">
             <span *ngIf="addAdminUpiForm.get('UpiName')?.errors?.['required']">UPI Name is required </span> </div>
         </div>

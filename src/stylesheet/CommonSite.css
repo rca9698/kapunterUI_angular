@@ -39,6 +39,13 @@ i{
     align-items: center;
 }
 
+.custom_card-header{
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+    padding: 1rem;
+}
+
 /* .dashboard-nav {
     background-color: #070F1B !important;
 } */

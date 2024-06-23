@@ -10,7 +10,7 @@
         <div class="modal-body">
             <div class="form-group">
                 <label>Site Name</label>
-                <input formControlName="siteName" [(ngModel)]="add_admin_qr.qrName" type="text" class="form-control" placeholder="QR Name" autocomplete="off">
+                <input formControlName="QRName" [(ngModel)]="add_admin_qr.userName" type="text" class="form-control" placeholder="QR Name" autocomplete="off">
                 <div class="text-danger" *ngIf="addAdminQrForm.get('QRName')?.invalid && (submitted || addAdminQrForm.get('QRName')?.touched || addAdminQrForm.get('QRName')?.dirty)">
                  <span *ngIf="addAdminQrForm.get('QRName')?.errors?.['required']"> QR Name is required </span> </div>
             </div>
