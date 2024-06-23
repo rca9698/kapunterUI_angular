@@ -50,7 +50,6 @@ $(document).on('click', '.CopyToClipboard', function () {
         copyText = $(this).attr('copydata');
  
     navigator.clipboard.writeText(copyText);
-    toastr.success('Copied the text:' + copyText);
 });
 
 

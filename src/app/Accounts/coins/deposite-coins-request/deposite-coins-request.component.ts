@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { CoinsService } from '../coins.service';
 import { ToastrService } from 'src/app/toastr/toastr.service';
+import { AuthService } from 'src/app/auth.service';
+import { Ibank_details, bank_details } from 'src/app/Shared/Modals/BankAccount/bank_details';
 
 @Component({
   selector: 'app-deposite-coins-request',
@@ -16,6 +18,9 @@ export class DepositeCoinsRequestComponent {
    submitted : boolean = false;
    file: any = null;
    returnType: any;
+   private readonly _sessionUser: bigint;
+   adminBankDetail: Ibank_details = new bank_details();
+   qrPath: string | undefined;
    
    QRCodeDetail:boolean = false;
    BankTrDetail:boolean = false;
@@ -29,11 +34,12 @@ export class DepositeCoinsRequestComponent {
 
   constructor(public bsModalRef:BsModalRef, private formBuilder:FormBuilder, 
     private router:Router, private coinsservice: CoinsService, 
-    private toasterService: ToastrService) {
+    private toasterService: ToastrService, private authservice: AuthService) {
       this.depositeCoinRequestFrom = this.formBuilder.group({
         coins: ['', [Validators.required]]
        },
      )
+     this._sessionUser = this.authservice.user.userId;
   }
 
   processFile(imageInput: any) {
@@ -54,6 +60,8 @@ export class DepositeCoinsRequestComponent {
     
     this.depositecoinsdetails = false;
     this.depositecoinsproofupload = true;
+
+    this.load_Admin_bankDetail();
   }
 
   DepositCoinsRequest(){
@@ -64,10 +72,18 @@ export class DepositeCoinsRequestComponent {
     let formParams = new FormData();
     formParams.append('File', this.file);
     formParams.append('coins', this.depositeCoinRequestFrom.value["coins"]);
-    formParams.append('userid', '1');
-    formParams.append('sessionuser', '1');
+    formParams.append('userid', this._sessionUser.toString());
+    formParams.append('sessionuser', this._sessionUser.toString());
 
-    this.coinsservice.deposite_coin_request_insert(formParams);
+    this.coinsservice.deposite_coin_request_insert(formParams).subscribe({
+      next:(response) =>{
+       this.returnType = response;
+       
+      },
+      error:error => {
+        console.log(error);
+      }
+    });
   }
 
 
@@ -85,6 +101,18 @@ export class DepositeCoinsRequestComponent {
     else if(type == 'PhonePeDetail'){
       this.PhonePeDetail = true;
     }
+  }
+
+  load_Admin_bankDetail(){
+    this.coinsservice.get_bank_UPI_details().subscribe({
+      next:(response) => {
+        this.returnType = response;
+        this.adminBankDetail = this.returnType['returnVal'];
+      },
+      error: error =>{
+        console.log(error);
+      }
+    })
   }
   
 }

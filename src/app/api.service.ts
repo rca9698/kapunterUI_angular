@@ -23,6 +23,7 @@ export class apiService {
    
  
   WithdrawCoinRequestInsert(obj: any){
+    console.log(obj);
     return this.http.post(`${environment.apiUrl}/api/Coin/WithDrawCoinsRequest`, obj);
   }
 
@@ -306,8 +307,12 @@ export class apiService {
     return this.http.post(`${environment.apiUrl}/api/BankAccount/AddUpdateAdminUpiAccount`,obj)
   }
 
-  DeleteAdminUpiAccount(sessionUser: bigint, upiId: string){
+  DeleteAdminUpiAccount(sessionUser: bigint, upiId: bigint){
     return this.http.get(`${environment.apiUrl}/api/BankAccount/DeleteAdminUpiAccount/${sessionUser}/${upiId}`)
+  }
+
+  DeleteAdminqrAccount(sessionUser: bigint, qrId: bigint){
+    return this.http.get(`${environment.apiUrl}/api/BankAccount/DeleteAdminQrAccount/${sessionUser}/${qrId}`)
   }
 
   SetDefaultAdminUpiAccount(obj: any){

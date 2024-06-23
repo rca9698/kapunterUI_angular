@@ -84,4 +84,17 @@ export class CoinsService {
   set_default_bank_account(sessionUser: bigint, bankDetailID: bigint){
     return this.apiservice.SetDefaultBankAccount(sessionUser, bankDetailID);
   }
+
+  get_bank_accounts(obj: any){
+    return this.apiservice.GetBankAccounts(obj);
+  }
+
+  get_bank_account_by_id(bankId: bigint){
+    return this.apiservice.GetBankAccountById(bankId);
+  }
+
+  get_bank_UPI_details(){
+    return this.apiservice.GetBankUPIDetails();
+  }
+
 }

@@ -6,6 +6,8 @@ import { ToastrService } from 'src/app/toastr/toastr.service';
 import { CoinsService } from '../coins.service';
 import { Ibank_details, bank_details } from 'src/app/Shared/Modals/BankAccount/bank_details';
 import { Iwithdrawcoinrequestmodal, withdrawcoinrequestmodal } from 'src/app/Shared/Modals/Coins/withdraw_coin_request_modal';
+import { AuthService } from 'src/app/auth.service';
+import { GetUserBankAccount } from 'src/app/Shared/Modals/BankAccount/get_user_bank_account'
 
 @Component({
   selector: 'app-withdraw-coins-request',
@@ -26,12 +28,11 @@ export class WithdrawCoinsRequestComponent {
 
   constructor(public bsModalRef:BsModalRef, private formBuilder:FormBuilder, 
     private router:Router, private coinsservice: CoinsService, 
-    private toasterService: ToastrService) {
-      this._sessionUser = 1 as unknown as bigint;
-      this.banks= [
-        new bank_details(1 as unknown as bigint, 1 as unknown as bigint, 'Bank 1'),
-        new bank_details(2 as unknown as bigint, 1 as unknown as bigint, 'Bank 2')
-      ];
+    private toasterService: ToastrService, private authservice: AuthService) {
+      this._sessionUser = authservice.user.userId;
+      const bankobj = new GetUserBankAccount(this.authservice.user.userId, this.authservice.user.userId
+        , 1);
+      this.GetBankAccounts(bankobj);
       this.withdrawCoinRequestFrom = this.formBuilder.group({
         coins: ['', [Validators.required]],
         bankDropdown: ['', [Validators.required]]
@@ -42,18 +43,60 @@ export class WithdrawCoinsRequestComponent {
 
   withdrawCoinRequest(){ 
     this.submitted = true;
-      if(this.withdrawCoinRequestFrom.invalid) {
-        return;
+
+    if(this.withdrawCoinRequestFrom.invalid) {
+      return;
+    }
+    
+    this.withdrawcoinrequestmodalobj.coins = this.withdrawCoinRequestFrom.value["coins"];
+    this.withdrawcoinrequestmodalobj.bankId = this.withdrawCoinRequestFrom.value["bankDropdown"];
+    this.withdrawcoinrequestmodalobj.sessionUser = this.authservice.user.userId;
+    this.withdrawcoinrequestmodalobj.userId = this.authservice.user.userId;
+    this.coinsservice.withdraw_coin_request_insert(this.withdrawcoinrequestmodalobj).subscribe({
+      next:(response) => {
+         
+      },
+      error:error=>{
+        console.log(error);
       }
-      
-      this.withdrawcoinrequestmodalobj.coins = this.withdrawCoinRequestFrom.value["coins"];
-      this.withdrawcoinrequestmodalobj.bankId = this.withdrawCoinRequestFrom.value["bankDropdown"];
-      
-      this.coinsservice.withdraw_coin_request_insert(this.withdrawcoinrequestmodalobj);
+    });
   }
 
   ChangeWithDrawBank(event: any){
-    this.coinsservice.set_default_bank_account(1 as unknown as bigint, event.target.value as unknown as bigint);
+    const bankId = event.target.value as unknown as bigint;
+    this.coinsservice.set_default_bank_account
+    (this._sessionUser, bankId).subscribe({
+      next:(response) => {
+        this.GetBankAccountsById(bankId);
+      },
+      error:error=>{
+        console.log(error);
+      }
+    });
+  }
+
+  GetBankAccounts(obj: any){
+    this.coinsservice.get_bank_accounts(obj).subscribe({
+      next:(response) =>{
+       this.returnType = response;
+       this.banks = this.returnType['returnList'];
+      },
+      error:error => {
+        console.log(error);
+      }
+    });
+  }
+
+  GetBankAccountsById(bankId: bigint){
+    this.coinsservice.get_bank_account_by_id(bankId).subscribe({
+      next:(response) =>{
+       this.returnType = response;
+       this.bankdetails = this.returnType['returnVal'];
+      },
+      error:error => {
+        console.log(error);
+      }
+    });
   }
 
 }

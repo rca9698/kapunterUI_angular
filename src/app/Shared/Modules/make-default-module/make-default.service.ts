@@ -10,15 +10,15 @@ export class MakeDefaultService {
   bsmodalRef?: BsModalRef;
   constructor(private bsModalService:BsModalService, private apiservice: apiService) { }
 
-OpenMakeDefaultPopup(deleteType: string, title: string, obj: any){
+OpenMakeDefaultPopup(defaultType: string, title: string, obj: any){
   const initalstate: ModalOptions = {
     initialState:{
-      deleteType,
+      defaultType,
       title,
       obj 
     }
   }
-  console.log(deleteType);
+  console.log(defaultType);
   this.bsmodalRef?.hide();
   this.bsmodalRef = this.bsModalService.show(MakeDefaultModuleComponent,initalstate);
 }

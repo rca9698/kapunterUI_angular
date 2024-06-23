@@ -24,7 +24,8 @@ import { ListAdminQRComponent } from './admin_bank_account/list-admin-QR/list-ad
     AddAdminUPIComponent,
     ListAdminBankAccountComponent,
     ListAdminQRComponent,
-    ListAdminUPIComponent
+    ListAdminUPIComponent,
+    ListUserBankAccountComponent
   ],
   imports: [
     CommonModule,

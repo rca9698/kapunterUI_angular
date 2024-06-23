@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { apiService } from 'src/app/api.service';
+import { AuthService } from 'src/app/auth.service';
 import { ToastrService } from 'src/app/toastr/toastr.service';
 
 @Component({
@@ -20,7 +21,7 @@ export class MakeDefaultModuleComponent {
 
   constructor(public bsModalRef:BsModalRef, 
     private router:Router, private toasterService: ToastrService
-    , private apiservices:apiService){
+    , private apiservices:apiService, private authService: AuthService){
       
   }
 
@@ -34,6 +35,9 @@ export class MakeDefaultModuleComponent {
         break;
       case 'adminqr':
         this.make_admin_upi_default();
+        break;
+      case 'userbank':
+        this.make_user_bank_account_default();
         break;
     }
   }
@@ -54,6 +58,13 @@ export class MakeDefaultModuleComponent {
 
   make_admin_qr_default(){
     this.apiservices.SetDefaultAdminQr(this.obj).subscribe(resp=>{
+      this.returnType = resp;
+      this.toastrMessages();
+    });
+  }
+
+  make_user_bank_account_default(){
+    this.apiservices.SetDefaultBankAccount(this.authService.user.userId, this.obj.bankAccountDetailID).subscribe(resp=>{
       this.returnType = resp;
       this.toastrMessages();
     });

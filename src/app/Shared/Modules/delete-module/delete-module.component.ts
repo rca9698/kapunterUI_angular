@@ -4,6 +4,9 @@ import { BsModalRef } from 'ngx-bootstrap/modal';
 import { SitesService } from 'src/app/Sites/sites.service';
 import { apiService } from 'src/app/api.service';
 import { ToastrService } from 'src/app/toastr/toastr.service';
+import { DeleteAdminBankAccount } from '../../Modals/BankAccount/delete_admin_bank_account';
+import { AuthService } from 'src/app/auth.service';
+import { DeleteBankAccount } from '../../Modals/BankAccount/delete_bank_account';
 
 @Component({
   selector: 'app-delete-module',
@@ -20,7 +23,8 @@ export class DeleteModuleComponent {
   returnStatus: any;
 
   constructor(public bsModalRef:BsModalRef, 
-    private router:Router, private toasterService: ToastrService, private apiservices:apiService){
+    private router:Router, private toasterService: ToastrService, private apiservices:apiService
+  , private authService: AuthService){
       
   }
 
@@ -42,6 +46,9 @@ export class DeleteModuleComponent {
         break;
       case 'adminqr':
         this.AdminQRDelete();
+        break;
+      case 'userbank':
+        this.BankAccountDelete();
         break;
     }
   }
@@ -82,33 +89,39 @@ export class DeleteModuleComponent {
   }
 
   BankAccountDelete(){
-    this.apiservices.DeleteBankAccount(this.obj).subscribe(resp=>{
+    const deleteObj = new DeleteBankAccount();
+    deleteObj.bankId = this.obj.bankAccountDetailID;
+    deleteObj.userId = this.authService.user.userId;
+    deleteObj.sessionUser = this.authService.user.userId;
+    this.apiservices.DeleteBankAccount(deleteObj).subscribe(resp=>{
       this.returnType = resp;
       this.toastrMessages();
     });
   }
 
   AdminBankAccountDelete(){
-    this.apiservices.DeleteAdminBankAccount(this.obj).subscribe(resp=>{
+    const deleteObj = new DeleteAdminBankAccount();
+    deleteObj.bankId = this.obj.bankAccountDetailID;
+    deleteObj.sessionUser = this.authService.user.userId;
+    this.apiservices.DeleteAdminBankAccount(deleteObj).subscribe(resp=>{
       this.returnType = resp;
       this.toastrMessages();
     });
   }
 
   AdminUpiDelete(){
-    this.apiservices.DeleteAdminUpiAccount(0 as unknown as bigint,'').subscribe(resp=>{
+    this.apiservices.DeleteAdminUpiAccount(this.authService.user.userId, this.obj.bankAccountDetailID).subscribe(resp=>{
       this.returnType = resp;
       this.toastrMessages();
     });
   }
 
   AdminQRDelete(){
-    this.apiservices.DeleteAdminUpiAccount(0 as unknown as bigint,'').subscribe(resp=>{
+    this.apiservices.DeleteAdminqrAccount(this.authService.user.userId, this.obj.bankAccountDetailID).subscribe(resp=>{
       this.returnType = resp;
       this.toastrMessages();
     });
   }
-
   
 
   toastrMessages(){

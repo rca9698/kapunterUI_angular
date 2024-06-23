@@ -35,7 +35,7 @@
         <span type="button" aria-expanded="true" data-toggle="collapse" 
         [attr.data-target]="'#collapse_' + bank_detail.bankAccountDetailID"
         [attr.aria-controls]="'collapse_'+ bank_detail.bankAccountDetailID">
-            <p>{{ bank_detail.bankName }} <i class="bi bi-arrow-down-up"> </i></p>
+            <p>{{ bank_detail.accountDisplayName }} <i class="bi bi-arrow-down-up"> </i></p>
         </span>
 
         <p (click)="Delete_Admin_QR(bank_detail)">

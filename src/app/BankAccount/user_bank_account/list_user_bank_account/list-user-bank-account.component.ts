@@ -25,13 +25,52 @@ export class ListUserBankAccountComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getbankaccount.userId = this.authService.user.userId;
-    this.getbankaccount.sessionUser = this.authService.user.userId;
-    this.list_User_Bank_Accounts(this.getbankaccount);
+    this.list_User_Bank_Accounts();
   }
 
-  list_User_Bank_Accounts(obj: any){
-    this.bankaccount.list_User_Bank_Accounts(obj).subscribe({
+  list_User_Bank_Accounts(){
+
+    const bank_details = new GetUserBankAccount(); 
+    bank_details.isActive = 1;
+    bank_details.sessionUser = this.authService.user.userId;
+    bank_details.userId = this.authService.user.userId;
+
+    this.bankaccount.list_User_Bank_Accounts(bank_details).subscribe({
+      next:(response) =>{
+       this.returnType = response;
+       this.Ibank_details = this.returnType['returnList'];
+      },
+      error:error => {
+        console.log(error);
+      }
+    });
+  }
+
+  list_User__InActive_Bank_Accounts(){
+
+    const bank_details = new GetUserBankAccount(); 
+    bank_details.isActive = 0;
+    bank_details.sessionUser = this.authService.user.userId;
+    bank_details.userId = this.authService.user.userId;
+
+    this.bankaccount.list_User_Bank_Accounts(bank_details).subscribe({
+      next:(response) =>{
+       this.returnType = response;
+       this.Ibank_details = this.returnType['returnList'];
+      },
+      error:error => {
+        console.log(error);
+      }
+    });
+  }
+
+  list_User__All_Bank_Accounts(){
+    const bank_details = new GetUserBankAccount(); 
+    bank_details.isActive = 2;
+    bank_details.sessionUser = this.authService.user.userId;
+    bank_details.userId = this.authService.user.userId;
+
+    this.bankaccount.list_User_Bank_Accounts(bank_details).subscribe({
       next:(response) =>{
        this.returnType = response;
        this.Ibank_details = this.returnType['returnList'];
