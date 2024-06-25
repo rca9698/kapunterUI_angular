@@ -8,13 +8,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { DepositeCoinsToIdsComponent } from './deposite-coins-to-ids/deposite-coins-to-ids.component';
+import { WithdrawCoinsFromIdsComponent } from './withdraw-coins-from-ids/withdraw-coins-from-ids.component';
 
 
 
 @NgModule({
   declarations: [ 
     ListUserIdComponent,
-    CreateIdsComponent
+    CreateIdsComponent,
+    DepositeCoinsToIdsComponent,
+    WithdrawCoinsFromIdsComponent
   ],
   imports: [
     CommonModule,

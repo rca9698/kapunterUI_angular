@@ -4,6 +4,7 @@ import { SitesService } from 'src/app/Sites/sites.service';
 import { AuthService } from 'src/app/auth.service';
 import { ToastrService } from 'src/app/toastr/toastr.service';
 import { environment } from 'src/environments/environment.development';
+import { UserIdsService } from '../user-ids.service';
 
 @Component({
   selector: 'app-list-user-ids',
@@ -18,7 +19,7 @@ export class ListUserIdComponent {
   returnType: any; 
   private readonly _sessionUser: any; 
   
-  constructor(private siteService:SitesService, 
+  constructor(private siteService:SitesService, private useridsservice: UserIdsService,
     private toasterService: ToastrService, private authservice: AuthService){
     this.sitePath = environment.imagePath.sitePath;
     this._sessionUser = this.authservice.user.userId;
@@ -43,12 +44,12 @@ export class ListUserIdComponent {
     })
   }
 
-  DepositeToAccountRequestCoinsPopup(){
-
+  DepositeCoinsToIDPopup(obj: any){
+    this.useridsservice.OpenDepositeCoinsToIDPopup(obj);
   }
 
-  WithdrawFromAccountRequestCoinsPopup(){
-
+  WithdrawCoinsFromIDPopup(obj: any){
+    this.useridsservice.OpenWithdrawCoinsFromIdPopup(obj);
   }
 
 }
