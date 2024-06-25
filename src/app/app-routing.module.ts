@@ -23,6 +23,7 @@ const routes: Routes = [
   {path:"setting", loadChildren: () => import('./settings/settings.module').then(module => module.SettingsModule), canActivate: [IsAuthenticatedGuard] },
   {path:"notification", loadChildren: () => import('./notification/notification.module').then(module=>module.NotificationModule), canActivate: [IsAuthenticatedGuard] },
   {path:"ids", loadChildren: () => import('./ids/ids.module').then(module=>module.IdsModule), canActivate: [IsAuthenticatedGuard] },
+  {path:"userids", loadChildren: () => import('./userids/user-ids.module').then(module=>module.UserIdsModule), canActivate: [IsAuthenticatedGuard] },
 
   {path:"not-found", component:NotFoundComponent},
   {path:"**",component:ValidationMessageComponent}

@@ -3,6 +3,7 @@ import { login } from './Shared/Modals/login';
 import { apiService } from './api.service';
 import { BehaviorSubject, tap } from 'rxjs';
 import { ITokenusermodal, Iusermodal, usermodal } from './Shared/Modals/user-modal';
+import { Iusers, users } from './Shared/Modals/users';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,8 @@ export class AuthService {
   isLoggenIn = this._isLoggedIn.asObservable();
   private readonly TOKEN_NAME = 'bearer_token';
   user: Iusermodal = new usermodal();
+  userDetailQuery: {} | undefined;
+  userdetail: Iusers = new users();
 
   get token() {
     let token = localStorage.getItem(this.TOKEN_NAME);
@@ -49,4 +52,22 @@ export class AuthService {
       return new usermodal(userDetailobj['userid'], userDetailobj['otp'], userDetailobj['role']) ;
     }
   }
+
+  public hasRole(role: string) : boolean {
+    return this.user?.role.includes(role);
+  }
+
+  getUserDetails(){
+
+    this.userDetailQuery = {
+      SessionUser: this.user.userId,
+      UserId: this.user.userId
+    };
+    
+    return this.apiservice.GetUserById(this.userDetailQuery).subscribe(resp => {
+      this.returnType = resp;
+      this.userdetail = this.returnType['returnVal'];
+    });
+  }
+
 }

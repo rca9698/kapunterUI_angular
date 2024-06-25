@@ -1,0 +1,22 @@
+
+<div class="modal-content siteColor">
+    <form (ngSubmit)="AddUserId()" [formGroup]="AddIdsFrom">
+        <div class="modal-header">
+            <p class="modal-title">CREATE ID</p>
+            <div type="button" class="close" (click)="bsModalRef.hide()">
+                <i class="bi bi-x-circle-fill"></i>
+            </div>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label>User Name*</label>
+                <input formControlName="username" [(ngModel)]="addIDRequest.userName" type="text" class="form-control" placeholder="User Name" autocomplete="off">
+                <div class="text-danger" *ngIf="AddIdsFrom.get('username')?.invalid && (submitted || AddIdsFrom.get('username')?.touched || AddIdsFrom.get('username')?.dirty)">
+                 <span *ngIf="AddIdsFrom.get('username')?.errors?.['required']"> User Name is required </span> </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn siteBtnbackground col-12">Create ID</button>
+        </div>
+    </form>
+</div>

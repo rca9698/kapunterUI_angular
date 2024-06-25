@@ -34,7 +34,7 @@ export class DepositeCoinsRequestComponent {
 
   constructor(public bsModalRef:BsModalRef, private formBuilder:FormBuilder, 
     private router:Router, private coinsservice: CoinsService, 
-    private toasterService: ToastrService, private authservice: AuthService) {
+    private toasterService: ToastrService, public authservice: AuthService) {
       this.depositeCoinRequestFrom = this.formBuilder.group({
         coins: ['', [Validators.required]]
        },
@@ -78,7 +78,7 @@ export class DepositeCoinsRequestComponent {
     this.coinsservice.deposite_coin_request_insert(formParams).subscribe({
       next:(response) =>{
        this.returnType = response;
-       
+       this.bsModalRef.hide();
       },
       error:error => {
         console.log(error);

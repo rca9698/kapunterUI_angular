@@ -1,6 +1,59 @@
 
 <div class="card mt-4 footer-nav footernavbar sitebackground cursorPointer">
-    <div class="row col-12">
+    <div class="row col-12" *ngIf="this.authservice.hasRole('Admin')">
+        <div class="col-3 grid-margin stretch-card" >
+            <a href="#">
+                <div class="card sitebackground">
+                    <div class="card-body text-center">
+                        <div class="row">
+                            <i class="bi bi-house-door"></i>
+                        </div>
+                        <h6 class="text-muted font-weight-normal">
+                            <p class="text-uppercase"> Home </p>
+                        </h6>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-3 grid-margin stretch-card" routerLink="/site/user-list-sites">
+            <div class="card sitebackground">
+                <div class="card-body text-center">
+                    <div class="row">
+                        <i class="bi bi-plus-circle"></i>
+                    </div>
+                    <h6 class="text-muted font-weight-normal">
+                        <p class="text-uppercase"> Create </p>
+                    </h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-3 grid-margin stretch-card" routerLink="/userids/list-user-ids">
+            <div class="card sitebackground">
+                <div class="card-body text-center">
+                    <div class="row">
+                        <i class="bi bi-app"></i>
+                    </div>
+                    <h6 class="text-muted font-weight-normal">
+                        <p class="text-uppercase"> IDs </p>
+                    </h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-3 grid-margin stretch-card" routerLink="/passbook/passbook-view-panel">
+            <div class="card sitebackground">
+                <div class="card-body text-center">
+                    <div class="row">
+                        <i class="bi bi-pass"></i>
+                    </div>
+                    <h6 class="text-muted font-weight-normal">
+                        <p class="text-uppercase"> Passbook </p>
+                    </h6>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row col-12" *ngIf="!this.authservice.hasRole('Admin')">
         <div class="col-3 grid-margin stretch-card" >
             <a href="#">
                 <div class="card sitebackground">
@@ -19,37 +72,38 @@
             <div class="card sitebackground">
                 <div class="card-body text-center">
                     <div class="row">
-                        <i class="bi bi-plus-circle"></i>
+                        <i class="bi bi-cart-plus-fill"></i>
                     </div>
                     <h6 class="text-muted font-weight-normal">
-                        <p class="text-uppercase"> Create </p>
+                        <p class="text-uppercase"> Create Site </p>
                     </h6>
                 </div>
             </div>
         </div>
-        <div class="col-3 grid-margin stretch-card" (click)="getSiteList()">
+        <div class="col-3 grid-margin stretch-card" routerLink="/site/list-sites">
             <div class="card sitebackground">
                 <div class="card-body text-center">
                     <div class="row">
                         <i class="bi bi-app"></i>
                     </div>
                     <h6 class="text-muted font-weight-normal">
-                        <p class="text-uppercase"> IDs </p>
+                        <p class="text-uppercase"> Sites </p>
                     </h6>
                 </div>
             </div>
         </div>
-        <div class="col-3 grid-margin stretch-card">
+        <div class="col-3 grid-margin stretch-card" routerLink="/account/user_list">
             <div class="card sitebackground">
                 <div class="card-body text-center">
                     <div class="row">
                         <i class="bi bi-pass"></i>
                     </div>
                     <h6 class="text-muted font-weight-normal">
-                        <p class="text-uppercase"> Passbook </p>
+                        <p class="text-uppercase"> Users </p>
                     </h6>
                 </div>
             </div>
         </div>
     </div>
+
 </div>

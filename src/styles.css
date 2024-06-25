@@ -756,6 +756,7 @@ body {
 .tabSelection {
     height: 35px;
     border-radius: 0px 0px 10px 10px;
+    cursor: pointer;
 }
 
 .dashboard-nav-list a, .dashboard-nav-list span {

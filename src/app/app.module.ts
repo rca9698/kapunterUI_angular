@@ -26,6 +26,7 @@ import { ListIdsComponent } from './ids/list-ids/list-ids.component';
 import { RejectedIdRequestsComponent } from './ids/rejected-id-requests/rejected-id-requests.component';
 import { DeleteModuleComponent } from './Shared/Modules/delete-module/delete-module.component';
 import { MakeDefaultModuleComponent } from './Shared/Modules/make-default-module/make-default-module.component';
+import { UserIdsModule } from './userids/user-ids.module';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { MakeDefaultModuleComponent } from './Shared/Modules/make-default-module
     BrowserAnimationsModule,
     AccountsModule,
     SitesModule,
+    UserIdsModule,
     FormsModule
   ],
   providers: [AuthInterceptorProvider],

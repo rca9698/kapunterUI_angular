@@ -118,3 +118,11 @@ $(document).on('click','.pagination a', function(){
         $(this).addClass('active');
     }
 });
+
+
+$(document).on('click', '.tabSelection', function(){
+    console.log('clciked');
+    $('.tabSelection').removeClass('active');
+    $(this).addClass('active');
+});
+ 

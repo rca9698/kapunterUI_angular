@@ -23,12 +23,11 @@ export class WithdrawCoinsRequestComponent {
    file: any = null;
    returnType: any;
    bankdetails: Ibank_details;
-   remainingCoins: number = 0;
    withdrawcoinrequestmodalobj: Iwithdrawcoinrequestmodal = new withdrawcoinrequestmodal();
 
   constructor(public bsModalRef:BsModalRef, private formBuilder:FormBuilder, 
     private router:Router, private coinsservice: CoinsService, 
-    private toasterService: ToastrService, private authservice: AuthService) {
+    private toasterService: ToastrService, public authservice: AuthService) {
       this._sessionUser = authservice.user.userId;
       const bankobj = new GetUserBankAccount(this.authservice.user.userId, this.authservice.user.userId
         , 1);
@@ -54,7 +53,8 @@ export class WithdrawCoinsRequestComponent {
     this.withdrawcoinrequestmodalobj.userId = this.authservice.user.userId;
     this.coinsservice.withdraw_coin_request_insert(this.withdrawcoinrequestmodalobj).subscribe({
       next:(response) => {
-         
+        this.returnType = response;
+        this.bsModalRef.hide();
       },
       error:error=>{
         console.log(error);

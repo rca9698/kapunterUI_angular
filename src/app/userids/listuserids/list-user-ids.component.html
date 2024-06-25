@@ -1,0 +1,48 @@
+<div class="card rounded-3 siteColor" style="margin: 0.5rem;" *ngFor="let site of sites">
+    <div class="card-body">
+        <div class="row Col-12">
+            <div class="col-9">
+                <div class="row col-12">
+                    <div class="col-3 text-center">
+                        <img class="siteImageSize rounded-circle"  src="{{sitePath}}{{site.documentDetailId}}.{{site.fileExtenstion}}" />
+                    </div>
+                    <div class="col-9 align-self-center">
+                        <p class="text-uppercase">{{ site.siteName }}</p>
+                        <p class="siteURL">{{ site.siteURL }}</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-3 d-grid gap-2 mx-auto" style="padding:0px">
+                <div class="col-12 row text-center">
+                    <div class="col-4">
+                        <div class="rounded-circle userlistingCircle bgclrGreen contentAlignType" (click)="DepositeToAccountRequestCoinsPopup()">
+                            D
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="rounded-circle userlistingCircle bgclrred contentAlignType" (click)="WithdrawFromAccountRequestCoinsPopup()">
+                            W
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="dropdown">
+                            <div class="rounded-circle userlistingCircle contentAlignType" data-bs-toggle="dropdown" aria-expanded="false">
+                                ...
+                            </div>
+                            <ul class="dropdown-menu" aria-labelledby="">
+                                <li><a class="dropdown-item" href="#" data-toggle="modal" data-target="#DepositeToAccountRequestModal" accountId="@siteDetail.AccountId" siteid="@siteDetail.SiteId" id="DepositeToAccountRequestCoinsBtn">Deposit</a></li>
+                                <li><a class="dropdown-item" href="#" data-toggle="modal" data-target="#WithDrawToAccountRequestModal" accountId="@siteDetail.AccountId" siteid="@siteDetail.SiteId" id="withdrawFromAccountRequestCoinsBtn">Withdraw</a></li>
+                                <li><a class="dropdown-item" href="/Passbook/Index?viewType=account_@siteDetail.SiteId">View Transaction</a></li>
+                                <li><a class="dropdown-item" href="#" data-toggle="modal" data-target="#ChangeIDPasswordRequestModal" accountId="@siteDetail.AccountId" siteid="@siteDetail.SiteId" id="ChangeIDPasswordRequestBtn">Change Password</a></li>
+                                <li><a class="dropdown-item" href="#" data-toggle="modal" data-target="#CloseIDRequestModal" accountId="@siteDetail.AccountId" siteid="@siteDetail.SiteId" id="CloseIDRequestBtn">Close ID</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+
+        </div>
+    </div>
+</div>

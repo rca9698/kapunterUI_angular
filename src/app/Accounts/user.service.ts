@@ -18,13 +18,4 @@ export class UserService implements OnInit {
    userlist(userQuery:any) {
     return this.apiservice.GetUsers(userQuery);
   }
-
-  userlistDetailById(userById: any) {
-    return this.apiservice.GetUserById(userById).subscribe(resp => {
-      this.returnType = resp;
-      this.userdetail = this.returnType['returnVal'];
-      this.userdetail!.coins = '10';
-    });;
-  }
-
 }

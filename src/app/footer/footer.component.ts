@@ -3,6 +3,7 @@ import { SitesService } from '../Sites/sites.service';
 import { ISiteDetailModal, SiteDetailModal } from '../Shared/Modals/site-detail-modal';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment.development';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-footer',
@@ -11,7 +12,8 @@ import { environment } from 'src/environments/environment.development';
 })
 export class FooterComponent {
   site:ISiteDetailModal = new SiteDetailModal();
-  constructor(private siteService: SitesService, private router: Router){
+  constructor(private siteService: SitesService, private router: Router
+    , public authservice: AuthService){
   }
 
   RedirectToHome(){
@@ -21,8 +23,9 @@ export class FooterComponent {
   AddSitesPopup(){
     this.siteService.OpenAddSitePopup(false,this.site);
   }
-
-  getSiteList(){
-    this.router.navigate(['/site/list-sites']);
+  
+  createId(){
+    this.siteService.OpenAddSitePopup(false,this.site);
   }
+
 }

@@ -26,12 +26,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.userDetailQuery = {
-      SessionUser: this._sessionUser,
-      UserId: this._sessionUser
-    };
-    
-    this.userservice.userlistDetailById(this.userDetailQuery);
+    this.authService.getUserDetails();
   }
 
   AddSitesPopup(){
@@ -40,10 +35,6 @@ export class AppComponent implements OnInit {
   
   OpenAddImagePopup(){
     this.dashboardService.OpenAddImagePopup('Add Image');
-  }
-
-  hasRole(role: string) : boolean {
-    return this.authService.user?.role.includes(role);
   }
 
   loginPopup() {

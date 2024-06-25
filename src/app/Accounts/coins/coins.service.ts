@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BsModalRef, BsModalService, ModalOptions } from 'ngx-bootstrap/modal';
-import { DepositeCoinsByUserIdComponent } from './deposite_coins_by_user_id/deposite-coins-by-user-id.component';
-import { WithdrawCoinsUserIdComponent } from './withdraw_coins_user_id/withdraw-coins-user-id.component';
+import { DepositeCoinsByUserIdComponent } from '../../userids/deposite_coins_by_user_id/deposite-coins-by-user-id.component';
+import { WithdrawCoinsUserIdComponent } from '../../userids/withdraw_coins_user_id/withdraw-coins-user-id.component';
 import { environment } from 'src/environments/environment.development';
 import { Ideposit_withdraw_coins_request } from 'src/app/Shared/Modals/Coins/deposit_withdraw_coins_request';
 import { WithdrawCoinsRequestComponent } from './withdraw-coins-request/withdraw-coins-request.component';

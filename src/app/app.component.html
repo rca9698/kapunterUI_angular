@@ -32,7 +32,7 @@
                       </div>
 
                     <nav class="dashboard-nav-list" style="font-size: 10px;font-weight: 900;" 
-                    *ngIf="!hasRole('Admin')">
+                    *ngIf="!this.authService.hasRole('Admin')">
                     <a href="#" class="dashboard-nav-item ">
                         <i class="bi bi-house"></i> dashboard
                      </a>
@@ -98,7 +98,7 @@
                             <i class="bi bi-people"></i> Users
                         </span>
                         <div class='dashboard-nav-dropdown-menu'>
-                            <a  routerLink="/account/user_list" class="dashboard-nav-dropdown-item "><i class="bi bi-people"> </i>List User</a>
+                            <a routerLink="/account/user_list" class="dashboard-nav-dropdown-item "><i class="bi bi-people"> </i>List User</a>
                             <span class="dashboard-nav-dropdown-item"> <i class="bi bi-person-add"> </i>Add Users</span>
                         </div>
                     </div>
@@ -120,13 +120,13 @@
                     </nav>
 
                     <nav class="dashboard-nav-list" style="font-size: 10px;font-weight: 900;" 
-                    *ngIf="hasRole('Admin')">
+                    *ngIf="this.authService.hasRole('Admin')">
                         <span routerLink="/account/profile-details" class="dashboard-nav-item "><i class="bi bi-person"></i> Profile </span>
                         <span routerLink="/bankAccount/list-user-bank-account" class="dashboard-nav-item "><i class="bi bi-bank2"></i> Withdraw Details </span>
-                        <span class="dashboard-nav-item  IDsList"><i class="bi bi-plus-circle-fill"></i> Create Id </span>
-                        <span class="dashboard-nav-item "><i class="bi bi-star-fill"></i> Bonus </span>
-                        <span class="dashboard-nav-item "><i class="bi bi-fast-forward-fill"></i> Loss Back </span>
-                        <span class="dashboard-nav-item "><i class="bi bi-file-pdf-fill"></i> Rules </span>
+                        <span routerLink="/site/user-list-sites" class="dashboard-nav-item"><i class="bi bi-plus-circle-fill"></i> Create Id </span>
+                        <span class="dashboard-nav-item"><i class="bi bi-star-fill"></i> Bonus </span>
+                        <span class="dashboard-nav-item"><i class="bi bi-fast-forward-fill"></i> Loss Back </span>
+                        <span class="dashboard-nav-item"><i class="bi bi-file-pdf-fill"></i> Rules </span>
 
                         <div class="nav-item-divider"></div>
 

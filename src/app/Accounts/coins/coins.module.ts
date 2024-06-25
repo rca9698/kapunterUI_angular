@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DepositeCoinsByUserIdComponent } from './deposite_coins_by_user_id/deposite-coins-by-user-id.component';
-import { WithdrawCoinsUserIdComponent } from './withdraw_coins_user_id/withdraw-coins-user-id.component';
+import { DepositeCoinsByUserIdComponent } from '../../userids/deposite_coins_by_user_id/deposite-coins-by-user-id.component';
+import { WithdrawCoinsUserIdComponent } from '../../userids/withdraw_coins_user_id/withdraw-coins-user-id.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AccountRoutingModule } from '../account-routing.module';

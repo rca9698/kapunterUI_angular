@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { PassbookViewPanelComponent } from './viewPanel/passbook-view-panel.component';
+import { ListUserIdComponent } from './listuserids/list-user-ids.component';
 
-const routes : Routes = [
-  { path: 'passbook-view-panel', component: PassbookViewPanelComponent }
+const routes: Routes = [
+  { path: 'list-user-ids', component: ListUserIdComponent }
 ]
 
 @NgModule({
@@ -13,8 +13,9 @@ const routes : Routes = [
     CommonModule,
     RouterModule.forChild(routes)
   ],
-  exports:[
+  exports: [
     RouterModule
   ]
 })
-export class PassbookRoutingModule { }
+
+export class UserIdRoutingModule { }

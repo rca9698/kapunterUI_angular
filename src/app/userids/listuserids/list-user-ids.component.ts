@@ -1,34 +1,32 @@
-import { Component, OnInit } from '@angular/core';
-import { environment } from 'src/environments/environment.development';
-import { SitesService } from '../sites.service';
-import { ToastrService } from 'src/app/toastr/toastr.service';
+import { Component } from '@angular/core';
 import { ISiteDetailModal } from 'src/app/Shared/Modals/site-detail-modal';
-import { DeleteService } from 'src/app/Shared/Modules/delete-module/delete.service';
+import { SitesService } from 'src/app/Sites/sites.service';
 import { AuthService } from 'src/app/auth.service';
-import { Router } from '@angular/router';
+import { ToastrService } from 'src/app/toastr/toastr.service';
+import { environment } from 'src/environments/environment.development';
 
 @Component({
-  selector: 'app-list-sites',
-  templateUrl: './list-sites.component.html',
-  styleUrls: ['./list-sites.component.css']
+  selector: 'app-list-user-ids',
+  templateUrl: './list-user-ids.component.html',
+  styleUrls: ['./list-user-ids.component.css']
 })
-export class ListSitesComponent implements OnInit {
-
+export class ListUserIdComponent {
+  
   sites: ISiteDetailModal[] | undefined;
   sitePath: string | undefined;
   listSitesQuery: any;
-  returnType: any;
+  returnType: any; 
   private readonly _sessionUser: any; 
-
+  
   constructor(private siteService:SitesService, 
-    private toasterService: ToastrService, private deleteService:DeleteService
-    , private authservice: AuthService, private router:Router){
+    private toasterService: ToastrService, private authservice: AuthService){
     this.sitePath = environment.imagePath.sitePath;
     this._sessionUser = this.authservice.user.userId;
   }
 
   ngOnInit(): void {
     this.loadSites();
+    
   }
 
   loadSites(){
@@ -45,11 +43,12 @@ export class ListSitesComponent implements OnInit {
     })
   }
 
-  deleteSitePopup(site: ISiteDetailModal){
-    this.deleteService.OpenDeletePopup('site','Site',site);
+  DepositeToAccountRequestCoinsPopup(){
+
   }
 
-  updateSite(site: ISiteDetailModal){
-    this.siteService.OpenAddSitePopup(true,site)
+  WithdrawFromAccountRequestCoinsPopup(){
+
   }
+
 }
