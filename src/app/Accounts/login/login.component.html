@@ -1,7 +1,8 @@
   <div class="modal-header">
-     <div type="button" class="close"  *ngIf="backButtonVisibility" (click)="backToMobileNumber()">
+     <div type="button" class="close" *ngIf="backButtonVisibility" (click)="backToMobileNumber()">
         <i class="bi bi-arrow-left-circle-fill"></i>
       </div>
+      <p class="modal-title">{{logintype}}</p>
       <div type="button" class="close" (click)="bsModalRef.hide()">
         <i class="bi bi-x-circle-fill"></i>
       </div>

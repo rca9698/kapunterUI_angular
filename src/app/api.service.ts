@@ -10,8 +10,9 @@ export class apiService {
 
   constructor(private http: HttpClient) { }
 
+  //login signup APIs Start
+
   sendOtp(obj: string){
-    console.log(`${environment.apiUrl}/api/LoginSignup/Generate_Otp/${obj}`);
      return this.http.get(`${environment.apiUrl}/api/LoginSignup/Generate_Otp/${obj}`);
     }
   
@@ -19,15 +20,8 @@ export class apiService {
      return this.http.post(`${environment.apiUrl}/api/LoginSignup/Login_GetToken`, obj);
   }
 
-  
+  //login signup APIs End
    
- 
-  WithdrawCoinRequestInsert(obj: any){
-    console.log(obj);
-    return this.http.post(`${environment.apiUrl}/api/Coin/WithDrawCoinsRequest`, obj);
-  }
-
-
   // User Related APIs Start
 
   GetUsers(obj: any){
@@ -58,7 +52,6 @@ export class apiService {
   }
 
   GetSites(obj: any){
-    console.log(obj);
     return this.http.post(`${environment.apiUrl}/api/Site/GetSites`, obj);
   }
 
@@ -184,6 +177,10 @@ export class apiService {
 
   //Coins Related APIs start
 
+  WithdrawCoinRequestInsert(obj: any){
+    return this.http.post(`${environment.apiUrl}/api/Coin/WithDrawCoinsRequest`, obj);
+  }
+  
   GetTransaction(obj: any){
     return this.http.post(`${environment.apiUrl}/api/Coin/GetTransaction`, obj);
   }

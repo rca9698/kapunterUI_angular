@@ -4,6 +4,7 @@ import { ISiteDetailModal, SiteDetailModal } from '../Shared/Modals/site-detail-
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment.development';
 import { AuthService } from '../auth.service';
+import { ToastrService } from '../toastr/toastr.service';
 
 @Component({
   selector: 'app-footer',
@@ -13,7 +14,7 @@ import { AuthService } from '../auth.service';
 export class FooterComponent {
   site:ISiteDetailModal = new SiteDetailModal();
   constructor(private siteService: SitesService, private router: Router
-    , public authservice: AuthService){
+    , public authservice: AuthService, private toasterService: ToastrService){
   }
 
   RedirectToHome(){
@@ -21,11 +22,35 @@ export class FooterComponent {
   }
 
   AddSitesPopup(){
-    this.siteService.OpenAddSitePopup(false,this.site);
+    if(this.authservice.isadminview()){
+      this.siteService.OpenAddSitePopup(false,this.site);
+    }else{
+      this.toasterService.warning('Login to perform action!!');
+    }
   }
   
   createId(){
-    this.siteService.OpenAddSitePopup(false,this.site);
+    if(this.authservice.isbenview()){
+    this.router.navigate(["/site/user-list-sites"]);
+    }else{
+      this.toasterService.warning('Login to perform action!!');
+    }
+  }
+
+  listIds(){
+    if(this.authservice.isbenview()){
+      this.router.navigate(["/userids/list-user-ids"]);
+    }else{
+      this.toasterService.warning('Login to perform action!!');
+    }
+  }
+
+  viewPassbook(){
+    if(this.authservice.isbenview()){
+     this.router.navigate(["/passbook/passbook-view-panel"]);
+    }else{
+      this.toasterService.warning('Login to perform action!!');
+    }
   }
 
 }

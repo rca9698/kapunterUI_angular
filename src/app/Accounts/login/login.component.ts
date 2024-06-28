@@ -19,11 +19,12 @@ export class LoginComponent{
   SendOtpForm: FormGroup;
   LoginForm: FormGroup;
   submitted = false;
+  role = 'ben';
   passwordType = "password";
   returnType: any;
   otp_Login_Modal: otp_Login_Model | undefined;
   returnTypeClient: ReturnType<any>;
-
+  logintype: string = 'USER LOGIN';
   usersQuery: any = {
     SessionUser: BigInt
   };
@@ -46,24 +47,6 @@ export class LoginComponent{
       otp: ['', [Validators.required]]
      },
    )
-  
- }
-
- LoadPassword() {
-this.showPassword = true;
-this.showOtp = false;
-this.submitted = false;
-this.LoginForm = this.formBuilder.group({
-  password: ['', [Validators.required]]
- });
- }
-
- ViewPassword() {
-  if(this.passwordType == "password"){
-    this.passwordType = "text";
-  }else{
-    this.passwordType = "password";
-  }
  }
 
  SendOtp() {
@@ -74,22 +57,37 @@ this.LoginForm = this.formBuilder.group({
   }
 
   if (this.SendOtpForm?.valid) {
-    this.showOtpPasswordModalForm = true;
-    this.showMobileModalForm = false;
-    this.showPassword = false;
-    this.submitted = false;
-    this.backButtonVisibility = true; 
-
     this.accountService.sendOtp(this.SendOtpForm.value["userNumber"]).subscribe({
       next:(response) =>{
         this.returnType = response;
+        console.log(this.returnType);
         this.otp_Login_Modal = this.returnType['returnVal'];
         this.returnTypeClient = Object.create(null);
         if(environment.environment == 'dev') {
         this.returnTypeClient.returnMessage = `OTP sent to your Mobile Number - ${this.otp_Login_Modal?.otp}!!"`;
         }
-
-       this.toasterService.success(this.returnTypeClient.returnMessage);
+        if(this.otp_Login_Modal?.role == 'admin'){
+          if(environment.isAdminSite == true)
+            {
+              this.logintype = 'ADMIN LOGIN'
+              this.showOtpPasswordModalForm = true;
+              this.showMobileModalForm = false;
+              this.showPassword = true;
+              this.submitted = false;
+              this.backButtonVisibility = true;
+              this.LoadPassword();
+            }
+          else
+            this.toasterService.warning('Admin accounts are not allowed!!!');
+        }else{
+          this.LoadOTP();
+          this.showOtpPasswordModalForm = true;
+          this.showMobileModalForm = false;
+          this.showPassword = false;
+          this.submitted = false;
+          this.backButtonVisibility = true; 
+          this.toasterService.success(this.returnTypeClient.returnMessage);
+        }
       },
       error:(error: any) => {
         console.log(error);
@@ -107,6 +105,23 @@ this.LoginForm = this.formBuilder.group({
    });
  }
 
+ LoadPassword() {
+  this.showPassword = true;
+  this.showOtp = false;
+  this.submitted = false;
+  this.LoginForm = this.formBuilder.group({
+    password: ['', [Validators.required]]
+   });
+   }
+  
+   ViewPassword() {
+    if(this.passwordType == "password"){
+      this.passwordType = "text";
+    }else{
+      this.passwordType = "password";
+    }
+   }
+
  LoginToApp() {
   this.submitted = true;
   
@@ -122,26 +137,8 @@ this.LoginForm = this.formBuilder.group({
   this.authservice.login(login)?.subscribe({
     next:(response)=>{
       this.bsModalRef.hide();
-      this.router.navigate(['/account/user_list'])
     }}
   );
-
-  // this.accountService.login(login).subscribe({
-  //   next:(response) =>{
-  //     console.log(response);
-  //     this.returnType = response;
-  //     if(this.returnType['returnStatus'] == 1){
-  //       this.toasterService.success(this.returnType.returnMessage);
-  //       this.bsModalRef.hide();
-  //       this.router.navigate(['/account/user_list']);
-  //     }else{
-  //       this.toasterService.warning(this.returnType.returnMessage);
-  //     }
-  //   },
-  //   error:error => {
-  //     console.log(error);
-  //   }
-  // })
  }
 
  backToMobileNumber(){

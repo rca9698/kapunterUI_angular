@@ -3,5 +3,6 @@ export interface otp_Login_Model{
     apiKey: string,
     message: string,
     sid: string,
-    mobileNumber: string
+    mobileNumber: string,
+    role: string
 }

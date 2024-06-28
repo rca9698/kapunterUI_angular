@@ -1,6 +1,6 @@
 
 <div class="card mt-4 footer-nav footernavbar sitebackground cursorPointer">
-    <div class="row col-12" *ngIf="this.authservice.hasRole('Admin')">
+    <div class="row col-12" *ngIf="this.authservice.isbenview()">
         <div class="col-3 grid-margin stretch-card" >
             <a href="#">
                 <div class="card sitebackground">
@@ -15,7 +15,7 @@
                 </div>
             </a>
         </div>
-        <div class="col-3 grid-margin stretch-card" routerLink="/site/user-list-sites">
+        <div class="col-3 grid-margin stretch-card" (click)="createId()">
             <div class="card sitebackground">
                 <div class="card-body text-center">
                     <div class="row">
@@ -27,7 +27,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-3 grid-margin stretch-card" routerLink="/userids/list-user-ids">
+        <div class="col-3 grid-margin stretch-card" (click)="listIds()">
             <div class="card sitebackground">
                 <div class="card-body text-center">
                     <div class="row">
@@ -39,7 +39,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-3 grid-margin stretch-card" routerLink="/passbook/passbook-view-panel">
+        <div class="col-3 grid-margin stretch-card" (click)="viewPassbook()">
             <div class="card sitebackground">
                 <div class="card-body text-center">
                     <div class="row">
@@ -53,7 +53,7 @@
         </div>
     </div>
 
-    <div class="row col-12" *ngIf="!this.authservice.hasRole('Admin')">
+    <div class="row col-12" *ngIf="this.authservice.isadminview()">
         <div class="col-3 grid-margin stretch-card" >
             <a href="#">
                 <div class="card sitebackground">
@@ -67,7 +67,7 @@
                     </div>
                 </div>
             </a>
-        </div>
+        </div> 
         <div class="col-3 grid-margin stretch-card" (click)="AddSitesPopup()">
             <div class="card sitebackground">
                 <div class="card-body text-center">

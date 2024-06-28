@@ -32,7 +32,7 @@
                       </div>
 
                     <nav class="dashboard-nav-list" style="font-size: 10px;font-weight: 900;" 
-                    *ngIf="!this.authService.hasRole('Admin')">
+                    *ngIf="this.authService.isadminview()">
                     <a href="#" class="dashboard-nav-item ">
                         <i class="bi bi-house"></i> dashboard
                      </a>
@@ -120,7 +120,7 @@
                     </nav>
 
                     <nav class="dashboard-nav-list" style="font-size: 10px;font-weight: 900;" 
-                    *ngIf="this.authService.hasRole('Admin')">
+                    *ngIf="this.authService.isbenview()">
                         <span routerLink="/account/profile-details" class="dashboard-nav-item "><i class="bi bi-person"></i> Profile </span>
                         <span routerLink="/bankAccount/list-user-bank-account" class="dashboard-nav-item "><i class="bi bi-bank2"></i> Withdraw Details </span>
                         <span routerLink="/site/user-list-sites" class="dashboard-nav-item"><i class="bi bi-plus-circle-fill"></i> Create Id </span>

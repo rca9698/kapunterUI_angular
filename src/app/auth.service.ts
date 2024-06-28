@@ -57,6 +57,14 @@ export class AuthService {
     return this.user?.role.includes(role);
   }
 
+  public isadminview(){
+    return this.hasRole('admin');
+  }
+
+  public isbenview(){
+    return !this.hasRole('admin') && (this.hasRole('ben') || this.isLoggenIn);
+  }
+
   getUserDetails(){
 
     this.userDetailQuery = {

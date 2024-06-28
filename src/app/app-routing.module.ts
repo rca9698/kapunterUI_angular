@@ -13,7 +13,7 @@ const routes: Routes = [
   {path:"account", loadChildren: () => import('./Accounts/accounts.module').then(module => module.AccountsModule)
     , canActivate: [IsAuthenticatedGuard, HasRoleGuard], 
     data:{
-      role: 'Admin'
+      role: 'admin'
     }
   },
   {path:"site", loadChildren: () => import('./Sites/sites.module').then(module => module.SitesModule), canActivate: [IsAuthenticatedGuard] },
