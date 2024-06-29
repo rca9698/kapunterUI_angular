@@ -2,13 +2,14 @@
 export const environment = {
     production: false,
     environment: 'dev',
-    appUrl: 'http://beta.kapunter.com/',
-    apiUrl: 'https://localhost:7236',
+    isAdminSite: false,
+    appUrl: 'http://kapunter.com/',
+    apiUrl: 'http://api.kapunter.com',
     ueserKey: 'kapunterUser',
 
     imagePath:{
-        sitePath:'http://beta.kapunter.com/assets/Sites/',
-        dashboardImages:'http://beta.kapunter.com/assets/DashboardImages/',
-        QR:'/assets/QR/'
+        sitePath:'http://kapunter.com/assets/Sites/',
+        dashboardImages:'http://kapunter.com/assets/DashboardImages/',
+        QR:'http://kapunter.com/assets/QR/'
     }
 };
