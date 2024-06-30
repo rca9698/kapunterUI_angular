@@ -5,7 +5,7 @@ import { DashboardService } from './Dashboard/dashboard.service';
 import { AuthService } from './auth.service';
 import { AccountsService } from './Accounts/accounts.service';
 import { apiService } from './api.service';
-import { UserService } from './Accounts/user.service';
+import { UserService } from './admincoinsaction/User/user.service';
 
 @Component({
   selector: 'app-root',

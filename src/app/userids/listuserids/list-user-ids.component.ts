@@ -34,7 +34,7 @@ export class ListUserIdComponent {
     this.listSitesQuery = {
       SessionUser: this._sessionUser
     };
-     this.siteService.getSiteList(this.listSitesQuery).subscribe(resp => {
+     this.siteService.GetUserListSiteById(this._sessionUser).subscribe(resp => {
       this.returnType = resp;
       if(this.returnType['returnStatus'] == 1){
         this.sites = this.returnType['returnList'];

@@ -4,7 +4,7 @@ export const environment = {
     environment: 'dev',
     isAdminSite: false,
     appUrl: 'http://kapunter.com/',
-    apiUrl: 'http://api.kapunter.com',
+    apiUrl: 'https://localhost:7236',
     ueserKey: 'kapunterUser',
 
     imagePath:{

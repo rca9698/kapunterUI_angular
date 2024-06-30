@@ -1,4 +1,4 @@
-export interface Icoins_to_site_request_modal{
+export interface Icoins_to_site_request_listing_modal{
     coinsRequestId: string,
     userId: bigint,
     siteId: bigint,
@@ -22,7 +22,7 @@ export interface Icoins_to_site_request_modal{
 }
 
 
-export class coins_to_site_request_modal implements Icoins_to_site_request_modal {
+export class coins_to_site_request_listing_modal implements Icoins_to_site_request_listing_modal {
     coinsRequestId: string;
     userId: bigint;
     siteId: bigint;

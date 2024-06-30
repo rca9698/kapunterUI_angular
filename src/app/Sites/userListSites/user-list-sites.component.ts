@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { ISiteDetailModal } from 'src/app/Shared/Modals/site-detail-modal';
-import { SitesService } from '../sites.service';
+import { SitesService } from '../../Sites/sites.service';
 import { ToastrService } from 'src/app/toastr/toastr.service';
 import { DeleteService } from 'src/app/Shared/Modules/delete-module/delete.service';
 import { environment } from 'src/environments/environment.development';
 import { AuthService } from 'src/app/auth.service';
+import { UserIdsService } from 'src/app/userids/user-ids.service';
 
 @Component({
   selector: 'app-user-list-sites',
@@ -17,10 +18,10 @@ export class UserListSitesComponent {
   sitePath: string | undefined;
   listSitesQuery: any;
   returnType: any; 
-  private readonly _sessionUser: any; 
+  private readonly _sessionUser: any;
   
   constructor(private siteService:SitesService, 
-    private toasterService: ToastrService, private deleteService:DeleteService
+    private toasterService: ToastrService, private userIdService: UserIdsService
     , private authservice: AuthService){
     this.sitePath = environment.imagePath.sitePath;
     this._sessionUser = this.authservice.user.userId;
@@ -28,7 +29,6 @@ export class UserListSitesComponent {
 
   ngOnInit(): void {
     this.loadSites();
-    
   }
 
   loadSites(){
@@ -46,7 +46,7 @@ export class UserListSitesComponent {
   }
 
   CreateIDRequest(obj: any){
-
+    this.userIdService.OpenAddIDRequestPopup(obj);
   }
 
 }

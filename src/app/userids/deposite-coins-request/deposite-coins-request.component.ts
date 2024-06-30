@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BsModalRef } from 'ngx-bootstrap/modal';
-import { CoinsService } from '../coins.service';
+import { CoinsService } from '../../admincoinsaction/coins/coins.service';
 import { ToastrService } from 'src/app/toastr/toastr.service';
 import { AuthService } from 'src/app/auth.service';
 import { Ibank_details, bank_details } from 'src/app/Shared/Modals/BankAccount/bank_details';

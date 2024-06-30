@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../../user.service';
+import { UserService } from '../user.service';
 import { Iusers } from 'src/app/Shared/Modals/users';
 import { ReturnType } from 'src/app/Shared/Modals/Common/ReturnType';
 import { CoinsService } from '../../coins/coins.service';

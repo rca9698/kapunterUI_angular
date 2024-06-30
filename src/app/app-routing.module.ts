@@ -16,10 +16,16 @@ const routes: Routes = [
       role: 'admin'
     }
   },
+  {path:"adminaction", loadChildren: () => import('./admincoinsaction/admin.module').then(module => module.AdminModule)
+    , canActivate: [IsAuthenticatedGuard, HasRoleGuard], 
+    data:{
+      role: 'admin'
+    }
+  },
   {path:"site", loadChildren: () => import('./Sites/sites.module').then(module => module.SitesModule), canActivate: [IsAuthenticatedGuard] },
   {path:"passbook", loadChildren: () => import('./Passbook/passbook.module').then(module => module.PassbookModule), canActivate: [IsAuthenticatedGuard] },
   {path:"bankAccount", loadChildren: () => import('./BankAccount/bank-account.module').then(module => module.BankAccountModule), canActivate: [IsAuthenticatedGuard] },
-  {path:"dashboard", loadChildren: () => import('./Dashboard/dashboard-routing.module').then(module => module.DashboardRoutingModule), canActivate: [IsAuthenticatedGuard] },
+  {path:"dashboard", loadChildren: () => import('./Dashboard/dashboard.module').then(module => module.DashboardModule), canActivate: [IsAuthenticatedGuard] },
   {path:"setting", loadChildren: () => import('./settings/settings.module').then(module => module.SettingsModule), canActivate: [IsAuthenticatedGuard] },
   {path:"notification", loadChildren: () => import('./notification/notification.module').then(module=>module.NotificationModule), canActivate: [IsAuthenticatedGuard] },
   {path:"ids", loadChildren: () => import('./ids/ids.module').then(module=>module.IdsModule), canActivate: [IsAuthenticatedGuard] },

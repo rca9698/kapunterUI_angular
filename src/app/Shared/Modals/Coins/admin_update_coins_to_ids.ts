@@ -1,4 +1,4 @@
-export interface IupdateCoinsToIds{
+export interface Iadmin_update_coins_to_ids{
     coinsRequestId: string;
     userId: bigint;
     siteId: number;
@@ -7,7 +7,7 @@ export interface IupdateCoinsToIds{
     sessionUser: bigint;
 }
 
-export class updateCoinsToIds implements IupdateCoinsToIds{
+export class admin_update_coins_to_ids implements Iadmin_update_coins_to_ids{
     coinsRequestId: string;
     userId: bigint;
     siteId: number;

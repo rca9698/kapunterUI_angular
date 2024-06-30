@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Icoins_to_site_request_modal } from 'src/app/Shared/Modals/Coins/coins_to_site_request_modal';
 import { CoinsService } from '../coins.service';
+import { Icoins_to_site_request_listing_modal } from 'src/app/Shared/Modals/Coins/coins_to_site_request_listing_modal';
 
 @Component({
   selector: 'app-withdraw-from-site-list',
@@ -8,7 +8,7 @@ import { CoinsService } from '../coins.service';
   styleUrls: ['./withdraw-from-site-list.component.css']
 })
 export class WithdrawFromSiteListComponent {
-  requestList: Icoins_to_site_request_modal[] | undefined;  
+  requestList: Icoins_to_site_request_listing_modal[] | undefined;  
   returnType:any;
   paginationCount: number = 1;
   totalCount: number = 0;
@@ -19,11 +19,11 @@ export class WithdrawFromSiteListComponent {
     this.coinsservice.withdraw_from_site_list(1, 1 as unknown as bigint);
   }
 
-  withdrawcoinsfromsitePopup(coins_to_site_request_modal: Icoins_to_site_request_modal){
+  withdrawcoinsfromsitePopup(coins_to_site_request_modal: Icoins_to_site_request_listing_modal){
 
   }
 
-  deletewithdrawcoinsfromsitePopup(coins_to_site_request_modal: Icoins_to_site_request_modal){
+  deletewithdrawcoinsfromsitePopup(coins_to_site_request_modal: Icoins_to_site_request_listing_modal){
 
   }
 

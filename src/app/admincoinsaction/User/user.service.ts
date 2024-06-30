@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment.development';
-import { Iusers, users } from '../Shared/Modals/users';
-import { apiService } from '../api.service';
+import { Iusers, users } from '../../Shared/Modals/users';
+import { apiService } from '../../api.service';
 
 @Injectable({
   providedIn: 'root'

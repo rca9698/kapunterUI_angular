@@ -7,9 +7,9 @@ import { AccountRoutingModule } from '../Accounts/account-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ListSitesComponent } from './listSites/list-sites.component';
-import { UserListSitesComponent } from './userListSites/user-list-sites.component';
 import { GetUserListSiteByIdComponent } from './getUserListSiteById/get-user-list-site-by-id.component';
 import { SitesRoutingModule } from './sites-routing.module';
+import { UserListSitesComponent } from './userListSites/user-list-sites.component';
 
 
 

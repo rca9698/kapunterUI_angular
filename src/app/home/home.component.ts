@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { HomeService } from './home.service';
 import { environment } from 'src/environments/environment.development';
 import { DashboardImages, IDashboardImages } from '../Shared/Modals/dashboard-images-modal';
-import { CoinsService } from '../Accounts/coins/coins.service';
+import { CoinsService } from '../admincoinsaction/coins/coins.service';
 import { AuthService } from '../auth.service';
 import { ToastrService } from '../toastr/toastr.service';
-import { UserService } from '../Accounts/user.service';
+import { UserService } from '../admincoinsaction/User/user.service';
 
 @Component({
   selector: 'app-home',

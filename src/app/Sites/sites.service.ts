@@ -30,6 +30,10 @@ public getSiteList(listSitesQuery: any){
   return this.apiservice.GetSites(listSitesQuery)
 }
 
+public GetUserListSiteById(sessionUser: any){
+  return this.apiservice.GetUserListSiteById(sessionUser)
+}
+
 public uploadfile(formParams: any) {
    return this.apiservice.AddSite(formParams);
 }

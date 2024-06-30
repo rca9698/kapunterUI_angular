@@ -4,6 +4,7 @@ import { BsModalRef, BsModalService, ModalOptions } from 'ngx-bootstrap/modal';
 import { DepositeCoinsToIdsComponent } from './deposite-coins-to-ids/deposite-coins-to-ids.component';
 import { WithdrawCoinsFromIdsComponent } from './withdraw-coins-from-ids/withdraw-coins-from-ids.component';
 import { HttpClient } from '@angular/common/http';
+import { CreateIdsComponent } from './createid/create-ids.component';
 
 @Injectable({
   providedIn: 'root'
@@ -17,10 +18,19 @@ export class UserIdsService {
     return this.apiservice.AddIDRequest(obj);
   }
   
-  OpenDepositeCoinsToIDPopup(coinsToIDobj: string){
+  OpenAddIDRequestPopup(obj: any){
     const initalstate: ModalOptions = {
       initialState:{
-        coinsToIDobj,
+        obj,
+      }
+    }
+    this.bsmodalRef = this.bsModalService.show(CreateIdsComponent, initalstate);
+  }
+
+  OpenDepositeCoinsToIDPopup(coinsToIDobj: any){
+    const initalstate: ModalOptions = {
+      initialState:{
+        coinsToIDobj
       }
     }
     this.bsmodalRef = this.bsModalService.show(DepositeCoinsToIdsComponent, initalstate);
@@ -33,6 +43,10 @@ export class UserIdsService {
       }
     }
     this.bsmodalRef = this.bsModalService.show(WithdrawCoinsFromIdsComponent, initalstate);
+  }
+
+  DepositCoinsToIds(obj: any){
+    return this.apiservice.UpdateCoinsToId(obj);
   }
 
 }

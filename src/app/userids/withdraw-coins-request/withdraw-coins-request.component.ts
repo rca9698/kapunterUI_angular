@@ -3,7 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { ToastrService } from 'src/app/toastr/toastr.service';
-import { CoinsService } from '../coins.service';
+import { CoinsService } from '../../admincoinsaction/coins/coins.service';
 import { Ibank_details, bank_details } from 'src/app/Shared/Modals/BankAccount/bank_details';
 import { Iwithdrawcoinrequestmodal, withdrawcoinrequestmodal } from 'src/app/Shared/Modals/Coins/withdraw_coin_request_modal';
 import { AuthService } from 'src/app/auth.service';

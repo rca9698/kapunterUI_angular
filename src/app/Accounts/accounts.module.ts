@@ -4,13 +4,13 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AccountRoutingModule } from './account-routing.module';
 import { HttpClientModule } from '@angular/common/http';
-import { UserListComponent } from './User/user-list/user-list.component';
-import { DeletedUserListComponent } from './User/deleted-user-list/deleted-user-list.component';
-import { IdRequestListComponent } from './Ids/id-request-list/id-request-list.component';
-import { DeletedIdRequestListComponent } from './Ids/deleted-id-request-list/deleted-id-request-list.component';
-import { DeletedIdsListComponent } from './Ids/deleted-ids-list/deleted-ids-list.component';
-import { IdsListComponent } from './Ids/ids-list/ids-list.component';
-import { CoinsModule } from './coins/coins.module';
+import { UserListComponent } from '../admincoinsaction/User/user-list/user-list.component';
+import { DeletedUserListComponent } from '../admincoinsaction/User/deleted-user-list/deleted-user-list.component';
+import { IdRequestListComponent } from '../admincoinsaction/Ids/id-request-list/id-request-list.component';
+import { DeletedIdRequestListComponent } from '../admincoinsaction/Ids/deleted-id-request-list/deleted-id-request-list.component';
+import { DeletedIdsListComponent } from '../admincoinsaction/Ids/deleted-ids-list/deleted-ids-list.component';
+import { IdsListComponent } from '../admincoinsaction/Ids/ids-list/ids-list.component';
+import { CoinsModule } from '../admincoinsaction/coins/coins.module';
 import { ProfileDetailsComponent } from './Profile/profile-details/profile-details.component';
 
 @NgModule({

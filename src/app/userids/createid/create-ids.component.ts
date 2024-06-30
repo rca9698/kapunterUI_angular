@@ -5,6 +5,7 @@ import { BsModalRef } from 'ngx-bootstrap/modal';
 import { UserIdsService } from '../user-ids.service';
 import { ToastrService } from 'src/app/toastr/toastr.service';
 import { AddIDRequest, IAddIDRequest } from 'src/app/Shared/Modals/Ids/add-ids-request';
+import { AuthService } from 'src/app/auth.service';
 
 @Component({
   selector: 'app-create-ids',
@@ -12,24 +13,22 @@ import { AddIDRequest, IAddIDRequest } from 'src/app/Shared/Modals/Ids/add-ids-r
   styleUrls: ['./create-ids.component.css']
 })
 export class CreateIdsComponent {
+  obj: any;
   AddIdsFrom: FormGroup;
   submitted : boolean = false;
   addIDRequest : IAddIDRequest = new AddIDRequest();
+  readonly _sessionUser: bigint;
 
   constructor(public bsModalRef:BsModalRef, private formBuilder:FormBuilder, 
     private router:Router, private useridsservice: UserIdsService, 
-    private toasterService: ToastrService){
+    private toasterService: ToastrService, private authservice: AuthService){
+      this._sessionUser = authservice.user.userId;
       this.AddIdsFrom = this.formBuilder.group({
-        Username: ['', [Validators.required]]
+        username: ['', [Validators.required]]
        },
      )
   }
 
-
-  
-public getSiteList(obj: any){
-  return this.useridsservice.AddIDRequest(obj)
-}
 
   AddUserId() {
     this.submitted = true;
@@ -39,6 +38,9 @@ public getSiteList(obj: any){
     } 
 
     this.addIDRequest.userName = this.AddIdsFrom.value["username"].toString();
+    this.addIDRequest.UserId = this._sessionUser;
+    this.addIDRequest.sessionUser = this._sessionUser;
+    this.addIDRequest.siteid = this.obj.siteId;
 
     this.useridsservice.AddIDRequest(this.addIDRequest)?.subscribe({
       next:(response)=>{

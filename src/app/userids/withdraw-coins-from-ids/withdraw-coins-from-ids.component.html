@@ -1,5 +1,5 @@
 <div class="modal-content siteColor">
-    <form (ngSubmit)="SendWithdrawCoinsFromIds()" [formGroup]="DepositCoinsToIdsForm" autocomplete="off">
+    <form (ngSubmit)="SendWithdrawCoinsFromIds()" [formGroup]="WithdrawCoinsToIdsForm" autocomplete="off">
         <div class="modal-header">
             <p class="modal-title">Withdraw Coins from ID</p>
             <div type="button" class="close" (click)="bsModalRef.hide()">
@@ -16,8 +16,8 @@
             <div class="form-group">
                 <label>Coins(<i class="bi bi-currency-rupee"></i>)*</label>
                 <input type="text" formControlName="coins" class="form-control" placeholder="Coins" autocomplete="off">
-                <div class="text-danger" *ngIf="DepositCoinsToIdsForm.get('coins')?.invalid && (submitted || DepositCoinsToIdsForm.get('coins')?.touched || DepositCoinsToIdsForm.get('coins')?.dirty)">
-                <span *ngIf="DepositCoinsToIdsForm.get('coins')?.errors?.['required']"> coins are is required </span> </div>
+                <div class="text-danger" *ngIf="WithdrawCoinsToIdsForm.get('coins')?.invalid && (submitted || WithdrawCoinsToIdsForm.get('coins')?.touched || WithdrawCoinsToIdsForm.get('coins')?.dirty)">
+                <span *ngIf="WithdrawCoinsToIdsForm.get('coins')?.errors?.['required']"> coins are is required </span> </div>
             </div>
         </div>
         <div class="modal-footer">
