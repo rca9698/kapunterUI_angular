@@ -5,6 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CoinsModule } from './coins/coins.module';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -17,6 +18,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     HttpClientModule,
     CoinsModule,
     ModalModule.forRoot()
-  ]
+  ],
+  exports: [RouterModule]
 })
 export class AdminModule { }

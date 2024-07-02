@@ -6,7 +6,6 @@ import { AccountRoutingModule } from './account-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { UserListComponent } from '../admincoinsaction/User/user-list/user-list.component';
 import { DeletedUserListComponent } from '../admincoinsaction/User/deleted-user-list/deleted-user-list.component';
-import { IdRequestListComponent } from '../admincoinsaction/Ids/id-request-list/id-request-list.component';
 import { DeletedIdRequestListComponent } from '../admincoinsaction/Ids/deleted-id-request-list/deleted-id-request-list.component';
 import { DeletedIdsListComponent } from '../admincoinsaction/Ids/deleted-ids-list/deleted-ids-list.component';
 import { IdsListComponent } from '../admincoinsaction/Ids/ids-list/ids-list.component';
@@ -17,7 +16,6 @@ import { ProfileDetailsComponent } from './Profile/profile-details/profile-detai
   declarations: [
     UserListComponent,
     DeletedUserListComponent,
-    IdRequestListComponent,
     DeletedIdRequestListComponent,
     DeletedIdsListComponent,
     IdsListComponent,

@@ -4,11 +4,16 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { IdsRoutingModule } from './ids-routing.module';
+import { IdRequestListComponent } from './id-request-list/id-request-list.component';
+import { AdminCreateIdComponent } from './admin-create-id/admin-create-id.component';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    IdRequestListComponent,
+    AdminCreateIdComponent
+  ],
   imports: [
     CommonModule,
     ReactiveFormsModule,

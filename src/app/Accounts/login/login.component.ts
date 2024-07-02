@@ -66,20 +66,20 @@ export class LoginComponent{
         if(environment.environment == 'dev') {
         this.returnTypeClient.returnMessage = `OTP sent to your Mobile Number - ${this.otp_Login_Modal?.otp}!!"`;
         }
-        if(this.otp_Login_Modal?.role == 'admin'){
-          if(environment.isAdminSite == true)
-            {
-              this.logintype = 'ADMIN LOGIN'
-              this.showOtpPasswordModalForm = true;
-              this.showMobileModalForm = false;
-              this.showPassword = true;
-              this.submitted = false;
-              this.backButtonVisibility = true;
-              this.LoadPassword();
-            }
-          else
-            this.toasterService.warning('Admin accounts are not allowed!!!');
-        }else{
+        // if(this.otp_Login_Modal?.role == 'admin'){
+        //   if(environment.isAdminSite == true)
+        //     {
+        //       this.logintype = 'ADMIN LOGIN'
+        //       this.showOtpPasswordModalForm = true;
+        //       this.showMobileModalForm = false;
+        //       this.showPassword = true;
+        //       this.submitted = false;
+        //       this.backButtonVisibility = true;
+        //       this.LoadPassword();
+        //     }
+        //   else
+        //     this.toasterService.warning('Admin accounts are not allowed!!!');
+        // }else{
           this.LoadOTP();
           this.showOtpPasswordModalForm = true;
           this.showMobileModalForm = false;
@@ -87,7 +87,7 @@ export class LoginComponent{
           this.submitted = false;
           this.backButtonVisibility = true; 
           this.toasterService.success(this.returnTypeClient.returnMessage);
-        }
+        //}
       },
       error:(error: any) => {
         console.log(error);

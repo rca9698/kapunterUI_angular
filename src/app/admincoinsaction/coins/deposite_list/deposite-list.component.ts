@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Icoins_request_model } from 'src/app/Shared/Modals/Coins/coins_request_model';
 import { CoinsService } from '../coins.service';
 import { Ideposit_withdraw_coins_request, deposit_withdraw_coins_request } from 'src/app/Shared/Modals/Coins/deposit_withdraw_coins_request';
+import { AuthService } from 'src/app/auth.service';
 
 @Component({
   selector: 'app-deposite-list',
@@ -13,8 +14,11 @@ export class DepositeListComponent {
   returnType:any;
   paginationCount: number = 1;
   totalCount: number = 0;
-
-  constructor(private coinsservice:CoinsService){ }
+  private readonly _sessionUser: bigint;
+  
+  constructor(private coinsservice:CoinsService, private authservice: AuthService){
+    this._sessionUser = this.authservice.user.userId;
+   }
 
   deposite_list(){
     let obj: Ideposit_withdraw_coins_request = new deposit_withdraw_coins_request(1, 1 as unknown as bigint, 1 as unknown as bigint);

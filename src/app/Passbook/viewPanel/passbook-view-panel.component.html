@@ -1,1 +1,139 @@
-<p>passbook-view-panel works!</p>
+<div class="row col-12 idSwitch rounded-3 text-white">
+    <div class="col-6 tabSelection rounded-3 text-center active">
+        <p>TRANSACTION HISTORY</p>
+    </div>
+
+    <div class="col-6 tabSelection text-center rounded-3">
+         
+    </div>
+</div> 
+
+<div class='dashboard-content' id="listPassbookHistory">
+    <div class="card rounded-3 siteColor" *ngFor="let passbook of passbooks">
+        <div class="card-body">
+            <div class="row Col-12">
+                <div class="col-9">
+                    <div class="row col-12 cursorPointer" (click)="PassbookHistoryById(passbook.passbookHistoryId)">
+                        <div class="col-3">
+                            <img class="siteImageSize rounded-circle" src="{{proofPath}}{{passbook.documentDetailId}}.{{passbook.fileExtenstion}}">
+                        </div>
+                        <div class="col-9 Col-12 align-self-center">
+                            <div class="Col-3">
+                                <p class="activityClass text-uppercase">{{passbook.activityDescription}}</p>
+                            </div>
+                            <div class="Col-3" style="margin: -5px 0px 0px 2px;">
+                                <p class="siteUrl">{{passbook.siteURL}}</p>
+                            </div>
+                            <div class="Col-3" style="margin: -5px 0px 0px 2px;">
+                                <p class="siteUserName">{{passbook.siteUserName}}</p>
+                            </div>
+                            <div class="Col-3" style="margin: -5px 0px 0px 2px;">
+                                <p class="createdOn">{{passbook.createdDate}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <p>{{passbook.displayCoins}}</p>
+                    <p class="{{passbook.trxColor}}">{{passbook.trxStatus}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class='dashboard-content' id="PassbookHistory">
+    <div class="BackBtnMyIds card-body card-body-padding row col-12 backbtnNavDesign">
+        <div class="col-2" style="margin: -11px;">
+            <i class="bi bi-arrow-left-circle-fill"></i>
+        </div>
+        <div class="col-10"></div>
+    </div>
+   
+    <div class="" style="background: transparent">
+        <div class="card card-body card-body-padding">
+            <div class="row Col-12">
+                <div class="d-flex flex-column text-center col-12">
+                    <span class="">
+                        <img class="siteIcon rounded-circle siteImageSize" src="" />
+                    </span>
+                    <p class="text-uppercase">{{this.passbook?.siteName}}</p>
+                    <p class="">{{this.passbook?.siteURL}}</p>
+                </div>
+            </div> 
+        </div>
+    </div>
+   
+    <div class="card sitebackground rounded-3 siteColor">
+        <div class="card-body card-body-padding">
+            {{this.passbook?.activityDescription}}
+        </div>
+    </div>
+   
+    <div class="card sitebackground rounded-3 siteColor">
+        <div class="card-body card-body-padding">
+            <div class="row Col-12">
+                <p class="text-uppercase">Details</p>
+            </div>
+            <div class="nav-item-divider" style="color:white"></div>
+
+                <div class="row Col-12" *ngIf="passbook?.activityId != 1 || passbook?.activityId != 2">
+                    <div class="col-6" style="text-align:left">
+                        <p>Coins(<i class="bi bi-currency-rupee"></i>)</p>
+                    </div>
+                    <div class="col-6" style="text-align:right">
+                        <p>{{passbook?.coins}}</p>
+                    </div>
+                </div>
+ 
+                <div class="row Col-12" *ngIf="passbook?.activityId != 3 || passbook?.activityId != 5">
+                    <div class="col-6 activityType" style="text-align:left">
+                        <p>Paid from wallet</p>
+                </div>
+                <div class="col-6" style="text-align:right">
+                        <p>{{passbook?.coins}}</p>
+                    </div>
+            </div>
+ 
+                <div class="row Col-12" *ngIf="passbook?.activityId != 4|| passbook?.activityId != 6">
+                    <div class="col-6 activityType" style="text-align:left">
+                        <p>Paid To wallet</p>
+                    </div>
+                    <div class="col-6" style="text-align:right">
+                        <p>{{passbook?.coins}}</p>
+                    </div>
+                </div>
+             
+            <div class="row Col-12">
+                <div class="col-6" style="text-align:left">
+                    <p>Reference No</p>
+                </div>
+                <div class="col-6" style="text-align:right">
+                    <p>{{passbook?.passbookHistoryId}}</p>
+                </div>
+            </div>
+            <div class="row Col-12">
+                <div class="col-6" style="text-align:left">
+                    <p>Request Date</p>
+                </div>
+                <div class="col-6 createdOn" style="text-align:right">
+                    <p>{{passbook?.createdDate}}</p>
+                </div>
+            </div>
+            <div class="row Col-12">
+                <div class="col-6" style="text-align:left">
+                    <p>Approved On</p>
+                </div>
+                <div class="col-6 approvedOn" style="text-align:right">
+                    <p>{{passbook?.approvedDate}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+        <div class="rounded-3" *ngIf="passbook?.proofDocumentDetailID != null">
+            <div class="col-4">
+                <img src="{{this.proofPath}}{{passbook?.documentDetailId}}.{{passbook?.fileExtenstion}}" class="rounded-3">
+            </div>
+        </div>
+ </div>

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Icoins_request_model } from 'src/app/Shared/Modals/Coins/coins_request_model';
 import { CoinsService } from '../coins.service';
 import { Ideposit_withdraw_coins_request, deposit_withdraw_coins_request } from 'src/app/Shared/Modals/Coins/deposit_withdraw_coins_request';
+import { AuthService } from 'src/app/auth.service';
 
 @Component({
   selector: 'app-withdraw-list',
@@ -13,8 +14,11 @@ export class WithdrawListComponent {
   returnType:any;
   paginationCount: number = 1;
   totalCount: number = 0;
-
-  constructor(private coinsService: CoinsService){ }
+  private readonly _sessionUser: bigint;
+  
+  constructor(private coinsservice:CoinsService, private authservice: AuthService){
+    this._sessionUser = this.authservice.user.userId;
+   }
  
   withdrawcoinsPopup(coins_request_model: Icoins_request_model){
 
@@ -26,7 +30,7 @@ export class WithdrawListComponent {
 
   withdraw_list(){
     let obj: Ideposit_withdraw_coins_request = new deposit_withdraw_coins_request(0, 1 as unknown as bigint, 1 as unknown as bigint);
-    this.coinsService.withdraw_list(obj);
+    this.coinsservice.withdraw_list(obj);
   }
 
   PaginationNumber(pageNumber:number) { 

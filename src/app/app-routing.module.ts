@@ -28,7 +28,7 @@ const routes: Routes = [
   {path:"dashboard", loadChildren: () => import('./Dashboard/dashboard.module').then(module => module.DashboardModule), canActivate: [IsAuthenticatedGuard] },
   {path:"setting", loadChildren: () => import('./settings/settings.module').then(module => module.SettingsModule), canActivate: [IsAuthenticatedGuard] },
   {path:"notification", loadChildren: () => import('./notification/notification.module').then(module=>module.NotificationModule), canActivate: [IsAuthenticatedGuard] },
-  {path:"ids", loadChildren: () => import('./ids/ids.module').then(module=>module.IdsModule), canActivate: [IsAuthenticatedGuard] },
+  {path:"ids", loadChildren: () => import('./admincoinsaction/Ids/ids.module').then(module=>module.IdsModule), canActivate: [IsAuthenticatedGuard] },
   {path:"userids", loadChildren: () => import('./userids/user-ids.module').then(module=>module.UserIdsModule), canActivate: [IsAuthenticatedGuard] },
 
   {path:"not-found", component:NotFoundComponent},

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { DeletedUserListComponent } from './User/deleted-user-list/deleted-user-list.component';
 import { UserListComponent } from './User/user-list/user-list.component';
 import { DeletedIdRequestListComponent } from './Ids/deleted-id-request-list/deleted-id-request-list.component';
@@ -8,7 +8,7 @@ import { IdRequestListComponent } from './Ids/id-request-list/id-request-list.co
 import { IsAuthenticatedGuard } from '../is-authenticated.guard';
 import { HasRoleGuard } from '../has-role.guard';
 
-const route: Routes=[
+const routes: Routes=[
   { path: 'id_request_list', component: IdRequestListComponent },
   { path: 'deleted_id_request_list', component: DeletedIdRequestListComponent },
   { path: 'user_list', component: UserListComponent },
@@ -23,7 +23,9 @@ const route: Routes=[
 @NgModule({
   declarations: [],
   imports: [
-    CommonModule
-  ]
+    CommonModule,
+    RouterModule.forChild(routes)
+  ],
+  exports:[RouterModule]
 })
 export class AdminRoutingModule { }

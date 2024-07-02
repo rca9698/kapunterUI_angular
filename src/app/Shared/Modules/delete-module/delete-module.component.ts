@@ -50,6 +50,9 @@ export class DeleteModuleComponent {
       case 'userbank':
         this.BankAccountDelete();
         break;
+      case 'idrequest':
+        this.IDRequestDelete();
+        break;
     }
   }
 
@@ -131,7 +134,9 @@ export class DeleteModuleComponent {
     }else{
       this.toasterService.warning(this.returnType['returnMessage']);
     }
-    this.bsModalRef.hide()
+    this.bsModalRef.hide();
+
+    window.location.reload();
   }
 
 }

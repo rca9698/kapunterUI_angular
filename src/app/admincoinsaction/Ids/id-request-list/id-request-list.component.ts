@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { IDRequestModal } from 'src/app/Shared/Modals/Ids/id-request-modal';
-import { IdsService } from 'src/app/ids/ids.service';
+import { IID_Request_Modal } from 'src/app/Shared/Modals/Ids/id-request-modal';
+import { IdsService } from '../ids.service';
+import { AuthService } from 'src/app/auth.service';
+import { DeleteService } from 'src/app/Shared/Modules/delete-module/delete.service';
 
 @Component({
   selector: 'app-id-request-list',
@@ -8,31 +10,39 @@ import { IdsService } from 'src/app/ids/ids.service';
   styleUrls: ['./id-request-list.component.css']
 })
 export class IdRequestListComponent {
-
-  constructor(private idsService: IdsService){ }
-
-  ngOnInit() {
-     
+  _sessionUser: bigint;
+  constructor(private idsService: IdsService, private authservice: AuthService
+    ,private deleteService: DeleteService
+  ){ 
+    this._sessionUser = this.authservice.user.userId;
   }
 
-  usersQuery: any ;
-  idRequestList: IDRequestModal[] | undefined; 
+  ngOnInit() {
+    this.usersQuery.pageNumber = 1;
+    this.usersQuery.userId = this._sessionUser;
+    this.usersQuery.sessionUser = this._sessionUser;
+    this.fetchIdRequestList(this.usersQuery);
+  }
+
+  usersQuery: any = {};
+  idRequestList: IID_Request_Modal[] | undefined; 
   returnType:any;
   paginationCount: number = 1;
   totalCount: number = 0;
 
-  CreateIDPopup(obj: IDRequestModal){
-
+  CreateIDPopup(obj: IID_Request_Modal){
+    this.idsService.AdminAddIDPopup(obj);
   }
 
-  DeleteIDRequest(obj: IDRequestModal){
-
+  DeleteIDRequest(obj: IID_Request_Modal){
+    this.deleteService.OpenDeletePopup('idrequest','ID Request',obj);;
   }
 
   fetchIdRequestList(paginationQuery: any){
     this.idsService.listIdRequests(paginationQuery).subscribe({
       next:(response) =>{
        this.returnType = response;
+       console.log(this.returnType);
        this.idRequestList = this.returnType['returnList'];
        this.paginationCount = this.returnType['paginationCount'];
        this.totalCount = this.returnType['totalCount'];
@@ -46,6 +56,8 @@ export class IdRequestListComponent {
   
   PaginationNumber(pageNumber:number) {
     this.usersQuery.pageNumber = pageNumber;
+    this.usersQuery.userId = this._sessionUser;
+    this.usersQuery.sessionUser = this._sessionUser
     this.fetchIdRequestList(this.usersQuery);
   }
 

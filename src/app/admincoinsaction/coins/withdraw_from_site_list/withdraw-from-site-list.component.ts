@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CoinsService } from '../coins.service';
 import { Icoins_to_site_request_listing_modal } from 'src/app/Shared/Modals/Coins/coins_to_site_request_listing_modal';
+import { AuthService } from 'src/app/auth.service';
 
 @Component({
   selector: 'app-withdraw-from-site-list',
@@ -12,8 +13,11 @@ export class WithdrawFromSiteListComponent {
   returnType:any;
   paginationCount: number = 1;
   totalCount: number = 0;
+  private readonly _sessionUser: bigint;
   
-  constructor(private coinsservice: CoinsService){ }
+  constructor(private coinsservice:CoinsService, private authservice: AuthService){
+    this._sessionUser = this.authservice.user.userId;
+   }
 
   deposite_to_site_list(){
     this.coinsservice.withdraw_from_site_list(1, 1 as unknown as bigint);

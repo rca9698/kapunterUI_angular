@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IDDetailsModal } from 'src/app/Shared/Modals/Ids/id_detail-modal';
-import { IdsService } from 'src/app/ids/ids.service';
+import { IdsService } from '../ids.service';
 
 @Component({
   selector: 'app-ids-list',

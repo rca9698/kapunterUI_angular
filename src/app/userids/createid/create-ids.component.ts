@@ -6,6 +6,7 @@ import { UserIdsService } from '../user-ids.service';
 import { ToastrService } from 'src/app/toastr/toastr.service';
 import { AddIDRequest, IAddIDRequest } from 'src/app/Shared/Modals/Ids/add-ids-request';
 import { AuthService } from 'src/app/auth.service';
+import { environment } from 'src/environments/environment.development';
 
 @Component({
   selector: 'app-create-ids',
@@ -14,6 +15,8 @@ import { AuthService } from 'src/app/auth.service';
 })
 export class CreateIdsComponent {
   obj: any;
+
+  sitePath: string | undefined;
   AddIdsFrom: FormGroup;
   submitted : boolean = false;
   addIDRequest : IAddIDRequest = new AddIDRequest();
@@ -27,6 +30,8 @@ export class CreateIdsComponent {
         username: ['', [Validators.required]]
        },
      )
+     
+     this.sitePath = environment.imagePath.sitePath;
   }
 
 
@@ -35,7 +40,7 @@ export class CreateIdsComponent {
     
     if(this.AddIdsFrom.invalid) {
       return;
-    } 
+    }
 
     this.addIDRequest.userName = this.AddIdsFrom.value["username"].toString();
     this.addIDRequest.UserId = this._sessionUser;

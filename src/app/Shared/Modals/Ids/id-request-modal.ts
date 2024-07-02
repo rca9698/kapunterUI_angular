@@ -1,4 +1,4 @@
-export interface IIDRequestModal{
+export interface IID_Request_Modal{
     accountRequestId: bigint,
     userId: bigint,
     userNumber: bigint,
@@ -14,7 +14,7 @@ export interface IIDRequestModal{
     UpdatedDate: string
 }
  
-export class IDRequestModal implements IIDRequestModal {
+export class ID_Request_Modal implements IID_Request_Modal {
     accountRequestId: bigint;
     userId: bigint;
     userNumber: bigint;
