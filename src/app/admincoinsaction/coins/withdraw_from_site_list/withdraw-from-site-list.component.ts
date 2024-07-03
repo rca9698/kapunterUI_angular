@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CoinsService } from '../coins.service';
 import { Icoins_to_site_request_listing_modal } from 'src/app/Shared/Modals/Coins/coins_to_site_request_listing_modal';
 import { AuthService } from 'src/app/auth.service';
+import { ToastrService } from 'src/app/toastr/toastr.service';
 
 @Component({
   selector: 'app-withdraw-from-site-list',
@@ -15,23 +16,31 @@ export class WithdrawFromSiteListComponent {
   totalCount: number = 0;
   private readonly _sessionUser: bigint;
   
-  constructor(private coinsservice:CoinsService, private authservice: AuthService){
+  constructor(private coinsservice:CoinsService, private authservice: AuthService
+    ,private toasterService:ToastrService
+  ){
     this._sessionUser = this.authservice.user.userId;
    }
 
   deposite_to_site_list(){
-    this.coinsservice.withdraw_from_site_list(1, 1 as unknown as bigint);
+    this.coinsservice.withdraw_from_site_list(1, this._sessionUser).subscribe(resp => {
+      this.returnType = resp;
+      if(this.returnType['returnStatus'] == 1){
+        this.requestList = this.returnType['returnList'];
+      }else{
+        this.toasterService.warning(this.returnType.returnMessage);
+      }
+    });
   }
 
-  withdrawcoinsfromsitePopup(coins_to_site_request_modal: Icoins_to_site_request_listing_modal){
+  withdrawcoinsfromsitePopup(obj: Icoins_to_site_request_listing_modal){
 
   }
 
-  deletewithdrawcoinsfromsitePopup(coins_to_site_request_modal: Icoins_to_site_request_listing_modal){
+  deletewithdrawcoinsfromsitePopup(obj: Icoins_to_site_request_listing_modal){
 
   }
 
-  
   PaginationNumber(pageNumber:number) { 
 
   }

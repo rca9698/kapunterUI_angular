@@ -55,11 +55,11 @@ export class coins_request_model implements Icoins_request_model {
         this.documentDetailId = documentDetailId;
         this.fileExtenstion = fileExtenstion;
         this.sessionUser = sessionUser;
-        this.createdBy = createdBy,
-        this.createdDate = createdDate,
-        this.updatedBy = UpdatedBy,
-        this.updatedDate = UpdatedDate,
-        this.totalCount = totalCount,
-        this.paginationCount = paginationCount
+        this.createdBy = createdBy;
+        this.createdDate = createdDate;
+        this.updatedBy = UpdatedBy;
+        this.updatedDate = UpdatedDate;
+        this.totalCount = totalCount;
+        this.paginationCount = paginationCount;
       }
 }

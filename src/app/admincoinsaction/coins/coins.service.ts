@@ -8,6 +8,8 @@ import { Ideposit_withdraw_coins_request } from 'src/app/Shared/Modals/Coins/dep
 import { WithdrawCoinsRequestComponent } from '../../userids/withdraw-coins-request/withdraw-coins-request.component';
 import { apiService } from 'src/app/api.service';
 import { DepositeCoinsRequestComponent } from '../../userids/deposite-coins-request/deposite-coins-request.component';
+import { AdminWithdrawCoinsByRequestIdComponent } from './admin_withdraw_coins_by_request_id/admin-withdraw-coins-by-request-id.component';
+import { AdminDepositeCoinsByRequestIdComponent } from './admin_deposite_coins_by_request_id/admin-deposite-coins-by-request-id.component';
 
 @Injectable({
   providedIn: 'root'
@@ -53,13 +55,29 @@ export class CoinsService {
     this.bsmodalRef = this.bsModalService.show(WithdrawCoinsUserIdComponent, initalstate);
   }
 
+  OpenAdminDepositeCoinsByUserIdPopup(obj: any){
+    const initalstate: ModalOptions = {
+      initialState:{
+        obj,
+      }
+    }
+    this.bsmodalRef = this.bsModalService.show(AdminDepositeCoinsByRequestIdComponent, initalstate);
+  }
+
+  OpenAdminWithdrawCoinsUserIdPopup(obj: any){
+    const initalstate: ModalOptions = {
+      initialState:{
+        obj,
+      }
+    }
+    this.bsmodalRef = this.bsModalService.show(AdminWithdrawCoinsByRequestIdComponent, initalstate);
+  }
+
   deposit_list(obj: Ideposit_withdraw_coins_request){
-    obj.coinType = 1;
     return this.apiservice.GetDepositeCoinsRequestList(obj);
   }
 
   withdraw_list(obj: Ideposit_withdraw_coins_request){
-     obj.coinType = 0;
     return this.apiservice.GetWithdrawCoinsRequestList(obj);
   }
 
@@ -69,7 +87,6 @@ export class CoinsService {
   }
 
   withdraw_from_site_list(coinType: number, sessionUser: bigint){
-    coinType = 1;
     return this.apiservice.GetWithdrawCoinstoSiteRequestList(coinType, sessionUser);
   }
 
@@ -95,6 +112,14 @@ export class CoinsService {
 
   get_bank_UPI_details(){
     return this.apiservice.GetBankUPIDetails();
+  }
+
+  withdraw_coins_by_request_id(obj: any){
+    return this.apiservice.UpdateCoinsToWallet(obj);
+  }
+
+  deposite_coins_by_request_id(obj: any){
+
   }
 
 }
