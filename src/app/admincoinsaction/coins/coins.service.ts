@@ -73,6 +73,24 @@ export class CoinsService {
     this.bsmodalRef = this.bsModalService.show(AdminWithdrawCoinsByRequestIdComponent, initalstate);
   }
 
+  OpenAdminWithdrawCoinsByRequestIdPopup(obj: any){
+    const initalstate: ModalOptions = {
+      initialState:{
+        obj,
+      }
+    }
+    this.bsmodalRef = this.bsModalService.show(AdminWithdrawCoinsByRequestIdComponent, initalstate);
+  }
+
+  OpenAdminDepositCoinsByRequestIdPopup(obj: any){
+    const initalstate: ModalOptions = {
+      initialState:{
+        obj,
+      }
+    }
+    this.bsmodalRef = this.bsModalService.show(AdminDepositeCoinsByRequestIdComponent, initalstate);
+  }
+
   deposit_list(obj: Ideposit_withdraw_coins_request){
     return this.apiservice.GetDepositeCoinsRequestList(obj);
   }
@@ -115,11 +133,11 @@ export class CoinsService {
   }
 
   withdraw_coins_by_request_id(obj: any){
-    return this.apiservice.UpdateCoinsToWallet(obj);
+    return this.apiservice.DeleteCoinsFromWallet(obj);
   }
 
   deposite_coins_by_request_id(obj: any){
-
+    return this.apiservice.UpdateCoinsToWallet(obj);
   }
 
 }

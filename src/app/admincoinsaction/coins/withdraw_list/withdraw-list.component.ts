@@ -26,11 +26,11 @@ export class WithdrawListComponent implements OnInit {
     this.withdraw_list();
   }
  
-  withdrawcoinsPopup(coins_request_model: Icoins_request_model){
-
+  withdrawcoinsPopup(obj: Icoins_request_model){
+    this.coinsservice.OpenAdminWithdrawCoinsByRequestIdPopup(obj);
   }
 
-  deletewithdrawcoinsPopup(coins_request_model: Icoins_request_model){
+  deletewithdrawcoinsPopup(obj: Icoins_request_model){
 
   }
 

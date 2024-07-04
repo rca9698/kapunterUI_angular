@@ -14,7 +14,7 @@ import { Iadmin_withdraw_coins_by_request_id, admin_withdraw_coins_by_request_id
 export class AdminWithdrawCoinsByRequestIdComponent {
   obj: any;
 
-  AddSiteFrom: FormGroup;
+   WithdrawCoinsFrom: FormGroup;
    submitted : boolean = false;
    file: any = null;
    isupdate: boolean = false;
@@ -31,7 +31,7 @@ export class AdminWithdrawCoinsByRequestIdComponent {
   constructor(public bsModalRef:BsModalRef, private formBuilder:FormBuilder, 
     private router:Router, private coinsService: CoinsService, 
     private toasterService: ToastrService){
-      this.AddSiteFrom = this.formBuilder.group({
+      this.WithdrawCoinsFrom = this.formBuilder.group({
         userNumber: ['', [Validators.required]],
         coins: ['', [Validators.required]],
        },
@@ -41,10 +41,10 @@ export class AdminWithdrawCoinsByRequestIdComponent {
     
   }
 
-  AddSite(){
+  withdraw_coins_by_request_id(){
     this.submitted = true;
     
-  if(this.AddSiteFrom.invalid || !this.file) {
+  if(this.WithdrawCoinsFrom.invalid || !this.file) {
     return;
   }
 

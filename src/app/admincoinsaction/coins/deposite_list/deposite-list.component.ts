@@ -4,6 +4,7 @@ import { CoinsService } from '../coins.service';
 import { Ideposit_withdraw_coins_request, deposit_withdraw_coins_request } from 'src/app/Shared/Modals/Coins/deposit_withdraw_coins_request';
 import { AuthService } from 'src/app/auth.service';
 import { ToastrService } from 'src/app/toastr/toastr.service';
+import { DeleteService } from 'src/app/Shared/Modules/delete-module/delete.service';
 
 @Component({
   selector: 'app-deposite-list',
@@ -18,7 +19,7 @@ export class DepositeListComponent implements OnInit {
   private readonly _sessionUser: bigint;
   
   constructor(private coinsservice:CoinsService, private authservice: AuthService,
-    private toasterService:ToastrService
+    private toasterService:ToastrService, private deleteservice: DeleteService
   ){
     this._sessionUser = this.authservice.user.userId;
    }
@@ -42,15 +43,15 @@ export class DepositeListComponent implements OnInit {
     });
   }
 
-  ViewCoinRequestProof(obj: Icoins_request_model){
-
-  }
-
   DepositCoinsPopup(obj: Icoins_request_model){
-     
+    this.coinsservice.OpenAdminDepositCoinsByRequestIdPopup(obj);
   }
 
   DeleteCoinRequestPopup(obj: Icoins_request_model){
+    this.deleteservice.OpenDeletePopup('','',obj);
+  }
+  
+  ViewCoinRequestProof(obj: Icoins_request_model){
 
   }
  

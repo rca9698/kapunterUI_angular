@@ -16,14 +16,14 @@
             <div class="form-group">
                 <label>Mobile Number*</label>
                 <input [disabled]="true" type="text" formControlName="userNumber" class="form-control" placeholder="User Number" [(ngModel)]="withdrawobj.userNumber" autocomplete="off">
-                <div class="text-danger" *ngIf="AddSiteFrom.get('userNumber')?.invalid && (submitted || AddSiteFrom.get('userNumber')?.touched || AddSiteFrom.get('userNumber')?.dirty)">
-                <span *ngIf="AddSiteFrom.get('userNumber')?.errors?.['required']"> Mobile Number is required </span> </div>
+                <div class="text-danger" *ngIf="WithdrawCoinsFrom.get('userNumber')?.invalid && (submitted || WithdrawCoinsFrom.get('userNumber')?.touched || WithdrawCoinsFrom.get('userNumber')?.dirty)">
+                <span *ngIf="WithdrawCoinsFrom.get('userNumber')?.errors?.['required']"> Mobile Number is required </span> </div>
                 </div>
             <div class="form-group">
                 <label>Coins(<i class="bi bi-currency-rupee"></i>)*</label>
                 <input [disabled]="true" type="text" formControlName="coins" class="form-control" placeholder="Coins" [(ngModel)]="withdrawobj.coins" autocomplete="off">
-                <div class="text-danger" *ngIf="AddSiteFrom.get('Coins')?.invalid && (submitted || AddSiteFrom.get('Coins')?.touched || AddSiteFrom.get('Coins')?.dirty)">
-                <span *ngIf="AddSiteFrom.get('Coins')?.errors?.['required']"> Site URL is required </span> </div>
+                <div class="text-danger" *ngIf="WithdrawCoinsFrom.get('Coins')?.invalid && (submitted || WithdrawCoinsFrom.get('Coins')?.touched || WithdrawCoinsFrom.get('Coins')?.dirty)">
+                <span *ngIf="WithdrawCoinsFrom.get('Coins')?.errors?.['required']"> Site URL is required </span> </div>
                 </div>
             <div class="form-group">
                 <div method="post" enctype="multipart/form-data" style="margin-top: 10px">
@@ -31,7 +31,7 @@
                         <div class="col-md-10">
                             <!-- <input type="file" name="files" class="files" /> -->
                             <input #imageInput type="file" accept="image/*" (change)="processFile(imageInput)">
-                            <div class="text-danger" *ngIf="!this.file && (submitted || AddSiteFrom.get('siteURL')?.touched)">
+                            <div class="text-danger" *ngIf="!this.file && (submitted || WithdrawCoinsFrom.get('Coins')?.touched)">
                              <span> File is required </span> 
                             </div>                
                         </div>

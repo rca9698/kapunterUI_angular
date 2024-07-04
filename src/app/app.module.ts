@@ -20,6 +20,8 @@ import { AuthInterceptorProvider } from './auth-interceptor.service';
 import { DeleteModuleComponent } from './Shared/Modules/delete-module/delete-module.component';
 import { MakeDefaultModuleComponent } from './Shared/Modules/make-default-module/make-default-module.component';
 import { UserIdsModule } from './userids/user-ids.module';
+import { CoinsModule } from './admincoinsaction/coins/coins.module';
+import { ViewImageModuleComponent } from './Shared/Modules/view-image-module/view-image-module.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,7 @@ import { UserIdsModule } from './userids/user-ids.module';
     AddImageComponent,
     DeleteModuleComponent,
     MakeDefaultModuleComponent,
+    ViewImageModuleComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,6 +46,7 @@ import { UserIdsModule } from './userids/user-ids.module';
     AccountsModule,
     SitesModule,
     UserIdsModule,
+    CoinsModule,
     FormsModule
   ],
   providers: [AuthInterceptorProvider],

@@ -211,7 +211,7 @@ export class apiService {
   }
 
   DeleteCoinsFromWallet(obj: any){
-    return this.http.post(`${environment.apiUrl}/api/Coin/DeleteCoins`, obj);
+    return this.http.post(`${environment.apiUrl}/api/Coin/RemoveCoinsFromWallet`, obj);
   }
 
   UpdateCoinsToAccountRequest(obj: any){

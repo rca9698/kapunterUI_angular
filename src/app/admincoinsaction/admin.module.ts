@@ -16,7 +16,6 @@ import { RouterModule } from '@angular/router';
     ReactiveFormsModule,
     AdminRoutingModule,
     HttpClientModule,
-    CoinsModule,
     ModalModule.forRoot()
   ],
   exports: [RouterModule]

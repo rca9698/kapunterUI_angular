@@ -1,3 +1,4 @@
+
 <div class="modal-content siteColor">
     <form (ngSubmit)="SendDepositCoinsByRequestId()" [formGroup]="DepositCoinsByRequestIdForm" autocomplete="off">
         <div class="modal-header">
@@ -15,7 +16,7 @@
             </div>
             <div class="form-group">
                 <label>Mobile Number*</label>
-                <input disabled="disabled" type="text" class="form-control" value="{{userNumber}}" autocomplete="off">
+                <input [disabled]="true" type="text" formControlName="coins" class="form-control" [(ngModel)]="depositeobj.userNumber" autocomplete="off">
             </div>
             <div class="form-group">
                 <label>Coins(<i class="bi bi-currency-rupee"></i>)*</label>
@@ -28,4 +29,4 @@
             <button type="submit" class="btn siteBtnbackground">Deposit Coins</button>
         </div>
     </form>
-</div>
+</div>	
