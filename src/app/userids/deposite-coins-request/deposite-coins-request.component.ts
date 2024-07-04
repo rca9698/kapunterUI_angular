@@ -75,6 +75,8 @@ export class DepositeCoinsRequestComponent {
     formParams.append('userid', this._sessionUser.toString());
     formParams.append('sessionuser', this._sessionUser.toString());
 
+    console.log(this._sessionUser.toString());
+
     this.coinsservice.deposite_coin_request_insert(formParams).subscribe({
       next:(response) =>{
        this.returnType = response;

@@ -17,8 +17,8 @@ export class AdminDepositeCoinsByRequestIdComponent {
   obj: any;
   
   DepositCoinsByRequestIdForm: FormGroup;
-  userNumber: string | undefined ;
   submitted = false;
+  _sessionUser: bigint;
   returnType: any;
   depositeobj: Iadmin_withdraw_coins_by_request_id 
       = new admin_withdraw_coins_by_request_id();
@@ -31,6 +31,7 @@ export class AdminDepositeCoinsByRequestIdComponent {
         coins: ['', [Validators.required]]
        },
      )
+     this._sessionUser = authservice.user.userId;
  }
 
  SendDepositCoinsByRequestId() {
@@ -39,6 +40,11 @@ export class AdminDepositeCoinsByRequestIdComponent {
   if (this.DepositCoinsByRequestIdForm?.invalid) {
     return;
   } 
+  this.depositeobj.userId = this.obj.userId;
+  this.depositeobj.sessionUser = this._sessionUser;
+  this.depositeobj.coins = this.obj.coins;
+  this.depositeobj.coinType = 1;
+  this.depositeobj.coinsRequestId = this.obj.coinsRequestId;
   
   this.coinsService.deposite_coins_by_request_id(this.depositeobj).subscribe(resp => {
     this.returnType = resp;

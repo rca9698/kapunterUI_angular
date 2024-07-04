@@ -5,6 +5,7 @@ import { BsModalRef } from 'ngx-bootstrap/modal';
 import { ToastrService } from 'src/app/toastr/toastr.service';
 import { CoinsService } from '../coins.service';
 import { Iadmin_withdraw_coins_by_request_id, admin_withdraw_coins_by_request_id } from 'src/app/Shared/Modals/Coins/admin_withdraw_coins_by_request_id';
+import { AuthService } from 'src/app/auth.service';
 
 @Component({
   selector: 'app-admin-withdraw-coins-by-request-id',
@@ -14,13 +15,14 @@ import { Iadmin_withdraw_coins_by_request_id, admin_withdraw_coins_by_request_id
 export class AdminWithdrawCoinsByRequestIdComponent {
   obj: any;
 
-   WithdrawCoinsFrom: FormGroup;
+   WithdrawCoinsByRequestIDFrom: FormGroup;
    submitted : boolean = false;
    file: any = null;
    isupdate: boolean = false;
    withdrawobj: Iadmin_withdraw_coins_by_request_id 
    = new admin_withdraw_coins_by_request_id();
    returnType: any;
+   _sessionUser: bigint;
   
    @ViewChild('imageInput') fileInput: any
 
@@ -30,12 +32,13 @@ export class AdminWithdrawCoinsByRequestIdComponent {
 
   constructor(public bsModalRef:BsModalRef, private formBuilder:FormBuilder, 
     private router:Router, private coinsService: CoinsService, 
-    private toasterService: ToastrService){
-      this.WithdrawCoinsFrom = this.formBuilder.group({
+    private toasterService: ToastrService, public authservice: AuthService){
+      this.WithdrawCoinsByRequestIDFrom = this.formBuilder.group({
         userNumber: ['', [Validators.required]],
         coins: ['', [Validators.required]],
        },
      )
+     this._sessionUser = authservice.userdetail.userId;
   }
   ngOnInit(): void {
     
@@ -44,17 +47,17 @@ export class AdminWithdrawCoinsByRequestIdComponent {
   withdraw_coins_by_request_id(){
     this.submitted = true;
     
-  if(this.WithdrawCoinsFrom.invalid || !this.file) {
+  if(this.WithdrawCoinsByRequestIDFrom.invalid || !this.file) {
     return;
   }
 
   let formParams = new FormData();
   formParams.append('File', this.file);
-  formParams.append('coinsRequestId',  this.withdrawobj.coinsRequestId?.toString());
-  formParams.append('userId', this.withdrawobj.userId?.toString());
-  formParams.append('coins', this.withdrawobj.coins.toString());
-  formParams.append('coinType', this.withdrawobj.coinType.toString());
-  formParams.append('sessionUser', this.withdrawobj.sessionUser.toString());
+  formParams.append('coinsRequestId',  this.obj.coinsRequestId?.toString());
+  formParams.append('userId', this.obj.userId?.toString());
+  formParams.append('coins', this.obj.coins.toString());
+  formParams.append('coinType', this.obj.coinType.toString());
+  formParams.append('sessionUser', this._sessionUser.toString());
 
     this.coinsService.withdraw_coins_by_request_id(formParams).subscribe(resp => {
       console.log(resp);

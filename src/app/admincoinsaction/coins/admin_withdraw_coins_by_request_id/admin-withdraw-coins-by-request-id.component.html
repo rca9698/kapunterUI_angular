@@ -1,8 +1,8 @@
 <div class="modal-content siteColor">
-    <form id="WithdrawCoinsForm">
+    <form (ngSubmit)="withdraw_coins_by_request_id()" [formGroup]="WithdrawCoinsByRequestIDFrom">
         <div class="modal-header">
             <p class="modal-title" id="exampleModalLabel">Withdraw</p>
-            <div type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <div type="button" class="close"  (click)="bsModalRef.hide()" aria-label="Close">
                 <i class="bi bi-x-circle-fill"></i>
             </div>
         </div>
@@ -10,28 +10,28 @@
             <div class="form-group col-12">
                 <div class="d-flex flex-column text-center col-12">
                     <span class="business">WALLET BALANCE</span>
-                    <span class=""><i class="bi bi-currency-rupee"></i>@coins</span>
+                    <span class=""><i class="bi bi-currency-rupee"></i>{{authservice.userdetail.coins}}</span>
                 </div>
             </div>
             <div class="form-group">
                 <label>Mobile Number*</label>
-                <input [disabled]="true" type="text" formControlName="userNumber" class="form-control" placeholder="User Number" [(ngModel)]="withdrawobj.userNumber" autocomplete="off">
-                <div class="text-danger" *ngIf="WithdrawCoinsFrom.get('userNumber')?.invalid && (submitted || WithdrawCoinsFrom.get('userNumber')?.touched || WithdrawCoinsFrom.get('userNumber')?.dirty)">
-                <span *ngIf="WithdrawCoinsFrom.get('userNumber')?.errors?.['required']"> Mobile Number is required </span> </div>
-                </div>
+                <input [disabled]="true" type="text" formControlName="userNumber" class="form-control" [(ngModel)]="obj.userNumber" autocomplete="off">
+                <div class="text-danger" *ngIf="WithdrawCoinsByRequestIDFrom.get('userNumber')?.invalid && (submitted || WithdrawCoinsByRequestIDFrom.get('userNumber')?.touched || WithdrawCoinsByRequestIDFrom.get('userNumber')?.dirty)">
+                    <span *ngIf="WithdrawCoinsByRequestIDFrom.get('userNumber')?.errors?.['required']"> Mobile Number is required </span> </div>
+            </div>
             <div class="form-group">
                 <label>Coins(<i class="bi bi-currency-rupee"></i>)*</label>
-                <input [disabled]="true" type="text" formControlName="coins" class="form-control" placeholder="Coins" [(ngModel)]="withdrawobj.coins" autocomplete="off">
-                <div class="text-danger" *ngIf="WithdrawCoinsFrom.get('Coins')?.invalid && (submitted || WithdrawCoinsFrom.get('Coins')?.touched || WithdrawCoinsFrom.get('Coins')?.dirty)">
-                <span *ngIf="WithdrawCoinsFrom.get('Coins')?.errors?.['required']"> Site URL is required </span> </div>
-                </div>
+                <input [disabled]="true" type="text" formControlName="coins" class="form-control" placeholder="Coins" [(ngModel)]="obj.coins" autocomplete="off">
+                <div class="text-danger" *ngIf="WithdrawCoinsByRequestIDFrom.get('coins')?.invalid && (submitted || WithdrawCoinsByRequestIDFrom.get('coins')?.touched || WithdrawCoinsByRequestIDFrom.get('coins')?.dirty)">
+                <span *ngIf="WithdrawCoinsByRequestIDFrom.get('coins')?.errors?.['required']"> Coins are required </span> </div>
+            </div>
             <div class="form-group">
                 <div method="post" enctype="multipart/form-data" style="margin-top: 10px">
                     <div class="form-group">
                         <div class="col-md-10">
                             <!-- <input type="file" name="files" class="files" /> -->
                             <input #imageInput type="file" accept="image/*" (change)="processFile(imageInput)">
-                            <div class="text-danger" *ngIf="!this.file && (submitted || WithdrawCoinsFrom.get('Coins')?.touched)">
+                            <div class="text-danger" *ngIf="!this.file && (submitted || WithdrawCoinsByRequestIDFrom.get('coins')?.touched)">
                              <span> File is required </span> 
                             </div>                
                         </div>
