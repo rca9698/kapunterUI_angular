@@ -191,6 +191,7 @@ export class apiService {
   }
 
   GetDepositeCoinstoSiteRequestList(coinType: number, sessionUser: bigint){
+    console.log(coinType);
     return this.http.get(`${environment.apiUrl}/api/Coin/GetCoinsToAccountRequest/${coinType}/${sessionUser}`);
   }
   
@@ -214,12 +215,12 @@ export class apiService {
     return this.http.post(`${environment.apiUrl}/api/Coin/RemoveCoinsFromWallet`, obj);
   }
 
-  UpdateCoinsToAccountRequest(obj: any){
-    return this.http.post(`${environment.apiUrl}/api/Coin/DeleteCoins`, obj);
+  UpdateCoinsToIdRequest(obj: any){
+    return this.http.post(`${environment.apiUrl}/api/Coin/UpdateCoinsToAccountRequest`, obj);
   }
 
   UpdateCoinsToId(obj: any){
-    return this.http.post(`${environment.apiUrl}/api/Coin/UpdateCoinsToAccountRequest`, obj);
+    return this.http.post(`${environment.apiUrl}/api/Coin/UpdateCoinsToAccount`, obj);
   }
 
   DeleteCoinsRequestToId(obj: any){

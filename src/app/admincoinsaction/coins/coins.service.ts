@@ -10,6 +10,8 @@ import { apiService } from 'src/app/api.service';
 import { DepositeCoinsRequestComponent } from '../../userids/deposite-coins-request/deposite-coins-request.component';
 import { AdminWithdrawCoinsByRequestIdComponent } from './admin_withdraw_coins_by_request_id/admin-withdraw-coins-by-request-id.component';
 import { AdminDepositeCoinsByRequestIdComponent } from './admin_deposite_coins_by_request_id/admin-deposite-coins-by-request-id.component';
+import { AdminDepositeCoinsToIdRequestIdComponent } from './admin_deposite_withdraw_coins_ids_by_request_id/admin-deposite-coins-to-id-request-id.component';
+import { AdminWithdrawCoinsToIdRequestIdComponent } from './admin_withdraw_coins_to_id_request_id/admin-withdraw-coins-to-id-request-id.component';
 
 @Injectable({
   providedIn: 'root'
@@ -91,6 +93,24 @@ export class CoinsService {
     this.bsmodalRef = this.bsModalService.show(AdminDepositeCoinsByRequestIdComponent, initalstate);
   }
 
+  OpenAdminDepositeCoinsToIdRequestIdPopup(obj: any){
+    const initalstate: ModalOptions = {
+      initialState:{
+        obj,
+      }
+    }
+    this.bsmodalRef = this.bsModalService.show(AdminDepositeCoinsToIdRequestIdComponent, initalstate);
+  }
+
+  OpenAdminWithdrawCoinsToIdRequestIdPopup(obj: any){
+    const initalstate: ModalOptions = {
+      initialState:{
+        obj,
+      }
+    }
+    this.bsmodalRef = this.bsModalService.show(AdminWithdrawCoinsToIdRequestIdComponent, initalstate);
+  }
+
   deposit_list(obj: Ideposit_withdraw_coins_request){
     return this.apiservice.GetDepositeCoinsRequestList(obj);
   }
@@ -140,4 +160,11 @@ export class CoinsService {
     return this.apiservice.UpdateCoinsToWallet(obj);
   }
 
+  deposite_withdraw_coins_to_ids_request_insert(obj: any){
+    return this.apiservice.UpdateCoinsToIdRequest(obj);
+  }
+
+  deposite_withdraw_coins_to_ids(obj: any){
+    return this.apiservice.UpdateCoinsToId(obj);
+  } 
 }

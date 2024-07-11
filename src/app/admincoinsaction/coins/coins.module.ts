@@ -15,6 +15,8 @@ import { DepositeCoinsRequestComponent } from '../../userids/deposite-coins-requ
 import { WithdrawCoinsRequestComponent } from '../../userids/withdraw-coins-request/withdraw-coins-request.component';
 import { AdminWithdrawCoinsByRequestIdComponent } from './admin_withdraw_coins_by_request_id/admin-withdraw-coins-by-request-id.component';
 import { AdminDepositeCoinsByRequestIdComponent } from './admin_deposite_coins_by_request_id/admin-deposite-coins-by-request-id.component';
+import { AdminWithdrawCoinsToIdRequestIdComponent } from './admin_withdraw_coins_to_id_request_id/admin-withdraw-coins-to-id-request-id.component';
+import { AdminDepositeCoinsToIdRequestIdComponent } from './admin_deposite_withdraw_coins_ids_by_request_id/admin-deposite-coins-to-id-request-id.component';
 
 
 
@@ -29,7 +31,9 @@ import { AdminDepositeCoinsByRequestIdComponent } from './admin_deposite_coins_b
     DepositeCoinsRequestComponent,
     WithdrawCoinsRequestComponent,
     AdminWithdrawCoinsByRequestIdComponent,
-    AdminDepositeCoinsByRequestIdComponent
+    AdminDepositeCoinsByRequestIdComponent,
+    AdminWithdrawCoinsToIdRequestIdComponent,
+    AdminDepositeCoinsToIdRequestIdComponent
   ],
   imports: [
     CommonModule,

@@ -27,26 +27,30 @@ export class UserIdsService {
     this.bsmodalRef = this.bsModalService.show(CreateIdsComponent, initalstate);
   }
 
-  OpenDepositeCoinsToIDPopup(coinsToIDobj: any){
+  OpenDepositeCoinsToIDPopup(obj: any){
     const initalstate: ModalOptions = {
       initialState:{
-        coinsToIDobj
+        obj
       }
     }
     this.bsmodalRef = this.bsModalService.show(DepositeCoinsToIdsComponent, initalstate);
   }
 
-  OpenWithdrawCoinsFromIdPopup(coinsToIDobj: any){
+  OpenWithdrawCoinsFromIdPopup(obj: any){
     const initalstate: ModalOptions = {
       initialState:{
-        coinsToIDobj,
+        obj,
       }
     }
     this.bsmodalRef = this.bsModalService.show(WithdrawCoinsFromIdsComponent, initalstate);
   }
 
-  DepositCoinsToIds(obj: any){
-    return this.apiservice.UpdateCoinsToId(obj);
+  Update_Coins_To_Id_Request(obj: any){
+    return this.apiservice.UpdateCoinsToIdRequest(obj);
+  }
+
+  Withdraw_Coins_To_Id_Request(obj: any){
+    return this.apiservice.UpdateCoinsToIdRequest(obj);
   }
 
 }

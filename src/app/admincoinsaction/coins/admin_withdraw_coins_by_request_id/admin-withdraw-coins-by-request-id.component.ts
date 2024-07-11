@@ -65,7 +65,7 @@ export class AdminWithdrawCoinsByRequestIdComponent {
       if(this.returnType['returnStatus'] == 1){
         this.toasterService.success(this.returnType.returnMessage);
         this.bsModalRef.hide();
-        this.router.navigate(['/site/list-sites']);
+        this.router.navigate(['/adminaction/coins/withdraw-list']);
       }else{
         this.toasterService.warning(this.returnType.returnMessage);
       }

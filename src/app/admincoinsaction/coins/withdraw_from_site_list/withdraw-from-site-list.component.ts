@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CoinsService } from '../coins.service';
 import { Icoins_to_site_request_listing_modal } from 'src/app/Shared/Modals/Coins/coins_to_site_request_listing_modal';
 import { AuthService } from 'src/app/auth.service';
@@ -9,7 +9,7 @@ import { ToastrService } from 'src/app/toastr/toastr.service';
   templateUrl: './withdraw-from-site-list.component.html',
   styleUrls: ['./withdraw-from-site-list.component.css']
 })
-export class WithdrawFromSiteListComponent {
+export class WithdrawFromSiteListComponent implements OnInit {
   requestList: Icoins_to_site_request_listing_modal[] | undefined;  
   returnType:any;
   paginationCount: number = 1;
@@ -21,8 +21,11 @@ export class WithdrawFromSiteListComponent {
   ){
     this._sessionUser = this.authservice.user.userId;
    }
+  ngOnInit(): void {
+    this.withdraw_from_site_list();
+  }
 
-  deposite_to_site_list(){
+  withdraw_from_site_list(){
     this.coinsservice.withdraw_from_site_list(1, this._sessionUser).subscribe(resp => {
       this.returnType = resp;
       if(this.returnType['returnStatus'] == 1){
@@ -34,7 +37,7 @@ export class WithdrawFromSiteListComponent {
   }
 
   withdrawcoinsfromsitePopup(obj: Icoins_to_site_request_listing_modal){
-
+    this.coinsservice.OpenAdminWithdrawCoinsToIdRequestIdPopup(obj);
   }
 
   deletewithdrawcoinsfromsitePopup(obj: Icoins_to_site_request_listing_modal){

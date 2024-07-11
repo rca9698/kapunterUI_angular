@@ -45,6 +45,7 @@ export class ListUserIdComponent {
   }
 
   DepositeCoinsToIDPopup(obj: any){
+    console.log(obj);
     this.useridsservice.OpenDepositeCoinsToIDPopup(obj);
   }
 
