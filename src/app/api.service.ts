@@ -220,6 +220,7 @@ export class apiService {
   }
 
   UpdateCoinsToId(obj: any){
+    console.log(obj)
     return this.http.post(`${environment.apiUrl}/api/Coin/UpdateCoinsToAccount`, obj);
   }
 

@@ -53,6 +53,12 @@ export class DeleteModuleComponent {
       case 'idrequest':
         this.IDRequestDelete();
         break;
+      case 'deposittowallet':
+        this.DeleteCoinsFromWallet();
+        break;
+        case 'deletecoinfromIdRequest':
+        this.DeleteCoinsRequestToId();
+        break;
     }
   }
 
@@ -83,6 +89,21 @@ export class DeleteModuleComponent {
       this.toastrMessages();
     });
   }
+
+  DeleteCoinsFromWallet(){
+    this.apiservices.DeleteCoinsFromWallet(this.obj).subscribe(resp=>{
+      this.returnType = resp;
+      this.toastrMessages();
+    });
+  }
+
+  DeleteCoinsRequestToId(){
+    this.apiservices.DeleteCoinsRequestToId(this.obj).subscribe(resp=>{
+      this.returnType = resp;
+      this.toastrMessages();
+    });
+  }
+
 
   DashboardImagesDelete(){
     this.apiservices.DeleteDashboardImages(this.obj).subscribe(resp=>{

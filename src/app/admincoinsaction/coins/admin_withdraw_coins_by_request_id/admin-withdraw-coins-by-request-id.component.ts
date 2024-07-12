@@ -6,6 +6,7 @@ import { ToastrService } from 'src/app/toastr/toastr.service';
 import { CoinsService } from '../coins.service';
 import { Iadmin_withdraw_coins_by_request_id, admin_withdraw_coins_by_request_id } from 'src/app/Shared/Modals/Coins/admin_withdraw_coins_by_request_id';
 import { AuthService } from 'src/app/auth.service';
+import { CommonService } from 'src/app/common.service';
 
 @Component({
   selector: 'app-admin-withdraw-coins-by-request-id',
@@ -32,9 +33,9 @@ export class AdminWithdrawCoinsByRequestIdComponent {
 
   constructor(public bsModalRef:BsModalRef, private formBuilder:FormBuilder, 
     private router:Router, private coinsService: CoinsService, 
-    private toasterService: ToastrService, public authservice: AuthService){
+    private toasterService: ToastrService, public authservice: AuthService
+  , private commonservice: CommonService){
       this.WithdrawCoinsByRequestIDFrom = this.formBuilder.group({
-        userNumber: ['', [Validators.required]],
         coins: ['', [Validators.required]],
        },
      )
@@ -62,13 +63,7 @@ export class AdminWithdrawCoinsByRequestIdComponent {
     this.coinsService.withdraw_coins_by_request_id(formParams).subscribe(resp => {
       console.log(resp);
       this.returnType = resp;
-      if(this.returnType['returnStatus'] == 1){
-        this.toasterService.success(this.returnType.returnMessage);
-        this.bsModalRef.hide();
-        this.router.navigate(['/adminaction/coins/withdraw-list']);
-      }else{
-        this.toasterService.warning(this.returnType.returnMessage);
-      }
+      this.commonservice.toastrMessages(this.returnType);
     })
   }
 }

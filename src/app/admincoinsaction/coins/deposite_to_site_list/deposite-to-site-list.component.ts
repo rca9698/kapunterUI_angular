@@ -3,6 +3,7 @@ import { CoinsService } from '../coins.service';
 import { Icoins_to_site_request_listing_modal } from 'src/app/Shared/Modals/Coins/coins_to_site_request_listing_modal';
 import { AuthService } from 'src/app/auth.service';
 import { ToastrService } from 'src/app/toastr/toastr.service';
+import { DeleteService } from 'src/app/Shared/Modules/delete-module/delete.service';
 
 @Component({
   selector: 'app-deposite-to-site-list',
@@ -17,7 +18,7 @@ export class DepositeToSiteListComponent implements OnInit {
   private readonly _sessionUser: bigint;
   
   constructor(private coinsservice:CoinsService, private authservice: AuthService
-    , private toasterService: ToastrService
+    , private toasterService: ToastrService, private deleteservice: DeleteService
   ){
     this._sessionUser = this.authservice.user.userId;
    }
@@ -41,8 +42,8 @@ export class DepositeToSiteListComponent implements OnInit {
     this.coinsservice.OpenAdminDepositeCoinsToIdRequestIdPopup(obj);
   }
 
-  DeleteCoinsToAccountRequestPopup(coins_to_site_request_modal: Icoins_to_site_request_listing_modal){
-
+  DeleteCoinsToAccountRequestPopup(obj: Icoins_to_site_request_listing_modal){
+    this.deleteservice.OpenDeletePopup('deletecoinfromIdRequest','',obj);
   }
 
   PaginationNumber(pageNumber:number) { 

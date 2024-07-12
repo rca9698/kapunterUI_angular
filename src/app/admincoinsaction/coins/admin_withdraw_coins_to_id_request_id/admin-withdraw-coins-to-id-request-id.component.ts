@@ -7,6 +7,7 @@ import { admin_deposite_withdraw_coins_ids_by_request_id, Iadmin_deposite_withdr
 import { CoinsService } from '../coins.service';
 import { ToastrService } from 'src/app/toastr/toastr.service';
 import { environment } from 'src/environments/environment.development';
+import { CommonService } from 'src/app/common.service';
 
 @Component({
   selector: 'app-admin-withdraw-coins-to-id-request-id',
@@ -26,7 +27,8 @@ export class AdminWithdrawCoinsToIdRequestIdComponent {
 
   constructor(public bsModalRef:BsModalRef, private formBuilder: FormBuilder,
     private router:Router, public authservice: AuthService
-    , private coinsService: CoinsService, private toasterService: ToastrService){
+    , private coinsService: CoinsService, private toasterService: ToastrService
+    , private commonservice: CommonService){
       this.withdrawCoinsfromidsFrom = this.formBuilder.group({
         coins: ['', [Validators.required]]
        },
@@ -50,13 +52,7 @@ export class AdminWithdrawCoinsToIdRequestIdComponent {
   
   this.coinsService.deposite_withdraw_coins_to_ids(this.withdrawobj).subscribe(resp => {
     this.returnType = resp;
-    if(this.returnType['returnStatus'] == 1){
-      this.toasterService.success(this.returnType.returnMessage);
-      this.bsModalRef.hide();
-      this.router.navigate(['/userids/list-user-ids']);
-    }else{
-      this.toasterService.warning(this.returnType.returnMessage);
-    }
+    this.commonservice.toastrMessages(this.returnType);
   })
  }
 }

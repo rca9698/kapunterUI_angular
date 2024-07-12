@@ -48,7 +48,7 @@ export class DepositeListComponent implements OnInit {
   }
 
   DeleteCoinRequestPopup(obj: Icoins_request_model){
-    this.deleteservice.OpenDeletePopup('','',obj);
+    this.deleteservice.OpenDeletePopup('deposittowallet','Deposit Coins to Wallet',obj);
   }
   
   ViewCoinRequestProof(obj: Icoins_request_model){
