@@ -85,6 +85,7 @@ export class apiService {
 
   //PassbookHistory Related APIs Start
   GetPassbookHistory(obj: any){
+    console.log(obj);
     return this.http.post(`${environment.apiUrl}/api/Passbook/GetPassbookHistory`, obj);
   }
 

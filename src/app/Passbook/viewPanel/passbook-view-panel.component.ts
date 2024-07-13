@@ -16,18 +16,28 @@ export class PassbookViewPanelComponent {
   passbooks: Ipassbook_detail_model[] | undefined;
   passbook: Ipassbook_detail_model | undefined
   proofPath: string | undefined;
+  sitePath: string | undefined;
   listSitesQuery: any;
   returnType: any;
+  isListPassbookHistory: boolean = true;
+  isPassbookHistory: boolean = false;
+
   private readonly _sessionUser: any; 
 
   constructor(private toasterService: ToastrService, private authservice: AuthService
     , private router:Router, private passbookservice:PassbookService){
     this.proofPath = environment.imagePath.proofPath;
+    this.sitePath = environment.imagePath.sitePath;
     this._sessionUser = this.authservice.user.userId;
   }
 
   ngOnInit(): void {
     this.passbookHistorylist(1);
+  }
+
+  viewpassbookHistorylist(){
+    this.isPassbookHistory = false;
+    this.isListPassbookHistory = true;
   }
 
   passbookHistorylist(siteId: number){
@@ -38,6 +48,8 @@ export class PassbookViewPanelComponent {
     }
      this.passbookservice.passbookHistorylist(obj).subscribe(resp => {
       this.returnType = resp;
+      this.isPassbookHistory = false;
+      this.isListPassbookHistory = true;
       if(this.returnType['returnStatus'] == 1){
         this.passbooks = this.returnType['returnList'];
       }else{
@@ -47,10 +59,12 @@ export class PassbookViewPanelComponent {
   }
 
   PassbookHistoryById(passbookid: string){
+    this.isPassbookHistory = true;
+    this.isListPassbookHistory = false;
     this.passbookservice.passbookHistorybyid(passbookid).subscribe(resp => {
       this.returnType = resp;
       if(this.returnType['returnStatus'] == 1){
-        this.passbooks = this.returnType['returnList'];
+        this.passbook = this.returnType['returnVal'];
       }else{
         this.toasterService.warning(this.returnType.returnMessage);
       }

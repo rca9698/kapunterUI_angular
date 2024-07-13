@@ -13,7 +13,7 @@ export class PassbookService {
   }
 
   passbookHistorybyid(obj: any){
-    return this.apiservice.GetPassbookHistory(obj);
+    return this.apiservice.GetPassbookHistoryById(obj);
   }
 
 

@@ -8,14 +8,14 @@
     </div>
 </div> 
 
-<div class='dashboard-content' id="listPassbookHistory">
+<div class='dashboard-content' *ngIf="isListPassbookHistory">
     <div class="card rounded-3 siteColor" *ngFor="let passbook of passbooks">
         <div class="card-body">
             <div class="row Col-12">
                 <div class="col-9">
                     <div class="row col-12 cursorPointer" (click)="PassbookHistoryById(passbook.passbookHistoryId)">
                         <div class="col-3">
-                            <img class="siteImageSize rounded-circle" src="{{proofPath}}{{passbook.documentDetailId}}.{{passbook.fileExtenstion}}">
+                            <img class="siteImageSize rounded-circle" src="{{this.sitePath}}{{passbook.documentDetailId}}.{{passbook.fileExtenstion}}">
                         </div>
                         <div class="col-9 Col-12 align-self-center">
                             <div class="Col-3">
@@ -42,8 +42,8 @@
     </div>
 </div>
 
-<div class='dashboard-content' id="PassbookHistory">
-    <div class="BackBtnMyIds card-body card-body-padding row col-12 backbtnNavDesign">
+<div class='dashboard-content' *ngIf="isPassbookHistory" >
+    <div class="BackBtnMyIds card-body card-body-padding row col-12 backbtnNavDesign" (click)="viewpassbookHistorylist()">
         <div class="col-2" style="margin: -11px;">
             <i class="bi bi-arrow-left-circle-fill"></i>
         </div>
@@ -55,7 +55,7 @@
             <div class="row Col-12">
                 <div class="d-flex flex-column text-center col-12">
                     <span class="">
-                        <img class="siteIcon rounded-circle siteImageSize" src="" />
+                        <img class="siteIcon rounded-circle" src="{{this.sitePath}}{{this.passbook?.documentDetailId}}.{{this.passbook?.fileExtenstion}}" />
                     </span>
                     <p class="text-uppercase">{{this.passbook?.siteName}}</p>
                     <p class="">{{this.passbook?.siteURL}}</p>
