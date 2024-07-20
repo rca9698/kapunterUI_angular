@@ -29,6 +29,10 @@ sendOtp(mobileNumber: string){
   return this.apiservice.sendOtp(mobileNumber);
   }
 
+  sendOtpService(url: string){
+    return this.apiservice.sendOtpService(url);
+    }
+
 login(model: login){ 
   return this.apiservice.login(model);
 }

@@ -15,6 +15,10 @@ export class apiService {
   sendOtp(obj: string){
      return this.http.get(`${environment.apiUrl}/api/LoginSignup/Generate_Otp/${obj}`);
     }
+    
+  sendOtpService(obj: string){
+    return this.http.get(`${obj}`);
+    }
   
   login(obj: login){
      return this.http.post(`${environment.apiUrl}/api/LoginSignup/Login_GetToken`, obj);

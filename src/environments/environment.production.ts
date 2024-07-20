@@ -1,13 +1,16 @@
 
 export const environment = {
-    production: true,
-    environment: 'production',
-    appUrl: 'http://kapunter.com/',
-    apiUrl: 'http://api.kapunter.com',
+    production: false,
+    environment: 'dev',
+    isAdminSite: false,
+    appUrl: 'https://www.kapunter.com/',
+    apiUrl: 'https://rcapplications.online',
     ueserKey: 'kapunterUser',
 
     imagePath:{
-        sitePath:'https://kapunter.com/assets/Sites/',
-        dashboardImages:'https://kapunter.com/assets/DashboardImages/'
+        sitePath:'https://www.kapunter.com/assets/Sites/',
+        dashboardImages:'https://www.kapunter.com/assets/DashboardImages/',
+        QR:'https://www.kapunter.com/assets/QR/',
+        proofPath: 'https://www.kapunter.com/assets/paymentProof/'
     }
 };
