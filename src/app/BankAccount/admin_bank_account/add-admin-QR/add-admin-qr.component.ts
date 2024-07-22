@@ -6,6 +6,7 @@ import { BankAccountService } from '../../bank-account.service';
 import { AuthService } from 'src/app/auth.service';
 import { ToastrService } from 'src/app/toastr/toastr.service';
 import { Router } from '@angular/router';
+import { CommonService } from 'src/app/common.service';
 
 @Component({
   selector: 'app-add-admin-qr',
@@ -22,7 +23,8 @@ export class AddAdminQRComponent {
 
   constructor(public bsModalRef:BsModalRef, private formBuilder:FormBuilder, 
     private router:Router, private bankAccountService: BankAccountService, 
-    private toasterService: ToastrService, private authservice: AuthService){ 
+    private toasterService: ToastrService, private authservice: AuthService,
+    private commonService: CommonService){ 
       this.addAdminQrForm = this.formBuilder.group({
         QRName: ['', [Validators.required]],
        },
@@ -50,13 +52,7 @@ export class AddAdminQRComponent {
  
       this.bankAccountService.add_admin_qr(formParams).subscribe(resp => {
         this.returnType = resp;
-        if(this.returnType['returnStatus'] == 1){
-          this.toasterService.success(this.returnType.returnMessage);
-          this.bsModalRef.hide();
-          this.router.navigate(['/bankAccount/list-admin-qr']);
-        } else {
-          this.toasterService.warning(this.returnType.returnMessage);
-        }
+        this.commonService.toastrMessages(this.returnType);
       });
 
     }

@@ -8,6 +8,7 @@ import { Ibank_details, bank_details } from 'src/app/Shared/Modals/BankAccount/b
 import { Iwithdrawcoinrequestmodal, withdrawcoinrequestmodal } from 'src/app/Shared/Modals/Coins/withdraw_coin_request_modal';
 import { AuthService } from 'src/app/auth.service';
 import { GetUserBankAccount } from 'src/app/Shared/Modals/BankAccount/get_user_bank_account'
+import { CommonService } from 'src/app/common.service';
 
 @Component({
   selector: 'app-withdraw-coins-request',
@@ -27,7 +28,8 @@ export class WithdrawCoinsRequestComponent {
 
   constructor(public bsModalRef:BsModalRef, private formBuilder:FormBuilder, 
     private router:Router, private coinsservice: CoinsService, 
-    private toasterService: ToastrService, public authservice: AuthService) {
+    private toasterService: ToastrService, public authservice: AuthService,
+    private commonService: CommonService) {
       this._sessionUser = authservice.user.userId;
       const bankobj = new GetUserBankAccount(this.authservice.user.userId, this.authservice.user.userId
         , 1);
@@ -54,7 +56,7 @@ export class WithdrawCoinsRequestComponent {
     this.coinsservice.withdraw_coin_request_insert(this.withdrawcoinrequestmodalobj).subscribe({
       next:(response) => {
         this.returnType = response;
-        this.bsModalRef.hide();
+        this.commonService.toastrMessages(this.returnType);
       },
       error:error=>{
         console.log(error);

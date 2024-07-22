@@ -5,6 +5,7 @@ import { BsModalRef } from 'ngx-bootstrap/modal';
 import { DashboardService } from '../dashboard.service';
 import { ToastrService } from 'src/app/toastr/toastr.service';
 import { environment } from 'src/environments/environment.development';
+import { CommonService } from 'src/app/common.service';
 
 @Component({
   selector: 'app-add-image',
@@ -21,7 +22,7 @@ export class AddImageComponent {
 
     constructor(public bsModalRef:BsModalRef, private formBuilder: FormBuilder,
       private router:Router, private dashboardService: DashboardService, 
-      private toasterService: ToastrService){
+      private toasterService: ToastrService, private commonService: CommonService){
         this.AddImageForm = this.formBuilder.group({
           date: ['', [Validators.required]],
           files: ['', [Validators.required]]
@@ -44,15 +45,8 @@ export class AddImageComponent {
       formParams.append('date', this.AddImageForm.value["date"]);
       
       this.dashboardService.add_dashbord_image(formParams).subscribe(resp => {
-        console.log(resp);
         this.returnType = resp;
-        if(this.returnType['returnStatus'] == 1){
-          this.toasterService.success(this.returnType.returnMessage);
-          this.bsModalRef.hide();
-          this.router.navigateByUrl(environment.appUrl);
-        }else{
-          this.toasterService.warning(this.returnType.returnMessage);
-        }
+        this.commonService.toastrMessages(this.returnType);
       })
     }
 

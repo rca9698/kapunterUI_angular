@@ -6,6 +6,7 @@ import { AuthService } from 'src/app/auth.service';
 import { ToastrService } from 'src/app/toastr/toastr.service';
 import { Router } from '@angular/router';
 import { Iadd_admin_bank_account, add_admin_bank_account } from 'src/app/Shared/Modals/BankAccount/add_admin_bank_account';
+import { CommonService } from 'src/app/common.service';
 
 @Component({
   selector: 'app-add-admin-upi',
@@ -20,7 +21,8 @@ export class AddAdminUPIComponent {
 
   constructor(public bsModalRef:BsModalRef, private formBuilder:FormBuilder, 
     private router:Router, private bankAccountService: BankAccountService, 
-    private toasterService: ToastrService, private authservice: AuthService){ 
+    private toasterService: ToastrService, private authservice: AuthService,
+    private commonService: CommonService){ 
       this.addAdminUpiForm = this.formBuilder.group({
         UpiName: ['', [Validators.required]],
         UpiId: ['', [Validators.required]], 
@@ -39,13 +41,7 @@ export class AddAdminUPIComponent {
       this.add_admin_upi.sessionUser = this.authservice.user.userId;
       this.bankAccountService.add_update_admin_upi(this.add_admin_upi).subscribe(resp => {
         this.returnType = resp;
-        if(this.returnType['returnStatus'] == 1){
-          this.toasterService.success(this.returnType.returnMessage);
-          this.bsModalRef.hide();
-          this.router.navigate(['/bankAccount/list-admin-upi']);
-        } else {
-          this.toasterService.warning(this.returnType.returnMessage);
-        }
+        this.commonService.toastrMessages(this.returnType);
       });
 
     }

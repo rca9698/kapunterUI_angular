@@ -24,7 +24,7 @@ export class CommonService {
     }
     this.bsModalRef.hide();
 
-    // window.location.reload();
+     window.location.reload();
   }
   
 }
