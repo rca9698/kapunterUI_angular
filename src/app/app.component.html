@@ -10,7 +10,8 @@
                         <a href="#">
                             <img src="../assets/kapunter.ico" alt="Logo Punter"/>
                         </a>
-                        <div class="small-br"></div>
+                        {{this.authService.userdetail.userNumber}}
+                        <!-- <div class="small-br"></div> -->
                         <div class="big-br"></div>
                         <div>Wallet Balance</div>
                         <div style="font-weight: 1.1rem;color: #7e1fac;">{{this.authService.userdetail.coins}}</div>

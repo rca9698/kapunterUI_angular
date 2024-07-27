@@ -22,7 +22,7 @@
 
             <div class="form-group">
                 <label>User Name*</label>
-                <input formControlName="userName" [(ngModel)]="admin_add_id.userName" type="text" class="form-control" placeholder="User Name" autocomplete="off">
+                <input formControlName="userName" [(ngModel)]="obj.userName" type="text" class="form-control" placeholder="User Name" autocomplete="off">
                 <div class="text-danger" *ngIf="AdminCreateIdForm.get('userName')?.invalid && (submitted || AdminCreateIdForm.get('userName')?.touched || AdminCreateIdForm.get('userName')?.dirty)">
                  <span *ngIf="AdminCreateIdForm.get('userName')?.errors?.['required']"> User Name is required </span> </div>
             </div>

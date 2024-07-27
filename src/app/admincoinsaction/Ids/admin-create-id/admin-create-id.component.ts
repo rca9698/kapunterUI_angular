@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BsModalRef } from 'ngx-bootstrap/modal';
@@ -42,6 +42,7 @@ export class AdminCreateIdComponent {
     if(this.AdminCreateIdForm.invalid)
       return;
 
+    this.admin_add_id.userName = this.obj.userName;
     this.admin_add_id.sessionUser = this._sessionUser;
     this.admin_add_id.accountRequestId = this.obj.accountRequestID;
     this.idsservice.AdminAddID(this.admin_add_id).subscribe(resp => {

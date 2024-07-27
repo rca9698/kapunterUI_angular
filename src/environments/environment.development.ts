@@ -2,9 +2,9 @@
 export const environment = {
     production: false,
     environment: 'prod',
-    isAdminSite: false,
-    appUrl: 'https://www.kapunter.com/',
-    apiUrl: 'https://rcapplications.online',
+    isAdminSite: true,
+    appUrl: 'https://admin.kapunter.com/',
+    apiUrl: 'https://localhost:7236',
     ueserKey: 'kapunterUser',
 
     imagePath:{

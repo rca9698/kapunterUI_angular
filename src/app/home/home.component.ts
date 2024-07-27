@@ -42,8 +42,8 @@ export class HomeComponent implements OnInit {
     this.coinsservice.OpenWithdrawCoinsRequestPopup('Withdraw');
   }
 
-  LoginToastr(){
-    this.toasterService.warning('Login to perform action!!');
+  ActionToastr(){
+    this.toasterService.warning('Action not allowed!!!');
   }
 
 }

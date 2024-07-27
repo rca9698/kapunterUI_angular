@@ -8,7 +8,6 @@ import { IdsService } from '../ids.service';
   styleUrls: ['./ids-list.component.css']
 })
 export class IdsListComponent {
-  
   constructor(private idsService: IdsService){ }
 
   ngOnInit() {

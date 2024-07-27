@@ -4,11 +4,11 @@
 
         <div class="Wallet-Component-Main-Container">
             <div class="Wallet-Dep-Wal-With-Container">
-              <div class="Wallet-Dep-Comp" *ngIf="(authservice.isLoggenIn | async)" (click)="DepositeToWallet()">
+              <div class="Wallet-Dep-Comp" *ngIf="(authservice.isLoggenIn | async) && this.authservice.isbenview()" (click)="DepositeToWallet()">
                 <span>DEPOSIT</span>
                 <img style="width: 30px; height: 41.89px" src="../../assets/arrow-up.svg" alt="Up Arrow"/>
               </div>
-              <div class="Wallet-Dep-Comp" *ngIf="!(authservice.isLoggenIn | async)" (click)="LoginToastr()">
+              <div class="Wallet-Dep-Comp" *ngIf="!(authservice.isLoggenIn | async) || this.authservice.isadminview()" (click)="ActionToastr()">
                 <span>DEPOSIT</span>
                 <img style="width: 30px; height: 41.89px" src="../../assets/arrow-up.svg" alt="Up Arrow"/>
               </div>
@@ -22,11 +22,11 @@
                   </div>
                 </div>
               </div>
-              <div class="Wallet-With-Comp" *ngIf="(authservice.isLoggenIn | async)" (click)="WithdrawFromWallet()">
+              <div class="Wallet-With-Comp" *ngIf="(authservice.isLoggenIn | async) && this.authservice.isbenview()" (click)="WithdrawFromWallet()">
                 <span>WITHDRAW</span>
                 <img style="width: 30px; height: 41.89px" src="../../assets/arrow-down.svg" alt="Down Arrow"/>
               </div>
-              <div class="Wallet-With-Comp" *ngIf="!(authservice.isLoggenIn | async)" (click)="LoginToastr()">
+              <div class="Wallet-With-Comp" *ngIf="!(authservice.isLoggenIn | async) || this.authservice.isadminview()" (click)="ActionToastr()">
                 <span>WITHDRAW</span>
                 <img style="width: 30px; height: 41.89px" src="../../assets/arrow-down.svg" alt="Down Arrow"/>
               </div>

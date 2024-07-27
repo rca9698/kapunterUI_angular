@@ -5,6 +5,7 @@ import { Ideposit_withdraw_coins_request, deposit_withdraw_coins_request } from 
 import { AuthService } from 'src/app/auth.service';
 import { ToastrService } from 'src/app/toastr/toastr.service';
 import { DeleteService } from 'src/app/Shared/Modules/delete-module/delete.service';
+import { ViewImageService } from 'src/app/Shared/Modules/view-image-module/view-image.service';
 
 @Component({
   selector: 'app-deposite-list',
@@ -20,6 +21,7 @@ export class DepositeListComponent implements OnInit {
   
   constructor(private coinsservice:CoinsService, private authservice: AuthService,
     private toasterService:ToastrService, private deleteservice: DeleteService
+    , private viewimageservice:ViewImageService
   ){
     this._sessionUser = this.authservice.user.userId;
    }
@@ -52,7 +54,7 @@ export class DepositeListComponent implements OnInit {
   }
   
   ViewCoinRequestProof(obj: Icoins_request_model){
-
+    this.viewimageservice.OpenViewImagePopup('proof','',obj);
   }
  
   PaginationNumber(pageNumber:number) { 

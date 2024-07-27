@@ -11,6 +11,7 @@
         <tr class="tableHeaderClass">
             <th scope="col"><p class="">User Number</p></th>
             <th scope="col"><p class="">Application</p></th>
+            <th scope="col"><p class="">User Name</p></th>
             <th scope="col"><p class="">Requested Date</p></th>
             <th scope="col"><p class="">Action</p></th>
             </tr>
@@ -19,6 +20,7 @@
             <tr *ngFor="let ids of idRequestList">
             <th scope="row"><p>{{ids.userNumber}}</p></th>
             <td><p>{{ids.siteURL}}</p></td>
+            <td><p>{{ids.userName}}</p></td>
             <td><p>{{ids.createdDate}}</p></td>
                 <td>
                     <div class="btn-group">
