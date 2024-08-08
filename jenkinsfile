@@ -1,8 +1,8 @@
 pipeline {
     agent any
 
-    environment {
-        DOTNET_CLI_HOME = "C:\\Hosting_Path\\Kapunter"
+    tools {
+        nodejs 'nodejs-18' // Name of the Node.js installation in Jenkins
     }
 
     stages {
@@ -15,12 +15,7 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    // Restoring dependencies
-                    //bat "cd ${DOTNET_CLI_HOME} && dotnet restore"
-                    bat "dotnet restore"
-
-                    // Building the application
-                    bat "dotnet build --configuration Release"
+                    sh 'ng build --prod'
                 }
             }
         }
@@ -28,8 +23,7 @@ pipeline {
         stage('Test') {
             steps {
                 script {
-                    // Running tests
-                    bat "dotnet test --no-restore --configuration Release"
+                    sh 'ng test --watch=false'
                 }
             }
         }
@@ -37,8 +31,17 @@ pipeline {
         stage('Publish') {
             steps {
                 script {
-                    // Publishing the application
-                    bat "dotnet publish --no-restore --configuration Release --output .\\publish"
+                    // Define the path to your build artifacts
+                    def buildDir = 'dist/kapunterUI_angular'
+
+                    // Copy build artifacts to a publish directory
+                    bat "mkdir publish"
+                    bat "xcopy /E /I /Y ${buildDir} publish"
+
+                    // Optionally, you can also upload the artifacts or deploy them directly
+                    // to a web server, FTP server, or Azure blob storage, etc.
+                    // For example, using Azure CLI to upload to Azure Blob Storage:
+                    // bat "az storage blob upload-batch -d <container-name> -s publish --account-name <storage-account-name>"
                 }
             }
         }
