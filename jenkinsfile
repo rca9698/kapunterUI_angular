@@ -2,13 +2,23 @@ pipeline {
     agent any
 
     tools {
-        nodejs 'NodeJs' // Name of the Node.js installation in Jenkins
+        nodejs 'NodeJs', // Name of the Node.js installation in Jenkins
+        git 'Default'
     }
 
     stages {
         stage('Checkout') {
             steps {
-                checkout scm
+                git branch: 'main', url: 'https://github.com/rca9698/kapunterUI_angular.git'
+            }
+        }
+
+        stage('Install Dependencies') {
+            steps {
+                script {
+                    // Install npm dependencies
+                    sh 'npm install' // Use 'bat' for Windows and 'sh' for Unix-based systems
+                }
             }
         }
 
