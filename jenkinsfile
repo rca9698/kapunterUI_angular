@@ -8,7 +8,8 @@ pipeline {
     }
 
     tools {
-        nodejs 'NodeJs' // Name of the Node.js installation in Jenkins
+         nodejs 'NodeJs' // Ensure this name matches the configured Node.js installation
+         git 'Default'  // Ensure this name matches the configured Git installation
     }
 
     stages {
