@@ -2,7 +2,13 @@ pipeline {
     agent any
 
    environment {
+        // Define any environment variables you need
         DOTNET_CLI_HOME = "C:\\Hosting_Path\\Kapunter"
+        // Add more environment variables if needed
+    }
+
+    tools {
+        nodejs 'NodeJs' // Name of the Node.js installation in Jenkins
     }
 
     stages {
