@@ -1,9 +1,8 @@
 pipeline {
     agent any
 
-   tools {
-        nodejs 'NodeJs' // Ensure this name matches the configured Node.js installation
-        git 'Default'  // Ensure this name matches the configured Git installation
+   environment {
+        DOTNET_CLI_HOME = "C:\\Hosting_Path\\Kapunter"
     }
 
     stages {
