@@ -15,9 +15,10 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main'
-                , url: 'https://github.com/rca9698/kapunterUI_angular.git'
-                , credentialsId: 'baf98ba6-ca73-48c4-9c70-6f40d62d694e'
+                // Use credentialsId to specify which credentials to use
+                git branch: 'main',
+                    url: 'https://github.com/rca9698/kapunterUI_angular.git',
+                    credentialsId: 'baf98ba6-ca73-48c4-9c70-6f40d62d694e'
             }
         }
 
