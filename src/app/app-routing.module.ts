@@ -7,7 +7,7 @@ import { IsAuthenticatedGuard } from './is-authenticated.guard';
 import { HasRoleGuard } from './has-role.guard';
 
 const routes: Routes = [
-  {path:"", component:HomeComponent}, //, canActivate: [IsAuthenticatedGuard]
+  {path:"/", component:HomeComponent}, //, canActivate: [IsAuthenticatedGuard]
   
   //import lazy loading by following formatclear
   {path:"account", loadChildren: () => import('./Accounts/accounts.module').then(module => module.AccountsModule)
@@ -32,7 +32,7 @@ const routes: Routes = [
   {path:"userids", loadChildren: () => import('./userids/user-ids.module').then(module=>module.UserIdsModule), canActivate: [IsAuthenticatedGuard] },
 
   {path:"not-found", component:NotFoundComponent},
-  {path:"**",component:ValidationMessageComponent}
+  {path:"**", redirectTo: 'not-found'}
 ];
 
 @NgModule({

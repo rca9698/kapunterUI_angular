@@ -15,7 +15,6 @@ export class IsAuthenticatedGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     return this.authservice.isLoggenIn.pipe(
       tap(isLoggedIn => {
-        console.log(isLoggedIn);
         if(!isLoggedIn) {
           this.router.navigate(['not-found']);
         }

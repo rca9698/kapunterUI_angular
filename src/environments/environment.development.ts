@@ -3,8 +3,8 @@ export const environment = {
     production: false,
     environment: 'prod',
     isAdminSite: true,
-    appUrl: 'https://admin.kapunter.com/',
-    apiUrl: 'https://localhost:7236',
+    appUrl: 'https://www.kapunter.com/',
+    apiUrl: 'https://api.kapunter.com',
     ueserKey: 'kapunterUser',
 
     imagePath:{
